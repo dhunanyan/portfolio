@@ -32,11 +32,17 @@ export const Overlay = () => (
   <div className="overlay">
     <div className="overlay__socials">
       {SOCIALS.map((social, index) => (
-        <Link className="overlay__link" key={index} href={getHref(social)}>
+        <Link
+          key={index}
+          href={getHref(social)}
+          target="_blank"
+          className="overlay__link"
+        >
           {renderIcon(social)}
+          <span>dhunanyan</span>
         </Link>
       ))}
-      <span className="overlay__line" />
+      <span className="overlay__line overlay__line--link" />
     </div>
 
     <div className="overlay__mail">

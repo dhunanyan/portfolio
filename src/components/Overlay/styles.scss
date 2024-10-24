@@ -10,16 +10,47 @@
   width: calc(100% - (60px * 2));
 
   &__socials {
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     flex-direction: column;
     justify-content: space-between;
   }
 
   &__link {
+    align-items: center;
+    border-radius: 14px;
     color: $alt-color;
+    display: flex;
     font-size: 18px;
-    margin: 10px 0;
+    margin: 5px 0;
+    padding: 6px;
+    transition: all 500ms ease-in-out;
+
+    &:hover {
+      background-color: $alt-secondary-color;
+      color: $tint-color;
+      transform: translateX(5px);
+
+      span {
+        transition: all 500ms ease-in-out;
+        color: $tint-color;
+        max-width: 200px;
+        opacity: 1;
+      }
+    }
+
+    span {
+      color: $alt-secondary-color;
+      font-size: 13px;
+      margin: 0 0 0 5px;
+      max-width: 0px;
+      overflow: hidden;
+      transition: all 500ms ease-in-out;
+    }
+
+    &:last-of-type {
+      margin: 5px 0 10px 0;
+    }
   }
 
   &__mail {
@@ -43,5 +74,10 @@
     height: 100px;
     width: 2px;
     margin: 10px 0 0 0;
+    margin: 0 6.5px;
+
+    &--link {
+      margin: 0 6.5px 0 15.5px;
+    }
   }
 }
