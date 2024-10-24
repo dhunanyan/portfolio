@@ -1,0 +1,61 @@
+@import "./variables.scss";
+
+@mixin container {
+  max-width: 1040px;
+  margin: 0 auto;
+  padding: 60px 30px;
+}
+
+@mixin primary-button($hover-bg-color, $hover-color) {
+  background-image: none;
+  background-color: $main-color;
+  color: $main-white-color;
+  text-transform: uppercase;
+  letter-spacing: 3px;
+  font-weight: 700;
+  font-size: 14px;
+  border-style: none;
+  margin: 45px auto 0 0;
+  padding: 15px 52px;
+  box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.47);
+  -webkit-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.47);
+  -moz-box-shadow: 0px 1px 3px 0px rgba(0, 0, 0, 0.47);
+  transition: all 150ms ease-in-out;
+  cursor: pointer;
+  text-decoration: none;
+
+  &:hover {
+    background-color: $hover-bg-color;
+    color: $hover-color;
+    transform: translate(10px, 0);
+    box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.55);
+    -webkit-box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.55);
+    -moz-box-shadow: 0px 1px 10px 2px rgba(0, 0, 0, 0.55);
+  }
+}
+
+@mixin primary-button-white {
+  @include primary-button($main-black-color, $main-white-color);
+}
+
+@mixin primary-button-black {
+  @include primary-button($main-white-color, $main-black-color);
+}
+
+@mixin big-title {
+  font-size: 46px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@mixin title {
+  font-size: 36px;
+  text-transform: uppercase;
+  font-weight: 600;
+}
+
+@mixin subtitle {
+  font-size: 30px;
+  text-transform: uppercase;
+  font-weight: 100;
+}

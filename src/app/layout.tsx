@@ -1,7 +1,9 @@
-import type { Metadata } from "next";
+import type { Metadata } from 'next';
 // import localFont from "next/font/local";
-import { HtmlMeta } from "@data";
-import "./globals.scss";
+import { HtmlMeta } from '@data';
+
+import './globals.scss';
+import { Header } from '@components';
 
 // const geistSans = localFont({
 //   src: "./fonts/GeistVF.woff",
@@ -14,7 +16,7 @@ import "./globals.scss";
 //   weight: "100 900",
 // });
 
-export const metadata: Metadata = HtmlMeta["index"];
+export const metadata: Metadata = HtmlMeta['index'];
 
 export type RootLayoutPropsType = {
   children: React.JSX.Element;
@@ -35,9 +37,10 @@ export default function RootLayout({
           sizes="32x32"
           href="/icons/i_logo-bg.svg"
         />
-        <meta name="theme-color" content="#000000" />
+        <meta name="theme-color" content="#0a192f" />
       </head>
       <body /*className={`${geistSans.variable} ${geistMono.variable}`} */>
+        <Header />
         {children}
       </body>
     </html>
