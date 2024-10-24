@@ -2,69 +2,9 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
+import { SkillsData } from '@data';
+
 import './styles.scss';
-
-const SKILLS = [
-  'React',
-  'React Native',
-  'Expo go',
-  'NextJS',
-  'Typescript',
-  'JavaScript(ES5/ES6)',
-  'ThreeJS',
-  'NodeJS',
-  'Express',
-  'GraphQL',
-  'Rest API',
-  'WebPack',
-  'Jest',
-  'AWS',
-  'Terraform',
-  'Bash Scripts',
-  'Git',
-  'GitHub/GitLab',
-  'GitLab Pipelines',
-  'NewRelic',
-  'Splunk',
-  'Contentstack',
-];
-
-const KNOW_AS_WELL = [
-  'Java',
-  'C#',
-  'Unity',
-  'Python',
-  'PyGame',
-  'Machine Learning',
-  'AI Prompting',
-  'Jupyter Lab',
-  'Jupyter Notebook',
-  'WebDriverIO',
-  'PostgresQL',
-  'MongoDB',
-  'Firebase',
-  'Heroku',
-  'Netlify',
-];
-
-const SOFT_SKILLS = [
-  'Jira',
-  'Confluence',
-  'Slack',
-  'Dovico',
-  'MS Teams',
-  'MS Office 365',
-  'OutLook',
-];
-
-const UI_TOOLS = [
-  'Blender',
-  'Figma',
-  'Asperite',
-  'Ad. Photoshop',
-  'Ad. Illustrator',
-  'Ad. Lightroom',
-];
 
 export const About = () => (
   <section id="about" className="about">
@@ -97,7 +37,7 @@ export const About = () => (
           Recently used <span>Languages/Technologies/Tools</span>:
         </p>
         <ul className="about__list">
-          {SKILLS.map((skill, index) => (
+          {SkillsData.SKILLS.map((skill, index) => (
             <li className="about__item" key={index}>
               <p>{skill}</p>
             </li>
@@ -106,7 +46,7 @@ export const About = () => (
 
         <p className="about__description">Know as well:</p>
         <ul className="about__list">
-          {KNOW_AS_WELL.map((skill, index) => (
+          {SkillsData.KNOW_AS_WELL.map((skill, index) => (
             <li className="about__item about__item--know" key={index}>
               <p>{skill}</p>
             </li>
@@ -119,7 +59,7 @@ export const About = () => (
           UI related <span>tools</span>:
         </p>
         <ul className="about__list">
-          {UI_TOOLS.map((skill, index) => (
+          {SkillsData.UI_TOOLS.map((skill, index) => (
             <li className="about__item about__item--ui" key={index}>
               <p>{skill}</p>
             </li>
@@ -132,7 +72,7 @@ export const About = () => (
           Other <span>tools</span>:
         </p>
         <ul className="about__list">
-          {SOFT_SKILLS.map((skill, index) => (
+          {SkillsData.SOFT_SKILLS.map((skill, index) => (
             <li className="about__item about__item--other" key={index}>
               <p>{skill}</p>
             </li>

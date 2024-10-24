@@ -1,0 +1,111 @@
+@import '../../../styles/mixins';
+@import '../../../styles/variables';
+
+.job {
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  justify-content: space-between;
+  margin: 0 0 0 auto;
+  max-width: 700px;
+  padding: 20px;
+  transition: all 150ms ease-in-out;
+
+  &:hover {
+    background-color: $tertiary-color;
+    box-shadow:
+      0 0 #0000,
+      0 0 #0000,
+      inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+
+    .job {
+      &__title {
+        color: $tint-color;
+        transform: translate(5px, 0);
+      }
+
+      &__date p {
+        color: $secondary-color;
+      }
+
+      &__description p::before {
+        color: $tint-color;
+      }
+    }
+  }
+
+  &__date {
+    margin: 0 20px 0 0;
+    min-width: 170px;
+
+    p {
+      color: $alt-color;
+      font-family: $font-mono;
+      font-size: 16px;
+      transition: all 150ms ease-in-out;
+      width: max-content;
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__title {
+    color: $secondary-color;
+    font-family: $font-sans;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 0 0 10px;
+    transition: all 150ms ease-in-out;
+    width: max-content;
+  }
+
+  &__descriptions {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__description {
+    p {
+      color: $alt-color;
+      font-family: $font-sans;
+      font-size: 14px;
+      line-height: 18px;
+      transition: all 150ms ease-in-out;
+
+      &::before {
+        color: $alt-color;
+        content: '•';
+        margin: 0 5px 0 0;
+        transition: all 150ms ease-in-out;
+        width: 2px;
+      }
+    }
+  }
+
+  &__skills {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0 0;
+  }
+
+  &__skill {
+    background-color: $tint-secondary-color;
+    border-radius: 25px;
+    padding: 7px 14px;
+
+    p {
+      color: $tint-color;
+      font-family: $font-sans;
+      font-size: 13px;
+    }
+  }
+}

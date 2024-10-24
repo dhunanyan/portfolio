@@ -1,26 +1,24 @@
 import * as React from 'react';
+import { Job } from './Job';
+import { ExperienceData } from '@data';
+
+import './styles.scss';
 
 export const Experience = () => (
   <div className="experience">
     <div className="experience__container">
-      <h3 className="experience__title">
-        Senior Frontend Engineer, Accessibility · Klaviyo
-      </h3>
+      <h2 className="experience__title">
+        <span>02.</span> <span>Experience</span>
+        <span className="experience__line" />
+      </h2>
+
       <ul className="experience__list">
-        {['JavaScript', 'TypeScript', 'React', 'Storybook'].map(
-          (item, index) => (
-            <li key={index} className="experience__item">
-              <p>{item}</p>
-            </li>
-          )
-        )}
+        {ExperienceData.map((job, index) => (
+          <li key={index} className="experience__item">
+            <Job {...job} />
+          </li>
+        ))}
       </ul>
-      <p className="experience__description">
-        Build and maintain critical components used to construct Klaviyo&apos;s
-        frontend, across the whole product. Work closely with cross-functional
-        teams, including developers, designers, and product managers, to
-        implement and advocate for best practices in web accessibility.
-      </p>
     </div>
   </div>
 );
