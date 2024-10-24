@@ -2,11 +2,9 @@
 @import '../../styles/variables';
 
 .about {
-  height: 100vh;
-
   &__container {
     @include container;
-    align-items: center;
+    align-items: flex-start;
     display: flex;
     justify-content: space-between;
   }
@@ -23,28 +21,132 @@
 
   &__description {
     @include description;
-    margin: 20px 0 0 4px;
+    margin: 20px 0 0;
+  }
+
+  &__line {
+    background-color: $alt-secondary-color;
+    height: 1px;
+    margin: 20px 0 0;
+    opacity: 0.7;
+    width: 100%;
+  }
+
+  &__list {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr 1fr;
+    grid-column-gap: 5px;
+    margin: 20px 0 0;
+  }
+
+  &__item {
+    color: $tint-color;
+    font-family: $font-mono;
+    margin: 5px 0 0;
+
+    p {
+      width: max-content;
+
+      &::before {
+        content: '⇢';
+        margin: 0 5px 0;
+      }
+    }
+
+    &--know {
+      p::before {
+        content: '►';
+      }
+    }
+
+    &--ui {
+      p::before {
+        content: '⇥';
+      }
+    }
+
+    &--other {
+      p::before {
+        content: '↦';
+      }
+    }
+  }
+
+  &__images {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-gap: 20px;
+    margin: 0 0 0 50px;
+
+    &:hover {
+      .about {
+        &__image--me {
+          transform: translate(0, -20px);
+        }
+
+        &__overlay--me {
+          background-color: transparent;
+          backdrop-filter: blur(0px);
+          box-shadow: 0px 7px 15px 4px $tint-color;
+          -webkit-box-shadow: 0px 7px 15px 4px $tint-color;
+          -moz-box-shadow: 0px 7px 15px 4px $tint-color;
+
+          span {
+            opacity: 0;
+          }
+        }
+      }
+    }
   }
 
   &__image {
     border: 1px solid $tint-color;
     cursor: pointer;
     display: flex;
-    height: 300px;
-    margin: 0 0 0 50px;
-    min-width: 300px;
     position: relative;
     transition: all 120ms ease-in-out;
 
     &:hover {
-      transform: translate(-15px, -15px);
       .about__overlay {
         background-color: transparent;
         backdrop-filter: blur(0px);
-        box-shadow: 4px 4px 15px 4px $tint-color;
-        -webkit-box-shadow: 4px 4px 15px 4px $tint-color;
-        -moz-box-shadow: 4px 4px 15px 4px $tint-color;
+
+        &--linkedin {
+          box-shadow: 4px 4px 15px 4px $tint-color;
+          -webkit-box-shadow: 4px 4px 15px 4px $tint-color;
+          -moz-box-shadow: 4px 4px 15px 4px $tint-color;
+        }
+
+        &--github {
+          box-shadow: -4px 4px 15px 4px $tint-color;
+          -webkit-box-shadow: -4px 4px 15px 4px $tint-color;
+          -moz-box-shadow: -4px 4px 15px 4px $tint-color;
+        }
       }
+    }
+
+    &--me {
+      cursor: auto;
+      height: 300px;
+      grid-column: 1 / 3;
+    }
+
+    &--github {
+      &:hover {
+        transform: translate(5px, -5px);
+      }
+    }
+
+    &--linkedin {
+      &:hover {
+        transform: translate(-5px, -5px);
+      }
+    }
+
+    &--github,
+    &--linkedin {
+      height: 150px;
+      width: 150px;
     }
 
     img {
@@ -60,10 +162,31 @@
     -moz-box-shadow: 0px 2px 5px 0px $tint-color;
     bottom: 0;
     left: 0;
+    overflow: hidden;
     position: absolute;
     right: 0;
     top: 0;
     transition: all 120ms ease-in-out;
     z-index: 1;
+
+    &--linkedin,
+    &--github {
+      backdrop-filter: blur(0px);
+    }
+
+    span {
+      color: $tint-color;
+      display: flex;
+      font-size: 42px;
+      font-family: $font-sans;
+      font-weight: 900;
+      left: 50%;
+      opacity: 0.1;
+      position: absolute;
+      top: 50%;
+      text-transform: uppercase;
+      transform: translate(-50%, -50%);
+      transition: all 120ms ease-out;
+    }
   }
 }
