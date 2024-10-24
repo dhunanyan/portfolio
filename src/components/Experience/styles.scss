@@ -11,6 +11,19 @@
     margin: 0 0 30px 0;
   }
 
+  &__subtitle {
+    @include title;
+    margin: 30px 0 0 0;
+
+    span:first-of-type {
+      order: 2;
+    }
+
+    span.experience__line {
+      margin: 0 20px 0 0;
+    }
+  }
+
   &__description {
     @include description;
     margin: 20px 0 0;

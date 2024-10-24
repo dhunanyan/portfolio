@@ -28,8 +28,24 @@ export const Experience = () => (
         held and the skills I&apos;ve acquired.
       </p>
 
+      <h2 className="experience__subtitle">
+        <span>Work</span>
+        <span className="experience__line" />
+      </h2>
       <ul className="experience__list">
-        {ExperienceData.map((job, index) => (
+        {ExperienceData.Work.map((job, index) => (
+          <li key={index} className="experience__item">
+            <Job {...job} />
+          </li>
+        ))}
+      </ul>
+
+      <h2 className="experience__subtitle">
+        <span>Education</span>
+        <span className="experience__line" />
+      </h2>
+      <ul className="experience__list">
+        {ExperienceData.Education.map((job, index) => (
           <li key={index} className="experience__item">
             <Job {...job} />
           </li>

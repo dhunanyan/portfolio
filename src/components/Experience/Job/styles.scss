@@ -64,6 +64,17 @@
     width: max-content;
   }
 
+  &__subtitle {
+    color: $alt-secondary-color;
+    font-family: $font-mono;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 0 0 10px;
+    transition: all 150ms ease-in-out;
+    width: max-content;
+  }
+
   &__descriptions {
     align-items: flex-start;
     display: flex;

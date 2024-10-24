@@ -5,13 +5,15 @@ import './styles.scss';
 export type JobPropsType = {
   date: string;
   title: string;
+  subtitle?: string;
   descriptionList: string[];
-  skillsList: string[];
+  skillsList?: string[];
 };
 
 export const Job = ({
   date,
   title,
+  subtitle,
   descriptionList,
   skillsList,
 }: JobPropsType) => {
@@ -29,6 +31,7 @@ export const Job = ({
       </div>
       <div className="job__content">
         <h3 className="job__title">{title}</h3>
+        {subtitle && <h3 className="job__subtitle">{subtitle}</h3>}
         <ul className="job__descriptions">
           {descriptionListToDisplay.map((paragraph, index) => (
             <li key={index} className="job__description">
@@ -46,13 +49,15 @@ export const Job = ({
             </li>
           ))}
         </ul>
-        <ul className="job__skills">
-          {skillsList.map((item, index) => (
-            <li key={index} className="job__skill">
-              <p>{item}</p>
-            </li>
-          ))}
-        </ul>
+        {skillsList && (
+          <ul className="job__skills">
+            {skillsList.map((item, index) => (
+              <li key={index} className="job__skill">
+                <p>{item}</p>
+              </li>
+            ))}
+          </ul>
+        )}
       </div>
     </div>
   );

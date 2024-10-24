@@ -1,4 +1,4 @@
-export const ExperienceData = [
+const Work = [
   {
     date: '2023 - Present',
     title: 'Software Engineer, GrandParade · WilliamHill',
@@ -81,3 +81,50 @@ export const ExperienceData = [
     ],
   },
 ];
+
+const Education = [
+  {
+    date: '2021 - 2023',
+    title: 'AGH University of Krakow',
+    subtitle: 'Computer Science & Intelligent Systems',
+    descriptionList: [
+      'Completed coursework in software design, algorithms, and database management, building a solid foundation in software development principles.',
+      'Developed compilers and code converters as part of advanced programming courses, enhancing understanding of language processing and code optimization.',
+      'Engaged in hands-on projects, collaborating with peers to develop applications that address real-world problems.',
+      'Participated in workshops and hackathons, enhancing technical skills and fostering a collaborative team environment.',
+    ],
+    skillsList: [
+      'Java',
+      'C++',
+      'C#',
+      '.NET',
+      'JavaScript',
+      'React',
+      'PostgresQL',
+      'ANTLR',
+      'Python',
+      'Django',
+      'Pandas/NumPy',
+      'ML/AI',
+      'UNIX',
+      'Git',
+      'GitHub/GitLab',
+    ],
+  },
+  {
+    date: '2020 - 2021',
+    title: 'University of the National Education Commission, Krakow',
+    subtitle: 'Mathematics',
+    descriptionList: [
+      'Studied foundational concepts in mathematics, focusing on problem-solving and analytical thinking.',
+      'Engaged in projects that emphasized the application of mathematical principles in technology and computing.',
+      'Developed strong quantitative skills, which contributed to my understanding of algorithm design and data analysis.',
+    ],
+    skillsList: ['C++', 'Latex', 'MatLab'],
+  },
+];
+
+export const ExperienceData = {
+  Work,
+  Education,
+};
