@@ -89,6 +89,19 @@
     }
   }
 
+  &__button {
+    background-color: transparent;
+    color: $secondary-color;
+    display: inline;
+    font-family: $font-sans;
+    transition: all 150ms ease-in-out;
+
+    &:hover {
+      color: $tint-color;
+      text-decoration: underline;
+    }
+  }
+
   &__skills {
     align-items: center;
     display: flex;

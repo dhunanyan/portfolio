@@ -1,3 +1,4 @@
+'use client';
 import * as React from 'react';
 import './styles.scss';
 
@@ -13,27 +14,46 @@ export const Job = ({
   title,
   descriptionList,
   skillsList,
-}: JobPropsType) => (
-  <div className="job">
-    <div className="job__date">
-      <p>{date}</p>
+}: JobPropsType) => {
+  const [isDisplayed, setIsDisplay] = React.useState<boolean>(false);
+
+  const descriptionListToDisplay = React.useMemo(
+    () => descriptionList.slice(0, isDisplayed ? descriptionList.length : 2),
+    [descriptionList, isDisplayed]
+  );
+
+  return (
+    <div className="job">
+      <div className="job__date">
+        <p>{date}</p>
+      </div>
+      <div className="job__content">
+        <h3 className="job__title">{title}</h3>
+        <ul className="job__descriptions">
+          {descriptionListToDisplay.map((paragraph, index) => (
+            <li key={index} className="job__description">
+              <p>
+                {paragraph}{' '}
+                {descriptionListToDisplay.length - 1 === index && (
+                  <button
+                    className="job__button"
+                    onClick={() => setIsDisplay((prev) => !prev)}
+                  >
+                    {isDisplayed ? 'Show less' : '...Show more'}
+                  </button>
+                )}
+              </p>
+            </li>
+          ))}
+        </ul>
+        <ul className="job__skills">
+          {skillsList.map((item, index) => (
+            <li key={index} className="job__skill">
+              <p>{item}</p>
+            </li>
+          ))}
+        </ul>
+      </div>
     </div>
-    <div className="job__content">
-      <h3 className="job__title">{title}</h3>
-      <ul className="job__descriptions">
-        {descriptionList.map((paragraph, index) => (
-          <li key={index} className="job__description">
-            <p>{paragraph}</p>
-          </li>
-        ))}
-      </ul>
-      <ul className="job__skills">
-        {skillsList.map((item, index) => (
-          <li key={index} className="job__skill">
-            <p>{item}</p>
-          </li>
-        ))}
-      </ul>
-    </div>
-  </div>
-);
+  );
+};
