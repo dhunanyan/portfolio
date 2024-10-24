@@ -1,0 +1,69 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.about {
+  height: 100vh;
+
+  &__container {
+    @include container;
+    align-items: center;
+    display: flex;
+    justify-content: space-between;
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include title;
+    margin: 0 0 30px 0;
+  }
+
+  &__description {
+    @include description;
+    margin: 20px 0 0 4px;
+  }
+
+  &__image {
+    border: 1px solid $tint-color;
+    cursor: pointer;
+    display: flex;
+    height: 300px;
+    margin: 0 0 0 50px;
+    min-width: 300px;
+    position: relative;
+    transition: all 120ms ease-in-out;
+
+    &:hover {
+      transform: translate(-15px, -15px);
+      .about__overlay {
+        background-color: transparent;
+        backdrop-filter: blur(0px);
+        box-shadow: 4px 4px 15px 4px $tint-color;
+        -webkit-box-shadow: 4px 4px 15px 4px $tint-color;
+        -moz-box-shadow: 4px 4px 15px 4px $tint-color;
+      }
+    }
+
+    img {
+      z-index: 0;
+    }
+  }
+
+  &__overlay {
+    backdrop-filter: blur(10px);
+    background-color: $tint-color-opacity;
+    box-shadow: 0px 2px 5px 0px $tint-color;
+    -webkit-box-shadow: 0px 2px 5px 0px $tint-color;
+    -moz-box-shadow: 0px 2px 5px 0px $tint-color;
+    bottom: 0;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+    transition: all 120ms ease-in-out;
+    z-index: 1;
+  }
+}

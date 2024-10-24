@@ -9,12 +9,12 @@ export const Hero = () => (
       <h1 className="hero__title">Davit Hunanyan</h1>
       <h2 className="hero__subtitle">Software Engineer</h2>
       <p className="hero__description">
-        I&apos;m a dedicated software developer with a strong background in web
-        development and a passion for problem-solving. Over the years, I&apos;ve
-        gained experience in several other areas of software development,{' '}
-        <span>including backend services</span>,{' '}
-        <span>database management</span>, <span>mobile app development</span>{' '}
-        and <span>game development</span>.
+        Hi, I&apos;m Davit Hunanyan, a passionate Software Developer
+        specializing in Web Development. With experience in various fields, I
+        thrive on turning innovative ideas into working software solutions.
+        Whether it’s building sleek and responsive websites or developing robust
+        applications, I&apos;m always excited to take on new challenges and
+        bring projects to life.
       </p>
       <button className="hero__button">Get started</button>
     </div>

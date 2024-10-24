@@ -1,9 +1,10 @@
-import { Hero, Overlay } from '@components';
+import { About, Hero, Overlay } from '@components';
 
 const Page = () => (
   <main>
     <Hero />
     <Overlay />
+    <About />
   </main>
 );
 

@@ -37,17 +37,9 @@
   }
 
   &__description {
-    color: $alt-color;
-    font-family: $font-sans;
-    font-size: 16px;
-    line-height: 22px;
+    @include description;
     margin: 20px 0 0 4px;
     max-width: 700px;
-
-    span {
-      color: $secondary-color;
-      font-weight: 700;
-    }
   }
 
   &__button {

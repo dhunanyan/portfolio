@@ -3,21 +3,21 @@
 @mixin container {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 60px 30px;
+  padding: 60px 150px;
 }
 
 @mixin button {
   align-items: center;
   background-color: $primary-color;
   border: 1px solid $tint-color;
-  border-radius: 8px;
+  border-radius: 4px;
   box-shadow: 0px 2px 1px 0px $tint-color;
   -webkit-box-shadow: 0px 2px 1px 0px $tint-color;
   -moz-box-shadow: 0px 2px 1px 0px $tint-color;
   color: $tint-color;
   display: flex;
-  font-size: 15px;
-  font-weight: 900;
+  font-size: 16px;
+  font-weight: 400;
   justify-content: center;
   letter-spacing: 2px;
   padding: 18px 24px;
@@ -30,24 +30,47 @@
     -webkit-box-shadow: 0px 2px 5px 0px $tint-color;
     -moz-box-shadow: 0px 2px 5px 0px $tint-color;
     color: $primary-color;
-    transform: scale(1.1);
+    transform: translate(10px, 0);
   }
 }
 
-@mixin big-title {
-  font-size: 46px;
-  text-transform: uppercase;
-  font-weight: 600;
-}
-
 @mixin title {
-  font-size: 36px;
-  text-transform: uppercase;
-  font-weight: 600;
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-weight: 700;
+  font-size: 32px;
+
+  span {
+    min-width: max-content;
+
+    &:first-of-type {
+      color: $tint-color;
+      font-family: $font-mono;
+      font-size: 24px;
+      font-weight: 100;
+      margin: auto 5px 0 0;
+    }
+
+    &:last-of-type {
+      background-color: $alt-secondary-color;
+      height: 1px;
+      margin: 0 0 0 20px;
+      opacity: 0.7;
+      width: 100%;
+    }
+  }
 }
 
-@mixin subtitle {
-  font-size: 30px;
-  text-transform: uppercase;
-  font-weight: 100;
+@mixin description {
+  color: $alt-color;
+  font-family: $font-sans;
+  font-size: 16px;
+  line-height: 22px;
+
+  span {
+    color: $secondary-color;
+    font-weight: 700;
+  }
 }
