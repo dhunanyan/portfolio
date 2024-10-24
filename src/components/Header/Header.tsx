@@ -8,7 +8,7 @@ export const Header = () => {
   const NAV_ITEMS = ['about', 'experience', 'work', 'contact'];
 
   return (
-    <header className="header">
+    <header id="header" className="header">
       <div className="header__container">
         <Link
           href="/"

@@ -35,7 +35,7 @@ export default function RootLayout({
           rel="icon"
           type="image/svg"
           sizes="32x32"
-          href="/icons/i_logo-bg.svg"
+          href="/svg/i_logo-bold-bg.svg"
         />
         <meta name="theme-color" content="#0a192f" />
       </head>

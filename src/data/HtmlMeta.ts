@@ -1,7 +1,7 @@
 export const HtmlMeta = {
   index: {
-    title: "Title",
-    description: "Description",
-    keywords: "Keywords",
+    title: 'Davit Hunanyan',
+    description: 'Description',
+    keywords: 'Keywords',
   },
 };

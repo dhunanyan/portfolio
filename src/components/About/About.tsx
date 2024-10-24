@@ -67,7 +67,7 @@ const UI_TOOLS = [
 ];
 
 export const About = () => (
-  <section className="about">
+  <section id="about" className="about">
     <div className="about__container">
       <div className="about__content">
         <h2 className="about__title">

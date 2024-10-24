@@ -9,6 +9,8 @@
 
   &__container {
     @include container;
+    display: flex;
+    flex-direction: column;
     width: 100%;
   }
 
@@ -44,6 +46,6 @@
 
   &__button {
     @include button;
-    margin: 20px 0 0 4px;
+    margin: 20px auto 0 4px;
   }
 }

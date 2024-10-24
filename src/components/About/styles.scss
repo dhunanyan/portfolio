@@ -43,6 +43,11 @@
     color: $tint-color;
     font-family: $font-mono;
     margin: 5px 0 0;
+    transition: all 120ms ease-out;
+
+    &:hover {
+      transform: translate(5px, 0);
+    }
 
     p {
       width: max-content;
