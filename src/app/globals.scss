@@ -18,19 +18,21 @@ body {
   font-family: 'Poppins', sans-serif;
 
   &::-webkit-scrollbar {
-    background: #3a3e44;
+    width: 12px;
   }
-  &::-webkit-scrollbar-track {
-    background: #d7e1e1;
-  }
+
   &::-webkit-scrollbar-thumb {
-    background: #3a3e44;
+    background-color: $alt-secondary-color;
+    border: 3px solid $alt-secondary-color;
   }
-  &::-webkit-scrollbar-thumb :hover {
-    background: #3a3e44;
+
+  &::-webkit-scrollbar-track {
+    background: $primary-color;
   }
-  &::-webkit-scrollbar-corner {
-    background: #3a3e44;
+
+  &::selection {
+    background-color: $alt-secondary-color;
+    color: $tint-color;
   }
 
   &:focus,

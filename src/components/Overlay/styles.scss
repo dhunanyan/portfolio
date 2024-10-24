@@ -1,0 +1,47 @@
+@import '../../styles/variables';
+
+.overlay {
+  align-items: flex-end;
+  bottom: 0;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 60px;
+  position: fixed;
+  width: calc(100% - (60px * 2));
+
+  &__socials {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+
+  &__link {
+    color: $alt-color;
+    font-size: 18px;
+    margin: 10px 0;
+  }
+
+  &__mail {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    width: 13px;
+
+    p {
+      color: $alt-color;
+      font-family: $font-mono;
+      font-size: 13px;
+      letter-spacing: 2px;
+      margin: 0 0 100px;
+      transform: rotate(90deg);
+    }
+  }
+
+  &__line {
+    background-color: $alt-color;
+    height: 100px;
+    width: 2px;
+    margin: 10px 0 0 0;
+  }
+}

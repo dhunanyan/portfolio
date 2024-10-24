@@ -1,0 +1,57 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.about {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+
+  &__container {
+    @include container;
+    width: 100%;
+  }
+
+  &__welcome {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 18px;
+    margin: 0 0 10px 4px;
+  }
+
+  &__title {
+    color: $secondary-color;
+    font-family: $font-sans;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 72px;
+  }
+
+  &__subtitle {
+    color: $alt-color;
+    font-family: $font-sans;
+    font-size: 72px;
+    font-weight: 700;
+    line-height: 72px;
+    margin: 10px 0 0 0;
+  }
+
+  &__description {
+    color: $alt-color;
+    font-family: $font-sans;
+    font-size: 16px;
+    line-height: 22px;
+    margin: 20px 0 0 4px;
+    max-width: 700px;
+
+    span {
+      color: $secondary-color;
+      font-weight: 700;
+    }
+  }
+
+  &__button {
+    @include button;
+    margin: 20px 0 0 4px;
+  }
+}
