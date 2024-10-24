@@ -118,6 +118,14 @@ export const About = () => (
           />
           <div className="about__overlay about__overlay--linkedin" />
         </Link>
+        <Link
+          href="#TODO"
+          target="_blank"
+          className="about__image about__image--cv"
+        >
+          <span>Curriculum vitae</span>
+          <div className="about__overlay about__overlay--linkedin" />
+        </Link>
       </div>
     </div>
   </section>
