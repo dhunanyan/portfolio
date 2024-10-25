@@ -1,5 +1,6 @@
 const Work = [
   {
+    url: 'https://grandparade.co.uk',
     date: '2023 - Present',
     title: 'Software Engineer, GrandParade · WilliamHill',
     descriptionList: [
@@ -36,6 +37,7 @@ const Work = [
     ],
   },
   {
+    url: 'https://grandparade.co.uk',
     date: '2022 - 2023',
     title: '(Junior) Software Engineer, GrandParade · WilliamHill',
     descriptionList: [
@@ -60,6 +62,7 @@ const Work = [
     ],
   },
   {
+    url: 'https://grandparade.co.uk',
     date: 'May 2022 - Jul 2022',
     title: '(Intern) Software Engineer, GrandParade · WilliamHill',
     descriptionList: [
@@ -84,6 +87,7 @@ const Work = [
 
 const Education = [
   {
+    url: 'https://sylabusy.agh.edu.pl/en',
     date: '2021 - 2023',
     title: 'AGH University of Krakow',
     subtitle: 'Computer Science & Intelligent Systems',
@@ -112,6 +116,7 @@ const Education = [
     ],
   },
   {
+    url: 'https://www.uken.krakow.pl/en',
     date: '2020 - 2021',
     title: 'University of the National Education Commission, Krakow',
     subtitle: 'Mathematics',

@@ -3,13 +3,12 @@
 
 .job {
   border-radius: 8px;
-  cursor: pointer;
   display: flex;
   justify-content: space-between;
   margin: 0 0 0 auto;
   max-width: 700px;
   padding: 20px;
-  transition: all 150ms ease-in-out;
+  transition: all 280ms $animation;
 
   &:hover {
     background-color: $tertiary-color;
@@ -17,11 +16,17 @@
       0 0 #0000,
       0 0 #0000,
       inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+    transform: translate(-20px, 0);
 
     .job {
-      &__title {
+      &__title h3 {
         color: $tint-color;
         transform: translate(5px, 0);
+
+        span:last-of-type svg {
+          opacity: 1;
+          transform: translateX(10px);
+        }
       }
 
       &__date p {
@@ -54,14 +59,41 @@
   }
 
   &__title {
-    color: $secondary-color;
-    font-family: $font-sans;
-    font-size: 18px;
-    font-weight: 600;
-    line-height: 18px;
-    margin: 0 0 10px;
-    transition: all 150ms ease-in-out;
-    width: max-content;
+    h3 {
+      align-items: center;
+      color: $secondary-color;
+      display: flex;
+      margin: 0 0 10px;
+      cursor: pointer;
+      transition: all 250ms $animation;
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      span:first-of-type {
+        font-family: $font-sans;
+        font-size: 18px;
+        font-weight: 600;
+        line-height: 18px;
+        width: max-content;
+      }
+
+      span:last-of-type {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        svg {
+          height: 20px;
+          opacity: 0;
+          transition:
+            opacity 150ms ease-in,
+            transform 150ms ease-in;
+          width: 20px;
+        }
+      }
+    }
   }
 
   &__subtitle {

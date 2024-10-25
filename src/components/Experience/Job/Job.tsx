@@ -1,8 +1,12 @@
 'use client';
 import * as React from 'react';
+import Link from 'next/link';
+import { IoMdLink } from 'react-icons/io';
+
 import './styles.scss';
 
 export type JobPropsType = {
+  url: string;
   date: string;
   title: string;
   subtitle?: string;
@@ -11,6 +15,7 @@ export type JobPropsType = {
 };
 
 export const Job = ({
+  url,
   date,
   title,
   subtitle,
@@ -30,7 +35,14 @@ export const Job = ({
         <p>{date}</p>
       </div>
       <div className="job__content">
-        <h3 className="job__title">{title}</h3>
+        <Link className="job__title" href={url} target="_blank">
+          <h3>
+            <span>{title}</span>
+            <span>
+              <IoMdLink />
+            </span>
+          </h3>
+        </Link>
         {subtitle && <h3 className="job__subtitle">{subtitle}</h3>}
         <ul className="job__descriptions">
           {descriptionListToDisplay.map((paragraph, index) => (
