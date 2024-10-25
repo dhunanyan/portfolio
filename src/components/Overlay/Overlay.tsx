@@ -4,6 +4,8 @@ import Link from 'next/link';
 import { FaGithub } from 'react-icons/fa6';
 import { FaLinkedinIn } from 'react-icons/fa6';
 
+import { PersonalInfo } from '@data';
+
 import './styles.scss';
 
 const SOCIALS = ['github', 'linkedin'];
@@ -21,10 +23,10 @@ const renderIcon = (social: string) => {
 const getHref = (social: string) => {
   switch (social) {
     case 'linkedin':
-      return 'https://www.linkedin.com/in/dhunanyan';
+      return PersonalInfo.LinkedIn;
     case 'github':
     default:
-      return 'https://github.com/dhunanyan';
+      return PersonalInfo.GitHub;
   }
 };
 
@@ -39,14 +41,14 @@ export const Overlay = () => (
           className="overlay__link"
         >
           {renderIcon(social)}
-          <span>dhunanyan</span>
+          <span>{PersonalInfo.Username}</span>
         </Link>
       ))}
       <span className="overlay__line overlay__line--link" />
     </div>
 
     <div className="overlay__mail">
-      <p>davit.hunanyan@me.com</p>
+      <p>{PersonalInfo.Mail}</p>
       <span className="overlay__line" />
     </div>
   </div>

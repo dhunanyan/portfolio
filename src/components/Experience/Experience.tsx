@@ -8,7 +8,7 @@ import { Descriptions } from '../Descriptions';
 const { title, descriptionsList, work, education } = ExperienceData;
 
 export const Experience = () => (
-  <div className="experience">
+  <section id="experience" className="experience">
     <div className="experience__container">
       <h2 className="experience__title">
         <span>{title[0]}</span>
@@ -44,5 +44,5 @@ export const Experience = () => (
         ))}
       </ul>
     </div>
-  </div>
+  </section>
 );

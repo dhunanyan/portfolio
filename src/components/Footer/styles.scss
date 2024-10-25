@@ -1,0 +1,81 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.footer {
+  margin: 50px 0 0 0;
+
+  &__container {
+    @include container;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+
+  &__content {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+  }
+
+  &__title {
+    align-items: center;
+    display: flex;
+
+    > span {
+      color: $alt-color;
+      font-family: $font-mono;
+      margin: 0 6px 0 0;
+
+      span {
+        color: $tint-color;
+      }
+    }
+
+    a {
+      color: $secondary-color;
+      font-family: $font-mono;
+      transition: all 120ms ease-out;
+
+      &:hover {
+        color: $tint-color;
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__motto {
+    align-items: center;
+    display: flex;
+    margin: 18px 0 0 0;
+
+    p {
+      align-items: center;
+      display: flex;
+      margin: 0 10px;
+      max-height: 26px;
+      height: 26px;
+    }
+
+    &-text {
+      color: $alt-color;
+      font-family: $font-mono;
+      font-style: italic;
+      text-align: center;
+    }
+
+    &-quot {
+      color: $tint-color;
+      font-family: $font-mono;
+      font-size: 42px;
+    }
+
+    &-line {
+      background-color: $alt-secondary-color;
+      display: flex;
+      flex: 1 0 10px;
+      height: 1px;
+      width: 100%;
+    }
+  }
+}

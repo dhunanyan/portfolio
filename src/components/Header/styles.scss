@@ -35,6 +35,10 @@
       }
     }
 
+    * {
+      pointer-events: none;
+    }
+
     svg {
       position: absolute;
       max-width: 50px;
@@ -93,6 +97,7 @@
     }
 
     span {
+      pointer-events: none;
       transition: all 120ms ease-out;
 
       &:first-of-type {

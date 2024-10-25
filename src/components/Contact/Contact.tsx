@@ -9,7 +9,7 @@ import './styles.scss';
 const { title, sideInfo, subtitle, descriptionsList, button } = ContactData;
 
 export const Contact = () => (
-  <div className="contact">
+  <section id="contact" className="contact">
     <div className="contact__container">
       <h2 className="contact__title">
         <span>{title[0]}</span>
@@ -26,5 +26,5 @@ export const Contact = () => (
         {button}
       </Link>
     </div>
-  </div>
+  </section>
 );

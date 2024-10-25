@@ -2,11 +2,12 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { AboutData } from '@data';
-
-import './styles.scss';
 import { Descriptions } from '../Descriptions';
 import { SkillsMapping } from './SkillsMapping';
+
+import { AboutData, PersonalInfo } from '@data';
+
+import './styles.scss';
 
 const { title, descriptionsList, skillsList } = AboutData;
 
@@ -43,7 +44,7 @@ export const About = () => (
           </div>
         </div>
         <Link
-          href="https://github.com/dhunanyan"
+          href={PersonalInfo.GitHub}
           target="_blank"
           className="about__image about__image--github"
         >
@@ -58,7 +59,7 @@ export const About = () => (
           <div className="about__overlay about__overlay--github" />
         </Link>
         <Link
-          href="https://www.linkedin.com/in/dhunanyan"
+          href={PersonalInfo.LinkedIn}
           target="_blank"
           className="about__image about__image--linkedin"
         >
