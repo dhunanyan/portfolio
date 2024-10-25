@@ -5,7 +5,7 @@ import Link from 'next/link';
 import { AboutData } from '@data';
 
 import './styles.scss';
-import { Descriptions } from './Descriptions';
+import { Descriptions } from '../Descriptions';
 import { SkillsMapping } from './SkillsMapping';
 
 const { title, descriptionsList, skillsList } = AboutData;
@@ -19,19 +19,25 @@ export const About = () => (
           <span>{title[1]}</span>
           <span className="about__line" />
         </h2>
-        <Descriptions descriptionsList={descriptionsList} />
+        <Descriptions
+          descriptionsList={descriptionsList}
+          className="about__description"
+        />
         <span className="about__line" />
         <SkillsMapping skillsList={skillsList} />
       </div>
 
       <div className="about__images">
         <div className="about__image about__image--me">
-          <Image
-            layout="fill"
-            objectFit="cover"
-            src="/images/profile.png"
-            alt="Me :)"
-          />
+          <div className="about__image--container">
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src="/images/profile.png"
+              alt="Me :)"
+            />
+          </div>
+
           <div className="about__overlay about__overlay--me">
             <span>Me</span>
           </div>
@@ -41,12 +47,14 @@ export const About = () => (
           target="_blank"
           className="about__image about__image--github"
         >
-          <Image
-            layout="fill"
-            objectFit="contain"
-            src="/images/github.png"
-            alt="Me :)"
-          />
+          <div className="about__image--container">
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src="/images/github.png"
+              alt="Github"
+            />
+          </div>
           <div className="about__overlay about__overlay--github" />
         </Link>
         <Link
@@ -54,12 +62,14 @@ export const About = () => (
           target="_blank"
           className="about__image about__image--linkedin"
         >
-          <Image
-            layout="fill"
-            objectFit="contain"
-            src="/images/linkedin.png"
-            alt="Me :)"
-          />
+          <div className="about__image--container">
+            <Image
+              layout="fill"
+              objectFit="cover"
+              src="/images/linkedin.png"
+              alt="LinkedIn"
+            />
+          </div>
           <div className="about__overlay about__overlay--linkedin" />
         </Link>
         <Link

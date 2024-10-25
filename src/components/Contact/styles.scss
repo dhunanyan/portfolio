@@ -1,0 +1,47 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
+.contact {
+  &__container {
+    @include container;
+    display: flex;
+    flex-direction: column;
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__side-info {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 72px;
+    margin: 0 0 30px auto;
+  }
+
+  &__subtitle {
+    color: $secondary-color;
+    font-family: $font-sans;
+    font-size: 32px;
+    font-weight: 700;
+    line-height: 72px;
+    margin: 0 auto;
+  }
+
+  &__description {
+    @include description;
+    margin: 0 auto;
+    max-width: 520px;
+    text-align: center;
+    width: 100%;
+  }
+
+  &__button {
+    @include button;
+    border: 0;
+    font-family: $font-mono;
+    margin: 30px auto 0 auto;
+  }
+}

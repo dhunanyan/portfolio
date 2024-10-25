@@ -1,5 +1,5 @@
 export const AboutData = {
-  title: ['0.1', 'About me'],
+  title: ['01.', 'About me'],
   descriptionsList: [
     `I'm a dedicated software developer with a strong background in web development and a passion for problem-solving. Over the years, I've gained experience in several other areas of software development, <span>including backend services</span>, <span>database management</span>, <span>mobile app development</span> and  <span>game development</span>.`,
     `My approach is to always keep learning and stay updated with the latest technology trends. I enjoy working on projects that push my creativity and technical abilities to the next level, and I strive to deliver top-quality solutions that meet client expectations.`,
@@ -58,6 +58,18 @@ export const AboutData = {
       id: 'ui',
       title: `UI related <span>tools</span>:`,
       skills: [
+        'Blender',
+        'Figma',
+        'Asperite',
+        'Ad. Photoshop',
+        'Ad. Illustrator',
+        'Ad. Lightroom',
+      ],
+    },
+    {
+      id: 'other',
+      title: `Other <span>tools</span>:`,
+      skills: [
         'Jira',
         'Confluence',
         'Slack',
@@ -65,18 +77,6 @@ export const AboutData = {
         'MS Teams',
         'MS Office 365',
         'OutLook',
-      ],
-    },
-    {
-      id: 'other',
-      title: `Other <span>tools</span>:`,
-      skills: [
-        'Blender',
-        'Figma',
-        'Asperite',
-        'Ad. Photoshop',
-        'Ad. Illustrator',
-        'Ad. Lightroom',
       ],
     },
   ],
