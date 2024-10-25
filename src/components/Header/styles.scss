@@ -48,6 +48,8 @@
 
   &__nav {
     margin: 0 20px 0 auto;
+    align-items: center;
+    display: flex;
 
     &:hover {
       .header__link {
