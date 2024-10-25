@@ -2,82 +2,26 @@ import * as React from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 
-import { SkillsData } from '@data';
+import { AboutData } from '@data';
 
 import './styles.scss';
+import { Descriptions } from './Descriptions';
+import { SkillsMapping } from './SkillsMapping';
+
+const { title, descriptionsList, skillsList } = AboutData;
 
 export const About = () => (
   <section id="about" className="about">
     <div className="about__container">
       <div className="about__content">
         <h2 className="about__title">
-          <span>01.</span> <span>About me</span>
+          <span>{title[0]}</span>
+          <span>{title[1]}</span>
           <span className="about__line" />
         </h2>
-
-        <p className="about__description">
-          I&apos;m a dedicated software developer with a strong background in
-          web development and a passion for problem-solving. Over the years,
-          I&apos;ve gained experience in several other areas of software
-          development, <span>including backend services</span>,{' '}
-          <span>database management</span>, <span>mobile app development</span>{' '}
-          and <span>game development</span>.
-        </p>
-
-        <p className="about__description">
-          My approach is to always keep learning and stay updated with the
-          latest technology trends. I enjoy working on projects that push my
-          creativity and technical abilities to the next level, and I strive to
-          deliver top-quality solutions that meet client expectations.
-        </p>
-
+        <Descriptions descriptionsList={descriptionsList} />
         <span className="about__line" />
-
-        <p className="about__description">
-          Recently used <span>Languages/Technologies/Tools</span>:
-        </p>
-        <ul className="about__list">
-          {SkillsData.SKILLS.map((skill, index) => (
-            <li className="about__item" key={index}>
-              <p>{skill}</p>
-            </li>
-          ))}
-        </ul>
-
-        <p className="about__description">Know as well:</p>
-        <ul className="about__list">
-          {SkillsData.KNOW_AS_WELL.map((skill, index) => (
-            <li className="about__item about__item--know" key={index}>
-              <p>{skill}</p>
-            </li>
-          ))}
-        </ul>
-
-        <span className="about__line" />
-
-        <p className="about__description">
-          UI related <span>tools</span>:
-        </p>
-        <ul className="about__list">
-          {SkillsData.UI_TOOLS.map((skill, index) => (
-            <li className="about__item about__item--ui" key={index}>
-              <p>{skill}</p>
-            </li>
-          ))}
-        </ul>
-
-        <span className="about__line" />
-
-        <p className="about__description">
-          Other <span>tools</span>:
-        </p>
-        <ul className="about__list">
-          {SkillsData.SOFT_SKILLS.map((skill, index) => (
-            <li className="about__item about__item--other" key={index}>
-              <p>{skill}</p>
-            </li>
-          ))}
-        </ul>
+        <SkillsMapping skillsList={skillsList} />
       </div>
 
       <div className="about__images">
