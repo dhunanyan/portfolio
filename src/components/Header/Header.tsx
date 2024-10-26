@@ -18,9 +18,11 @@ export const Header = () => {
   const [activeItem, setActiveItem] = React.useState<NavItem>('about');
 
   const handleScroll = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
+    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
+    item: NavItem
   ) => {
     event.preventDefault();
+    setActiveItem(item);
     handleSmoothScroll({ event: event.nativeEvent });
   };
 
@@ -54,7 +56,7 @@ export const Header = () => {
       <div className="header__container">
         <Link
           href="#hero"
-          onClick={handleScroll}
+          onClick={(e) => handleScroll(e, 'hero' as NavItem)}
           className="header__logo"
           dangerouslySetInnerHTML={{
             __html: `<div>${Icons['logo-fill']}${Icons['logo-bold']}</div>`,
@@ -74,7 +76,7 @@ export const Header = () => {
                 <li key={index} className="header__item">
                   <Link
                     href={`#${item}`}
-                    onClick={handleScroll}
+                    onClick={(e) => handleScroll(e, item as NavItem)}
                     className="header__link"
                   >
                     <span>{`0${index + 1}.`}</span>

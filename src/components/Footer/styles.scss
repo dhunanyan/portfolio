@@ -21,20 +21,45 @@
   &__title {
     align-items: center;
     display: flex;
+    flex-direction: column;
+    transition: all 150ms ease-in-out;
+
+    @media screen and (min-width: 768px) {
+      flex-direction: row;
+    }
+
+    &-separator {
+      display: none;
+
+      @media screen and (min-width: 768px) {
+        display: block;
+      }
+    }
 
     > span {
       color: $alt-color;
       font-family: $font-mono;
-      margin: 0 6px 0 0;
+      margin: 5px 6px 5px 0;
+      text-align: center;
+
+      @media screen and (min-width: 425px) {
+        width: max-content;
+      }
+
+      @media screen and (min-width: 768px) {
+        margin: 0 6px 0 0;
+      }
 
       span {
         color: $tint-color;
+        margin: 0 6px;
       }
     }
 
     a {
       color: $secondary-color;
       font-family: $font-mono;
+      margin: 0 0 0 6px;
       transition: all 120ms ease-out;
 
       &:hover {
@@ -47,7 +72,7 @@
   &__motto {
     align-items: center;
     display: flex;
-    margin: 18px 0 0 0;
+    margin: 0 0 18px 0;
 
     p {
       align-items: center;
@@ -62,6 +87,10 @@
       font-family: $font-mono;
       font-style: italic;
       text-align: center;
+
+      @media screen and (min-width: 375px) {
+        width: max-content;
+      }
     }
 
     &-quot {
@@ -73,9 +102,13 @@
     &-line {
       background-color: $alt-secondary-color;
       display: flex;
-      flex: 1 0 10px;
+      flex: 1 0 40px;
       height: 1px;
       width: 100%;
+
+      @media screen and (min-width: 375px) {
+        flex: 1 0 10px;
+      }
     }
   }
 }
