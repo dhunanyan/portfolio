@@ -2,16 +2,24 @@
 @import '../../styles/variables';
 
 .hero {
-  height: 100vh;
-  display: flex;
   align-items: center;
+  display: flex;
   justify-content: flex-start;
+
+  @media screen and (min-width: 768px) {
+    height: 100vh;
+  }
 
   &__container {
     @include container;
     display: flex;
     flex-direction: column;
+    margin-top: 30px;
     width: 100%;
+
+    @media screen and (min-width: 768px) {
+      margin-top: 0;
+    }
   }
 
   &__welcome {
