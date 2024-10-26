@@ -1,5 +1,5 @@
 import * as React from 'react';
-import Image from 'next/image';
+import Image from 'next/legacy/image';
 import Link from 'next/link';
 
 import { Descriptions } from '../Descriptions';
@@ -36,6 +36,9 @@ export const About = () => (
               objectFit="cover"
               src="/images/profile.png"
               alt="Me :)"
+              priority
+              placeholder="blur"
+              blurDataURL="/images/profile.png"
             />
           </div>
 
@@ -54,6 +57,8 @@ export const About = () => (
               objectFit="cover"
               src="/images/github.png"
               alt="Github"
+              placeholder="blur"
+              blurDataURL="/images/github.png"
             />
           </div>
           <div className="about__overlay about__overlay--github" />
@@ -69,6 +74,8 @@ export const About = () => (
               objectFit="cover"
               src="/images/linkedin.png"
               alt="LinkedIn"
+              placeholder="blur"
+              blurDataURL="/images/linkedin.png"
             />
           </div>
           <div className="about__overlay about__overlay--linkedin" />
