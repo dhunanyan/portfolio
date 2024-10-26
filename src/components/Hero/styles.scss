@@ -17,37 +17,114 @@
   &__welcome {
     color: $tint-color;
     font-family: $font-mono;
-    font-size: 18px;
-    margin: 0 0 10px 4px;
+    font-size: 12px;
+    margin: 0 0 2px 1px;
+    transition: all 150ms linear;
+
+    @media screen and (min-width: 425px) {
+      font-size: 14px;
+      margin: 0 0 4px 4px;
+    }
+
+    @media screen and (min-width: 425px) {
+      font-size: 14px;
+      margin: 0 0 4px 4px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 18px;
+      margin: 0 0 6px 4px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 18px;
+      margin: 0 0 10px 4px;
+    }
   }
 
   &__title {
     color: $secondary-color;
     font-family: $font-sans;
-    font-size: 72px;
+    font-size: 24px;
     font-weight: 700;
-    line-height: 72px;
+    line-height: 24px;
+    transition: all 150ms linear;
+
+    @media screen and (min-width: 375px) {
+      font-size: 32px;
+      line-height: 32px;
+    }
+
+    @media screen and (min-width: 425px) {
+      font-size: 48px;
+      line-height: 48px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 72px;
+      line-height: 72px;
+    }
   }
 
   &__subtitle {
     color: $alt-color;
     font-family: $font-sans;
-    font-size: 72px;
+    font-size: 20px;
     font-weight: 700;
-    line-height: 72px;
-    margin: 10px 0 0;
+    line-height: 20px;
+    margin: 2px 0 0;
+    transition: all 150ms linear;
+
+    @media screen and (min-width: 375px) {
+      font-size: 24px;
+      margin: 4px 0 0;
+      line-height: 24px;
+    }
+
+    @media screen and (min-width: 425px) {
+      font-size: 32px;
+      margin: 10px 0 0;
+      line-height: 32px;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 64px;
+      line-height: 64px;
+    }
+
+    @media screen and (min-width: 1024px) {
+      font-size: 72px;
+      line-height: 72px;
+    }
   }
 
   &__description {
     @include description;
-    margin: 20px 0 0 4px;
+    margin: 8px 0 0 2px;
     max-width: 700px;
+
+    @media screen and (min-width: 375px) {
+      margin: 10px 0 0 2px;
+    }
+
+    @media screen and (min-width: 425px) {
+      margin: 20px 0 0 4px;
+    }
   }
 
   &__button {
     @include button;
-    margin: 20px auto 0 4px;
     font-family: $font-mono;
+    margin: 30px auto 0 auto;
     border: 0;
+
+    @media screen and (min-width: 768px) {
+      margin: 20px auto 0 4px;
+    }
   }
 }

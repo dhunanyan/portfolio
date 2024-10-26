@@ -3,7 +3,24 @@
 @mixin container {
   max-width: 1040px;
   margin: 0 auto;
-  padding: 60px 150px;
+  padding: 60px 5px;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 375px) {
+    padding: 60px 15px;
+  }
+
+  @media screen and (min-width: 425px) {
+    padding: 60px 30px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 60px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 60px 150px;
+  }
 }
 
 @mixin button {
@@ -16,11 +33,11 @@
   -moz-box-shadow: 0px 2px 1px 0px $tint-color;
   color: $tint-color;
   display: flex;
-  font-size: 16px;
+  font-size: 10px;
   font-weight: 400;
   justify-content: center;
-  letter-spacing: 2px;
-  padding: 18px 24px;
+  letter-spacing: 1px;
+  padding: 9px 12px;
   text-align: center;
   transition: all 120ms ease-out;
 
@@ -32,6 +49,28 @@
     color: $primary-color;
     transform: translate(10px, 0);
   }
+
+  @media screen and (min-width: 375px) {
+    font-size: 14px;
+    letter-spacing: 1.5px;
+    padding: 12px 16px;
+  }
+
+  @media screen and (min-width: 425px) {
+    font-size: 14px;
+    letter-spacing: 2px;
+    padding: 16px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 14px;
+    padding: 16px 20px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+    padding: 18px 24px;
+  }
 }
 
 @mixin title {
@@ -41,6 +80,7 @@
   font-family: $font-sans;
   font-weight: 700;
   font-size: 32px;
+  transition: all 150ms linear;
 
   span {
     min-width: max-content;
@@ -66,11 +106,28 @@
 @mixin description {
   color: $alt-color;
   font-family: $font-sans;
-  font-size: 16px;
-  line-height: 22px;
+  font-size: 12px;
+  line-height: 16px;
+  text-align: center;
+  transition: all 150ms linear;
 
   span {
     color: $secondary-color;
     font-weight: 700;
+  }
+
+  @media screen and (min-width: 425px) {
+    font-size: 14px;
+    line-height: 20px;
+    text-align: center;
+  }
+
+  @media screen and (min-width: 768px) {
+    text-align: left;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+    line-height: 22px;
   }
 }
