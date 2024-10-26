@@ -16,7 +16,7 @@ export const Hero = () => {
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
   ) => {
     event.preventDefault();
-    handleSmoothScroll(event.nativeEvent);
+    handleSmoothScroll({ event: event.nativeEvent });
   };
 
   return (
