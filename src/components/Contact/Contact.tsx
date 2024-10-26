@@ -2,7 +2,7 @@ import * as React from 'react';
 import Link from 'next/link';
 import { Descriptions } from '../Descriptions';
 
-import { ContactData } from '@data';
+import { ContactData, PersonalInfo } from '@data';
 
 import './styles.scss';
 
@@ -22,7 +22,7 @@ export const Contact = () => (
         className="contact__description"
         descriptionsList={descriptionsList}
       />
-      <Link href="mailto:davit.hunanyan@me.com" className="contact__button">
+      <Link href={`mailto:${PersonalInfo.Mail}`} className="contact__button">
         {button}
       </Link>
     </div>
