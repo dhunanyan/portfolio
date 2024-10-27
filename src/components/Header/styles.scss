@@ -83,6 +83,13 @@
         opacity: 0;
       }
     }
+
+    &--active {
+      transform: scale(1.1) rotate(180deg);
+      svg:last-of-type {
+        opacity: 1;
+      }
+    }
   }
 
   &__nav {
@@ -152,31 +159,37 @@
     display: flex;
     transition: all 250ms $animation-2;
 
-    &--about {
+    &--welcome {
       transform: translate(calc(-120px * 0), 0);
     }
-    &--experience {
+    &--about {
       transform: translate(calc(-120px * 1), 0);
     }
-    &--work {
+    &--experience {
       transform: translate(calc(-120px * 2), 0);
     }
-    &--contact {
+    &--work {
       transform: translate(calc(-120px * 3), 0);
+    }
+    &--contact {
+      transform: translate(calc(-120px * 4), 0);
     }
 
     @media screen and (min-width: 375px) {
-      &--about {
-        transform: translate(calc(-140px * 0), 0);
+      &--welcome {
+        transform: translate(calc(-120px * 0), 0);
       }
-      &--experience {
+      &--about {
         transform: translate(calc(-140px * 1), 0);
       }
-      &--work {
+      &--experience {
         transform: translate(calc(-140px * 2), 0);
       }
-      &--contact {
+      &--work {
         transform: translate(calc(-140px * 3), 0);
+      }
+      &--contact {
+        transform: translate(calc(-140px * 4), 0);
       }
     }
 
@@ -184,7 +197,8 @@
       &--about,
       &--experience,
       &--work,
-      &--contact {
+      &--contact,
+      &--welcome {
         transform: translate(0, 0);
       }
     }
@@ -197,6 +211,12 @@
     margin: 0;
     min-width: 100%;
     transition: all 150ms ease-out;
+
+    @media screen and (min-width: 768px) {
+      &:first-of-type {
+        display: none;
+      }
+    }
 
     @media screen and (min-width: 768px) {
       display: block;

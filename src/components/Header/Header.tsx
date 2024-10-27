@@ -10,12 +10,12 @@ import { handleSmoothScroll } from '@utils';
 
 import './styles.scss';
 
-type NavItem = 'about' | 'experience' | 'work' | 'contact';
+type NavItem = 'welcome' | 'about' | 'experience' | 'work' | 'contact';
 
-const NAV_ITEMS = ['about', 'experience', 'work', 'contact'];
+const NAV_ITEMS = ['welcome', 'about', 'experience', 'work', 'contact'];
 
 export const Header = () => {
-  const [activeItem, setActiveItem] = React.useState<NavItem>('about');
+  const [activeItem, setActiveItem] = React.useState<NavItem>('welcome');
 
   const handleScroll = (
     event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
@@ -55,9 +55,12 @@ export const Header = () => {
     <header id="header" className="header">
       <div className="header__container">
         <Link
-          href="#hero"
-          onClick={(e) => handleScroll(e, 'hero' as NavItem)}
-          className="header__logo"
+          href="#welcome"
+          onClick={(e) => {
+            setActiveItem(NAV_ITEMS[0] as NavItem);
+            handleScroll(e, 'welcome' as NavItem);
+          }}
+          className={`header__logo${NAV_ITEMS[0] === activeItem ? ' header__logo--active' : ''}`}
           dangerouslySetInnerHTML={{
             __html: `<div>${Icons['logo-fill']}${Icons['logo-bold']}</div>`,
           }}
@@ -79,7 +82,7 @@ export const Header = () => {
                     onClick={(e) => handleScroll(e, item as NavItem)}
                     className="header__link"
                   >
-                    <span>{`0${index + 1}.`}</span>
+                    <span>{index === 0 ? '' : `0${index}.`}</span>
                     <span>{item}</span>
                   </Link>
                 </li>
