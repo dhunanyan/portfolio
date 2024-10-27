@@ -1,20 +1,22 @@
 import {
-  About,
-  Contact,
-  Experience,
   Welcome,
-  Overlay,
+  About,
+  Experience,
+  Work,
+  Contact,
   Footer,
+  Overlay,
 } from '@components';
 
 const Page = () => (
   <main>
     <Welcome />
-    <Overlay />
     <About />
     <Experience />
+    <Work />
     <Contact />
     <Footer />
+    <Overlay />
   </main>
 );
 

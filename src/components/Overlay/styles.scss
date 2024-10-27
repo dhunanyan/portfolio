@@ -4,9 +4,9 @@
 .overlay {
   background-color: $tint-color-opacity;
   backdrop-filter: blur(14px);
-  bottom: 0;
+  bottom: 5px;
   border: 1px solid $tint-color;
-  left: 0;
+  left: 5px;
   pointer-events: none;
   position: fixed;
   right: auto;
@@ -16,6 +16,8 @@
     background-color: transparent;
     backdrop-filter: unset;
     border: 0;
+    bottom: 0;
+    left: 0;
     right: 0;
   }
 

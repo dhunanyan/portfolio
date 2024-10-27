@@ -28,7 +28,14 @@ export const Welcome = () => {
           className="welcome__description"
           descriptionsList={descriptionsList}
         />
-        <Link to="about" spy smooth offset={offset} className="welcome__button">
+        <Link
+          to="about"
+          spy
+          smooth
+          duration={250}
+          offset={offset}
+          className="welcome__button"
+        >
           {button}
         </Link>
       </div>

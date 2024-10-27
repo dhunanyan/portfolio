@@ -50,8 +50,10 @@ export const Header = () => {
           to="welcome"
           spy
           smooth
+          duration={250}
           offset={offset}
-          className={`header__logo${NAV_ITEMS[0] === activeItem ? ' header__logo--active' : ''}`}
+          className="header__logo"
+          activeClass="header__logo--active"
           dangerouslySetInnerHTML={{
             __html: `<div>${Icons['logo-fill']}${Icons['logo-bold']}</div>`,
           }}
@@ -69,6 +71,7 @@ export const Header = () => {
             }
             spy
             smooth
+            duration={250}
             offset={offset}
             disabled={NAV_ITEMS[0] === activeItem}
             onClick={handleLeftClick}
@@ -107,6 +110,7 @@ export const Header = () => {
             }
             spy
             smooth
+            duration={250}
             offset={offset}
             disabled={NAV_ITEMS[NAV_ITEMS.length - 1] === activeItem}
             onClick={handleRightClick}
@@ -116,7 +120,13 @@ export const Header = () => {
           </Link>
         </nav>
 
-        <Link to="todo" spy smooth offset={offset} className="header__cv">
+        <Link
+          to="todo"
+          spy
+          smooth
+          offset={offset}
+          className={`header__cv${NAV_ITEMS[0] === activeItem ? ' header__cv--active' : ''}`}
+        >
           CV
         </Link>
       </div>

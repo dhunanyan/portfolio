@@ -124,6 +124,7 @@
 
   &__button {
     @include button;
+    cursor: pointer;
     font-family: $font-mono;
     margin: 30px auto 0 auto;
     border: 0;
