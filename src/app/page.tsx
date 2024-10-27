@@ -1,8 +1,15 @@
-import { About, Contact, Experience, Hero, Overlay, Footer } from '@components';
+import {
+  About,
+  Contact,
+  Experience,
+  Welcome,
+  Overlay,
+  Footer,
+} from '@components';
 
 const Page = () => (
   <main>
-    <Hero />
+    <Welcome />
     <Overlay />
     <About />
     <Experience />

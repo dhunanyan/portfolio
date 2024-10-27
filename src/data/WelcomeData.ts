@@ -1,4 +1,4 @@
-export const HeroData = {
+export const WelcomeData = {
   welcome: 'Hi, my name is',
   title: 'Davit Hunanyan',
   subtitle: 'Software Engineer',

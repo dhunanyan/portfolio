@@ -1,5 +1,5 @@
 export { HtmlMeta } from './HtmlMeta';
-export { HeroData } from './HeroData';
+export { WelcomeData } from './WelcomeData';
 export { ExperienceData } from './ExperienceData';
 export { AboutData } from './AboutData';
 export { ContactData } from './ContactData';
