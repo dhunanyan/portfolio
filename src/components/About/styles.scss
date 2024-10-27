@@ -160,7 +160,11 @@
     &:hover {
       .about {
         &__image--me {
-          transform: translate(0, -20px);
+          transform: translate(0, -8px);
+
+          @media screen and (min-width: 768px) {
+            transform: translate(0, -20px);
+          }
         }
 
         &__overlay--me {

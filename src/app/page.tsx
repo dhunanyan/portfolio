@@ -4,7 +4,6 @@ import {
   Experience,
   Work,
   Contact,
-  Footer,
   Overlay,
 } from '@components';
 
@@ -15,7 +14,6 @@ const Page = () => (
     <Experience />
     <Work />
     <Contact />
-    <Footer />
     <Overlay />
   </main>
 );

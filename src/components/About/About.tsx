@@ -79,7 +79,7 @@ export const About = () => (
             <div className="about__overlay about__overlay--linkedin" />
           </Link>
           <Link
-            href="#TODO"
+            href="/pdf/dhunanyan-cv-english.pdf"
             target="_blank"
             className="about__image about__image--cv"
           >

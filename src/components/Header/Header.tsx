@@ -1,5 +1,6 @@
 'use client';
 import * as React from 'react';
+import NextLink from 'next/link';
 import { Link } from 'react-scroll';
 
 import { IoIosArrowBack } from 'react-icons/io';
@@ -120,15 +121,13 @@ export const Header = () => {
           </Link>
         </nav>
 
-        <Link
-          to="todo"
-          spy
-          smooth
-          offset={offset}
+        <NextLink
+          href="/pdf/dhunanyan-cv-english.pdf"
+          target="_blank"
           className={`header__cv${NAV_ITEMS[0] === activeItem ? ' header__cv--active' : ''}`}
         >
           CV
-        </Link>
+        </NextLink>
       </div>
     </header>
   );
