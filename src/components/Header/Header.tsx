@@ -1,12 +1,12 @@
 'use client';
 import * as React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-scroll';
 
 import { IoIosArrowBack } from 'react-icons/io';
 import { IoIosArrowForward } from 'react-icons/io';
 
 import { Icons } from '@config';
-import { handleSmoothScroll } from '@utils';
+import { getHeaderOffset } from '@utils';
 
 import './styles.scss';
 
@@ -16,15 +16,11 @@ const NAV_ITEMS = ['welcome', 'about', 'experience', 'work', 'contact'];
 
 export const Header = () => {
   const [activeItem, setActiveItem] = React.useState<NavItem>('welcome');
+  const [offset, setOffset] = React.useState<number>(0);
 
-  const handleScroll = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>,
-    item: NavItem
-  ) => {
-    event.preventDefault();
-    setActiveItem(item);
-    handleSmoothScroll({ event: event.nativeEvent });
-  };
+  React.useEffect(() => {
+    setOffset(getHeaderOffset());
+  }, []);
 
   const handleLeftClick = () => {
     setActiveItem(
@@ -47,40 +43,51 @@ export const Header = () => {
     );
   };
 
-  React.useEffect(() => {
-    handleSmoothScroll({ targetID: activeItem });
-  }, [activeItem]);
-
   return (
     <header id="header" className="header">
       <div className="header__container">
         <Link
-          href="#welcome"
-          onClick={(e) => {
-            setActiveItem(NAV_ITEMS[0] as NavItem);
-            handleScroll(e, 'welcome' as NavItem);
-          }}
+          to="welcome"
+          spy
+          smooth
+          offset={offset}
           className={`header__logo${NAV_ITEMS[0] === activeItem ? ' header__logo--active' : ''}`}
           dangerouslySetInnerHTML={{
             __html: `<div>${Icons['logo-fill']}${Icons['logo-bold']}</div>`,
           }}
+          onSetActive={() => setActiveItem('welcome')}
         />
         <nav className="header__nav">
-          <button
+          <Link
+            to={
+              NAV_ITEMS[
+                Math.max(
+                  NAV_ITEMS.findIndex((item) => item === activeItem) - 1,
+                  0
+                )
+              ] as NavItem
+            }
+            spy
+            smooth
+            offset={offset}
             disabled={NAV_ITEMS[0] === activeItem}
-            className={`header__nav-arrow header__nav-arrow--left${NAV_ITEMS[0] === activeItem ? ' header__nav-arrow--disabled' : ''}`}
             onClick={handleLeftClick}
+            className={`header__nav-arrow header__nav-arrow--left${NAV_ITEMS[0] === activeItem ? ' header__nav-arrow--disabled' : ''}`}
           >
             <IoIosArrowBack />
-          </button>
+          </Link>
           <div className="header__nav-container">
             <ul className={`header__list header__list--${activeItem}`}>
               {NAV_ITEMS.map((item, index) => (
                 <li key={index} className="header__item">
                   <Link
-                    href={`#${item}`}
-                    onClick={(e) => handleScroll(e, item as NavItem)}
+                    to={item}
+                    spy
+                    smooth
+                    offset={offset}
                     className="header__link"
+                    activeClass="header__link--active"
+                    onSetActive={() => setActiveItem(item as NavItem)}
                   >
                     <span>{index === 0 ? '' : `0${index}.`}</span>
                     <span>{item}</span>
@@ -89,16 +96,27 @@ export const Header = () => {
               ))}
             </ul>
           </div>
-          <button
+          <Link
+            to={
+              NAV_ITEMS[
+                Math.min(
+                  NAV_ITEMS.findIndex((item) => item === activeItem) + 1,
+                  NAV_ITEMS.length - 1
+                )
+              ] as NavItem
+            }
+            spy
+            smooth
+            offset={offset}
             disabled={NAV_ITEMS[NAV_ITEMS.length - 1] === activeItem}
-            className={`header__nav-arrow header__nav-arrow--right${NAV_ITEMS[NAV_ITEMS.length - 1] === activeItem ? ' header__nav-arrow--disabled' : ''}`}
             onClick={handleRightClick}
+            className={`header__nav-arrow header__nav-arrow--right${NAV_ITEMS[NAV_ITEMS.length - 1] === activeItem ? ' header__nav-arrow--disabled' : ''}`}
           >
             <IoIosArrowForward />
-          </button>
+          </Link>
         </nav>
 
-        <Link href="/" className="header__cv">
+        <Link to="todo" spy smooth offset={offset} className="header__cv">
           CV
         </Link>
       </div>

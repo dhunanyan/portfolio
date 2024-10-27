@@ -1,1 +1,1 @@
-export { handleSmoothScroll } from './handleSmoothScroll';
+export { getHeaderOffset } from './getHeaderOffset';

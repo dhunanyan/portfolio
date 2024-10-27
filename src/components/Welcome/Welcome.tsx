@@ -1,10 +1,10 @@
 'use client';
 import * as React from 'react';
-import Link from 'next/link';
+import { Link } from 'react-scroll';
 
 import { Descriptions } from '../Descriptions';
 
-import { handleSmoothScroll } from '@utils';
+import { getHeaderOffset } from '@utils';
 import { WelcomeData } from '@data';
 
 import './styles.scss';
@@ -12,12 +12,11 @@ import './styles.scss';
 const { welcome, title, subtitle, descriptionsList, button } = WelcomeData;
 
 export const Welcome = () => {
-  const handleLinkClick = (
-    event: React.MouseEvent<HTMLAnchorElement, MouseEvent>
-  ) => {
-    event.preventDefault();
-    handleSmoothScroll({ event: event.nativeEvent });
-  };
+  const [offset, setOffset] = React.useState<number>(0);
+
+  React.useEffect(() => {
+    setOffset(getHeaderOffset());
+  }, []);
 
   return (
     <section id="welcome" className="welcome">
@@ -29,11 +28,7 @@ export const Welcome = () => {
           className="welcome__description"
           descriptionsList={descriptionsList}
         />
-        <Link
-          href="#about"
-          onClick={handleLinkClick}
-          className="welcome__button"
-        >
+        <Link to="about" spy smooth offset={offset} className="welcome__button">
           {button}
         </Link>
       </div>
