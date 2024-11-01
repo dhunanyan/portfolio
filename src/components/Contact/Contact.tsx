@@ -1,5 +1,6 @@
 import * as React from 'react';
 import Link from 'next/link';
+
 import { Descriptions } from '../Descriptions';
 
 import { ContactData, PersonalInfo } from '@data';
