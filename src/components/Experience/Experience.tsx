@@ -1,9 +1,11 @@
 import * as React from 'react';
+
 import { Job } from './Job';
+import { Descriptions } from '../Descriptions';
+
 import { ExperienceData } from '@data';
 
 import './styles.scss';
-import { Descriptions } from '../Descriptions';
 
 const { title, descriptionsList, work, education } = ExperienceData;
 
