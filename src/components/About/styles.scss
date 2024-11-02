@@ -48,7 +48,7 @@
     }
   }
 
-  &__description {
+  &__description p {
     @include description;
     margin: 20px 0 0;
   }
@@ -389,14 +389,14 @@
   }
 
   &__skills-mapping {
-    .about__description {
+    &__description {
       text-align: left !important;
+      margin: 20px 0 0;
+      @include description;
     }
 
-    > div:first-of-type {
-      .about__description {
-        margin: 0 0 0;
-      }
+    > div:first-of-type .about__skills-mapping__description {
+      margin: 0;
     }
   }
 }

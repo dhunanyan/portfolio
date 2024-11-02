@@ -3,31 +3,21 @@ import * as React from 'react';
 import Link from 'next/link';
 import { IoMdLink } from 'react-icons/io';
 
-import './styles.scss';
+import { JobModel } from '@models';
+import { richTextRenderer } from '@utils';
 
-export type JobPropsType = {
-  url: string;
-  date: string;
-  title: string;
-  subtitle?: string;
-  descriptionList: string[];
-  skillsList?: string[];
-};
+import './styles.scss';
 
 export const Job = ({
   url,
   date,
   title,
   subtitle,
-  descriptionList,
-  skillsList,
-}: JobPropsType) => {
-  const [isDisplayed, setIsDisplay] = React.useState<boolean>(false);
-
-  const descriptionListToDisplay = React.useMemo(
-    () => descriptionList.slice(0, isDisplayed ? descriptionList.length : 2),
-    [descriptionList, isDisplayed]
-  );
+  description,
+  skills,
+}: JobModel) => {
+  const [showMore, setShowMore] = React.useState<boolean>(false);
+  const LIMIT = 2;
 
   return (
     <div className="job">
@@ -44,32 +34,24 @@ export const Job = ({
           </h3>
         </Link>
         {subtitle && <h3 className="job__subtitle">{subtitle}</h3>}
-        <ul className="job__descriptions">
-          {descriptionListToDisplay.map((paragraph, index) => (
-            <li key={index} className="job__description">
-              <p>
-                {paragraph}{' '}
-                {descriptionListToDisplay.length - 1 === index && (
-                  <button
-                    className="job__button"
-                    onClick={() => setIsDisplay((prev) => !prev)}
-                  >
-                    {isDisplayed ? 'Show less' : '...Show more'}
-                  </button>
-                )}
-              </p>
+        {richTextRenderer(
+          description,
+          'job__description',
+          showMore ? -1 : LIMIT
+        )}
+        <button
+          className="job__button"
+          onClick={() => setShowMore((prev) => !prev)}
+        >
+          {showMore ? 'Show less' : 'Show more'}
+        </button>
+        <ul className="job__skills">
+          {skills.map((item, index) => (
+            <li key={index} className="job__skill">
+              <p>{item}</p>
             </li>
           ))}
         </ul>
-        {skillsList && (
-          <ul className="job__skills">
-            {skillsList.map((item, index) => (
-              <li key={index} className="job__skill">
-                <p>{item}</p>
-              </li>
-            ))}
-          </ul>
-        )}
       </div>
     </div>
   );

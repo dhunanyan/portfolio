@@ -14,7 +14,7 @@ export const SkillsMapping = ({ skillsList }: DescriptionsPropsType) => (
     {skillsList.map(({ title, skills, id }, index) => (
       <div key={index}>
         <p
-          className="about__description"
+          className="about__skills-mapping__description"
           dangerouslySetInnerHTML={{ __html: title }}
         />
         <Skills id={id} skills={skills} />

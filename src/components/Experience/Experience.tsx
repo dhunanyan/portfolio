@@ -1,48 +1,64 @@
 import * as React from 'react';
 import { Job } from './Job';
-import { ExperienceData } from '@data';
+
+import { ExperienceSectionModel } from '@models';
+import { richTextRenderer } from '@utils';
 
 import './styles.scss';
-import { Descriptions } from '../Descriptions';
 
-const { title, descriptionsList, work, education } = ExperienceData;
+export type ExperiencePropsType = {
+  data?: ExperienceSectionModel;
+};
 
-export const Experience = () => (
-  <section id="experience" className="experience">
-    <div className="experience__container">
-      <h2 className="experience__title">
-        <span>{title[0]}</span>
-        <span>{title[1]}</span>
-        <span className="experience__line" />
-      </h2>
-      <Descriptions
-        className="experience__description"
-        descriptionsList={descriptionsList}
-      />
+export const Experience = ({ data }: ExperiencePropsType) => {
+  if (!data) {
+    return null;
+  }
 
-      <h2 className="experience__subtitle">
-        <span>{work.title}</span>
-        <span className="experience__line" />
-      </h2>
-      <ul className="experience__list">
-        {work.list.map((job, index) => (
-          <li key={index} className="experience__item">
-            <Job {...job} />
-          </li>
-        ))}
-      </ul>
+  const {
+    index,
+    title,
+    description,
+    work,
+    workTitle,
+    education,
+    educationTitle,
+  } = data;
 
-      <h2 className="experience__subtitle">
-        <span>{education.title}</span>
-        <span className="experience__line" />
-      </h2>
-      <ul className="experience__list">
-        {education.list.map((job, index) => (
-          <li key={index} className="experience__item">
-            <Job {...job} />
-          </li>
-        ))}
-      </ul>
-    </div>
-  </section>
-);
+  return (
+    <section id="experience" className="experience">
+      <div className="experience__container">
+        <h2 className="experience__title">
+          <span>{index}</span>
+          <span>{title}</span>
+          <span className="experience__line" />
+        </h2>
+        {richTextRenderer(description, 'experience__description')}
+
+        <h2 className="experience__subtitle">
+          <span>{workTitle}</span>
+          <span className="experience__line" />
+        </h2>
+        <ul className="experience__list">
+          {work.map((job, index) => (
+            <li key={index} className="experience__item">
+              <Job {...job} />
+            </li>
+          ))}
+        </ul>
+
+        <h2 className="experience__subtitle">
+          <span>{educationTitle}</span>
+          <span className="experience__line" />
+        </h2>
+        <ul className="experience__list">
+          {education.map((job, index) => (
+            <li key={index} className="experience__item">
+              <Job {...job} />
+            </li>
+          ))}
+        </ul>
+      </div>
+    </section>
+  );
+};

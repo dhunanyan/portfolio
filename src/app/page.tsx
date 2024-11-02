@@ -6,16 +6,25 @@ import {
   Contact,
   Overlay,
 } from '@components';
+import {
+  getAboutSection,
+  getCommonSections,
+  getExperienceSection,
+} from '@utils';
 
-const Page = () => (
-  <main>
-    <Welcome />
-    <About />
-    <Experience />
-    <Work />
-    <Contact />
-    <Overlay />
-  </main>
-);
+export default async function Page() {
+  const [contact, welcome] = (await getCommonSections())!;
+  const about = await getAboutSection();
+  const experience = await getExperienceSection();
 
-export default Page;
+  return (
+    <main>
+      <Welcome data={welcome} />
+      <About data={about} />
+      <Experience data={experience} />
+      <Work />
+      <Contact data={contact} />
+      <Overlay />
+    </main>
+  );
+}

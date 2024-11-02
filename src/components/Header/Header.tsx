@@ -122,7 +122,7 @@ export const Header = () => {
         </nav>
 
         <NextLink
-          href="/pdf/dhunanyan-cv-english.pdf"
+          href="/pdfs/dhunanyan-cv-english.pdf"
           target="_blank"
           className={`header__cv${NAV_ITEMS[0] === activeItem ? ' header__cv--active' : ''}`}
         >
