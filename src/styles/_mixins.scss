@@ -121,6 +121,60 @@
   }
 }
 
+@mixin blogTitle {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-size: 20px;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 425px) {
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+@mixin subtitle {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 425px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+@mixin subSubtitle {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 425px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
 @mixin description {
   color: $alt-color;
   font-family: $font-sans;

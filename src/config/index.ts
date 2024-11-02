@@ -5,4 +5,5 @@ export type {
   CommonSectionResponseType,
   JobResponseType,
   ExperienceSectionResponseType,
+  BlogResponseType,
 } from './types';

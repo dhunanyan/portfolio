@@ -4,3 +4,5 @@ export type {
   JobModel,
   ExperienceSectionModel,
 } from './home';
+
+export type { BlogModel, BlogPreviewModel } from './blog';

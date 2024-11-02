@@ -4,17 +4,23 @@ import {
   parseAboutSection,
   parseCommonSections,
   parseExperienceSection,
+  parsePreviewBlogs,
+  parseBlog,
 } from './parsers';
 
 import {
   AboutSectionModel,
   CommonSectionModel,
   ExperienceSectionModel,
+  BlogPreviewModel,
+  BlogModel,
 } from '@models';
+
 import {
   AboutSectionResponseType,
   CommonSectionResponseType,
   ExperienceSectionResponseType,
+  BlogResponseType,
 } from '@config';
 
 const client = createClient({
@@ -71,6 +77,44 @@ export const getCommonSections = async (): Promise<
     })) as unknown as CommonSectionResponseType;
 
     return parseCommonSections(entries);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getPreviewBlogs = async (): Promise<
+  BlogPreviewModel[] | undefined
+> => {
+  try {
+    const entries = (await client.getEntries({
+      content_type: 'portfolioBlog',
+      // eslint-disable-next-line
+      // @ts-ignore
+      select: 'fields',
+      // order: "fields.name"
+    })) as unknown as BlogResponseType;
+
+    return parsePreviewBlogs(entries);
+  } catch (error) {
+    console.log(error);
+  }
+};
+
+export const getBlog = async (
+  blogId: string
+): Promise<BlogModel | undefined> => {
+  try {
+    const entries = (await client.getEntries({
+      content_type: 'portfolioBlog',
+      // eslint-disable-next-line
+      // @ts-ignore
+      select: 'fields',
+      // order: "fields.name"
+    })) as unknown as BlogResponseType;
+
+    return parseBlog(
+      entries.items.find(({ fields: { id } }) => id === blogId)!
+    );
   } catch (error) {
     console.log(error);
   }

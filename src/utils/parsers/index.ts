@@ -3,3 +3,5 @@ export {
   parseCommonSections,
   parseExperienceSection,
 } from './home';
+
+export { parsePreviewBlogs, parseBlog } from './blog';
