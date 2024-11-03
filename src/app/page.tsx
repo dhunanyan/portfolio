@@ -5,6 +5,7 @@ import {
   Work,
   Contact,
   Overlay,
+  Header,
 } from '@components';
 import {
   getAboutSection,
@@ -18,13 +19,16 @@ export default async function Page() {
   const experience = await getExperienceSection();
 
   return (
-    <main>
-      <Welcome data={welcome} />
-      <About data={about} />
-      <Experience data={experience} />
-      <Work />
-      <Contact data={contact} />
-      <Overlay />
-    </main>
+    <>
+      <Header />
+      <main>
+        <Welcome data={welcome} />
+        <About data={about} />
+        <Experience data={experience} />
+        <Work />
+        <Contact data={contact} />
+        <Overlay />
+      </main>
+    </>
   );
 }

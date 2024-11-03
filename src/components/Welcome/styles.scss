@@ -126,15 +126,25 @@
     }
   }
 
+  &__buttons {
+    align-items: center;
+    display: flex;
+    justify-content: flex-start;
+    margin: 30px auto 0 auto;
+
+    @media screen and (min-width: 768px) {
+      margin: 20px auto 0 4px;
+    }
+  }
+
   &__button {
     @include button;
     cursor: pointer;
     font-family: $font-mono;
-    margin: 30px auto 0 auto;
     border: 0;
 
-    @media screen and (min-width: 768px) {
-      margin: 20px auto 0 4px;
+    &:first-of-type {
+      margin: 0 20px 0 0;
     }
   }
 }

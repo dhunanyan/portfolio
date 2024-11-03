@@ -1,6 +1,7 @@
 'use client';
 import * as React from 'react';
 import { Link } from 'react-scroll';
+import NextLink from 'next/link';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 
 import { CommonSectionModel } from '@models';
@@ -35,16 +36,21 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           {documentToReactComponents(description)}
         </div>
 
-        <Link
-          to="about"
-          spy
-          smooth
-          duration={250}
-          offset={offset}
-          className="welcome__button"
-        >
-          {button}
-        </Link>
+        <div className="welcome__buttons">
+          <Link
+            to="about"
+            spy
+            smooth
+            duration={250}
+            offset={offset}
+            className="welcome__button"
+          >
+            {button}
+          </Link>
+          <NextLink href="/blog" className="welcome__button">
+            Check out my Blog
+          </NextLink>
+        </div>
       </div>
     </section>
   );
