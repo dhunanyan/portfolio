@@ -15,11 +15,28 @@ export const Blog = ({ data }: BlogPropsType) => {
     return null;
   }
 
-  const { title, titlePrefix, lastUpdated, username, profilePicture, content } =
-    data;
+  const {
+    title,
+    image,
+    titlePrefix,
+    lastUpdated,
+    username,
+    profilePicture,
+    content,
+  } = data;
 
   return (
     <main className="blog">
+      <div className="blog__image">
+        <Image
+          layout="fill"
+          objectFit="cover"
+          src={image}
+          alt="Github"
+          placeholder="blur"
+          blurDataURL={image}
+        />
+      </div>
       <div className="blog__container">
         <h1 className="blog__title">
           <span>{titlePrefix}</span>

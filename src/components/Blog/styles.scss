@@ -4,12 +4,20 @@
 .blog {
   align-items: center;
   display: flex;
-  justify-content: flex-start;
+  flex-direction: column;
+  justify-content: center;
   min-height: 100vh;
+
+  &__image {
+    border-bottom: 3px solid $tint-color;
+    margin: 150px 0 0 0;
+    position: relative;
+    height: 500px;
+    width: calc(100vw - 12px);
+  }
 
   &__container {
     @include container;
-    margin-top: 150px;
   }
 
   &__title {
