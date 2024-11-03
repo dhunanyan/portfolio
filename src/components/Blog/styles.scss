@@ -10,10 +10,14 @@
 
   &__image {
     border-bottom: 3px solid $tint-color;
-    margin: 150px 0 0 0;
+    overflow: hidden;
     position: relative;
     height: 500px;
-    width: calc(100vw - 12px);
+    width: 100%;
+
+    @media screen and (min-width: 1024px) {
+      margin: 150px 0 0 0;
+    }
   }
 
   &__container {
@@ -21,7 +25,7 @@
   }
 
   &__title {
-    @include title;
+    @include blogTitle;
   }
 
   &__user {
@@ -51,8 +55,36 @@
       @include description;
     }
 
-    &-username span {
-      color: $tint-secondary-color;
+    &-username {
+      display: flex;
+
+      a {
+        align-items: center;
+        color: $tint-secondary-color;
+        display: flex;
+        margin: 0 0 0 5px;
+        transition: all 120ms ease-in-out;
+
+        span,
+        svg {
+          color: $tint-secondary-color;
+          transition: all 120ms ease-in-out;
+        }
+
+        span {
+          margin: 0 5px 0 0;
+        }
+
+        &:hover {
+          color: $tint-color;
+          text-decoration: underline;
+
+          span,
+          svg {
+            color: $tint-color;
+          }
+        }
+      }
     }
   }
 
@@ -65,11 +97,22 @@
 
     h1 {
       @include blogTitle;
-      margin: 0 0 20px 0;
     }
 
     h2 {
       @include subtitle;
+    }
+
+    h3,
+    h4 {
+      @include subSubtitle;
+    }
+
+    h1,
+    h2,
+    h3,
+    h4 {
+      margin: 20px 0;
 
       code {
         background-color: $alt-color;
@@ -79,10 +122,6 @@
         padding: 1px 3px;
         margin: 0 5px;
       }
-    }
-
-    h3 {
-      @include subSubtitle;
     }
 
     p {

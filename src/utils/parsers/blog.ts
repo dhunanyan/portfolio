@@ -13,23 +13,11 @@ export const parsePreviewBlogs = ({
   }));
 
 export const parseBlog = ({
-  fields: {
-    id,
-    image,
-    titlePrefix,
-    title,
-    lastUpdated,
-    username,
-    profilePicture,
-    content,
-  },
+  fields: { id, image, title, lastUpdated, content },
 }: BlogResponseType['items'][0]): BlogModel => ({
   id,
   image: parseMedia(image),
-  titlePrefix,
   title,
   lastUpdated,
-  username,
-  profilePicture: parseMedia(profilePicture),
   content,
 });

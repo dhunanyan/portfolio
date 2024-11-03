@@ -74,10 +74,7 @@ export type BlogResponseType = {
       id: string;
       image: MediaResponseType;
       title: string;
-      titlePrefix: string;
       lastUpdated: string;
-      username: string;
-      profilePicture: MediaResponseType;
       content: Document;
     };
   }[];
