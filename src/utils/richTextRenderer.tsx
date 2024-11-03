@@ -45,7 +45,7 @@ export const richTextRenderer = (
       [BLOCKS.PARAGRAPH]: (_: Node, children: React.ReactNode) =>
         React.Children.toArray(children).some(
           (child) => React.isValidElement(child) && child.type === 'code'
-        ) ? (
+        ) && typeof (children as React.ReactElement[])[0] === 'object' ? (
           <CodeSnippet
             code={(children as React.ReactElement[])[0].props.children}
             language={
