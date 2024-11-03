@@ -15,7 +15,6 @@ export const PreviewBlogs = ({ data }: PreviewBlogPropsType) => (
     <div className="preview-blogs__container">
       <div className="preview-blogs__content">
         <h1 className="preview-blogs__title">
-          <span>Code Chronicles</span>
           <span>- Adventures in React and Beyond</span>
           <span />
         </h1>

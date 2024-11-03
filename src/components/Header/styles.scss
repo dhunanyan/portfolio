@@ -13,6 +13,10 @@
   width: 100%;
   z-index: 999999999;
 
+  h2.header__link {
+    color: $tint-color;
+  }
+
   &__container {
     @include container;
     display: flex;

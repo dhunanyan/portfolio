@@ -59,6 +59,14 @@ export const Header = ({ isBlog = false }: HeaderPropsType) => {
               __html: `<div>${Icons['logo-fill']}${Icons['logo-bold']}</div>`,
             }}
           />
+          <h2 className="header__link">Blog</h2>
+          <NextLink
+            href="/pdfs/dhunanyan-cv-english.pdf"
+            target="_blank"
+            className={`header__cv${NAV_ITEMS[0] === activeItem ? ' header__cv--active' : ''}`}
+          >
+            CV
+          </NextLink>
         </div>
       ) : (
         <div className="header__container">
