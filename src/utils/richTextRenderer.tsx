@@ -1,4 +1,5 @@
 import * as React from 'react';
+import hljs from 'highlight.js';
 import { documentToReactComponents } from '@contentful/rich-text-react-renderer';
 import { BLOCKS, Document, Node } from '@contentful/rich-text-types';
 import { CodeSnippet } from '@components';
@@ -11,6 +12,8 @@ const replaceSToCode = (children: React.ReactNode) =>
       child
     )
   );
+
+const ALLOWED_LANGUAGES = ['tsx', 'ts', 'jsx', 'js', 'scss', 'html', 'bash'];
 
 export const richTextRenderer = (
   document: Document,
@@ -49,7 +52,10 @@ export const richTextRenderer = (
           <CodeSnippet
             code={(children as React.ReactElement[])[0].props.children}
             language={
-              (children as React.ReactElement[])[0].props.language || 'tsx'
+              hljs.highlightAuto(
+                (children as React.ReactElement[])[0].props.children,
+                ALLOWED_LANGUAGES
+              ).language || 'tsx'
             }
           />
         ) : (

@@ -89,10 +89,17 @@
   }
 
   &__content {
+    width: auto !important;
+    max-width: auto !important;
+    min-width: auto !important;
+
     hr {
       border-color: $alt-secondary-color;
       margin: 30px 0;
       opacity: 0.7;
+      width: auto !important;
+      max-width: auto !important;
+      min-width: auto !important;
     }
 
     h1 {
@@ -112,21 +119,26 @@
     h2,
     h3,
     h4 {
+      display: block;
       margin: 20px 0;
+      white-space: 2px;
 
       code {
         background-color: $alt-color;
         border-radius: 3px;
+        display: inline-block;
         font-weight: 100;
         color: $primary-color;
         padding: 1px 3px;
-        margin: 0 5px;
       }
     }
 
     p {
       @include description;
       margin: 20px 0;
+      width: auto !important;
+      max-width: auto !important;
+      min-width: auto !important;
 
       code {
         background-color: $alt-color;

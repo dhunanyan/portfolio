@@ -39,7 +39,12 @@ export const CodeSnippet = ({ code, language }: CodeSnippetPropsType) => {
           {isClicked ? <FaCheck /> : <IoCopy />}
         </button>
       </div>
-      <SyntaxHighlighter language={language} style={nightOwl}>
+      <SyntaxHighlighter
+        className="code-snippet__pre"
+        language={language}
+        style={nightOwl}
+        wrapLongLines={true}
+      >
         {code}
       </SyntaxHighlighter>
     </div>
