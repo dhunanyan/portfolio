@@ -33,7 +33,11 @@ export const PreviewBlogs = ({ data }: PreviewBlogPropsType) => (
       <div className="preview-blogs__cards">
         {data &&
           data.map(({ id, title, image }) => (
-            <Link key={id} href={`/blog/${id}`} className="preview-blogs__card">
+            <Link
+              key={id}
+              href={`/blogs/${id}`}
+              className="preview-blogs__card"
+            >
               <div className="preview-blogs__card-image">
                 <Image
                   layout="fill"

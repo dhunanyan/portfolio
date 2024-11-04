@@ -20,7 +20,7 @@ export const Blog = ({ data }: BlogPropsType) => {
   const { title, image, lastUpdated, content } = data;
 
   return (
-    <main className="blog">
+    <main className="blog" id="welcome">
       <div className="blog__image">
         <Image
           layout="fill"

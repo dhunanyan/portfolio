@@ -47,7 +47,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           >
             {button}
           </Link>
-          <NextLink href="/blog" className="welcome__button">
+          <NextLink href="/blogs" className="welcome__button">
             Check out my Blog
           </NextLink>
         </div>
