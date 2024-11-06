@@ -20,7 +20,7 @@ type SlideInfo = {
 
 const SLIDES: SlideInfo[] = [
   {
-    title: 'Spotify Clone',
+    title: 'Spotify Clone (Mobile App)',
     subtitle: 'React Native, TypeScript, Expo Go, Spotify API',
     description:
       'An impressive clone of the Spotify app, built with React Native and Expo Go. With a familiar interface and many core Spotify features, this app lets you explore, stream, and manage music seamlessly. Powered by the Spotify API.',
@@ -29,7 +29,7 @@ const SLIDES: SlideInfo[] = [
     github: 'https://github.com/dhunanyan/spotify-clone',
   },
   {
-    title: 'iOS Weather Clone',
+    title: 'iOS Weather Clone (Mobile App)',
     subtitle: 'React Native, TypeScript, Expo Go, Open Weather API',
     description:
       'A sleek, real-time weather app built with React Native and Expo Go. Get accurate and up-to-date weather information with an intuitive, mobile-friendly design.',
@@ -38,7 +38,7 @@ const SLIDES: SlideInfo[] = [
     github: 'https://github.com/dhunanyan/ios-weather-clone',
   },
   {
-    title: 'SCSS to CSS Converter',
+    title: 'SCSS to CSS Converter (Web App)',
     subtitle: 'React, NextJS, ANTLR, Python (Compiler), Django',
     description:
       'A user-friendly tool that seamlessly converts SCSS code to CSS. This lightweight project aims to help developers and designers easily transform SCSS code to browser-ready CSS without complex setup.',
@@ -47,7 +47,7 @@ const SLIDES: SlideInfo[] = [
     github: 'https://github.com/dhunanyan/scss-to-css-converter',
   },
   {
-    title: 'Novelex Consulting LLC',
+    title: 'Novelex Consulting LLC (Web App)',
     subtitle: 'React, NextJS, TypeScript',
     description:
       "A sleek, professional website for Novelex Consulting LLC, built with Next.js. The site highlights the firm's consulting services, expertise, and values with a modern, responsive design.",
@@ -67,7 +67,10 @@ export const Slider: React.FC = () => {
       <ul className="slider__buttons">
         {buttons.map((button, index) => {
           return (
-            <li className="slider__button" key={index}>
+            <li
+              className={`slider__button${position === index ? ' slider__button--active' : ''}`}
+              key={index}
+            >
               <button onClick={() => setPosition(index)}>{button}</button>
             </li>
           );

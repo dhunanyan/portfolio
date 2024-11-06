@@ -36,6 +36,11 @@
       @include button;
       width: max-content;
     }
+
+    &--active button {
+      background-color: $tint-color;
+      color: $primary-color;
+    }
   }
 
   &__list {
