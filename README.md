@@ -5,6 +5,10 @@
   </a>
 </h1>
 
+## 🌐 Davit Hunanyan - Portfolio
+
+Welcome to the source code for my personal portfolio website! Crafted with the latest in web technologies and built to showcase my skills, experience, and projects, this site represents both my journey as a software developer and my commitment to delivering high-quality, performant web applications.
+
 <p align="center">
   Built with <a href="https://dhunanyan.com" alt="Next.js">Next.js</a> and hosted with <a href="https://dhunanyan.com" alt="https://www.netlify.com">Netlify</a>
 </p>
@@ -15,9 +19,11 @@
   </a>
 </p>
 
-## 🌐 Davit Hunanyan - Portfolio
+## 📸 Screenshots
 
-Welcome to the source code for my personal portfolio website! Crafted with the latest in web technologies and built to showcase my skills, experience, and projects, this site represents both my journey as a software developer and my commitment to delivering high-quality, performant web applications.
+| Desktop                                                                                                         | Mobile                                                                                                        |
+| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
+| ![Desktop Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-desktop.png) | ![Mobile Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-mobile.png) |
 
 ## 🎨 Overview
 
@@ -42,12 +48,6 @@ This portfolio site is built with Next.js, a powerful React framework for buildi
 - **Husky** ✔️
 - **App Router** ✔️
 - **Deployment**: [Netlify](https://www.netlify.com, 'Netlify')
-
-## 📸 Screenshots
-
-| Desktop                                                                                                         | Mobile                                                                                                        |
-| --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| ![Desktop Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-desktop.png) | ![Mobile Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-mobile.png) |
 
 ## 🎨 Colors
 

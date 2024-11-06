@@ -1,3 +1,31 @@
+@import '../../styles/mixins';
+@import '../../styles/variables';
+
 .work {
-  height: 10px;
+  &__container {
+    @include container;
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__description {
+    @include description;
+    margin: 20px 0 0;
+    max-width: 700px;
+  }
+
+  &__subtitle {
+    @include title;
+    margin: 30px 0 0 0;
+
+    span:first-of-type {
+      order: 2;
+    }
+
+    span.work__line {
+      margin: 0 20px 0 0;
+    }
+  }
 }
