@@ -1,8 +1,8 @@
 import type { Metadata } from 'next';
 import { HtmlMeta } from '@data';
 
-import './globals.scss';
 import { Footer } from '@components';
+import './globals.scss';
 
 export const metadata: Metadata = HtmlMeta['index'];
 

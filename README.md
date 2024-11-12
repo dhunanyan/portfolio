@@ -5,13 +5,9 @@
   </a>
 </h1>
 
-## 🌐 Davit Hunanyan - Portfolio
+## 🌐 Davit Hunanyan - Portfolio [![Netlify Status](https://api.netlify.com/api/v1/badges/a77080ba-aa75-4807-ad50-b0e00c0c31da/deploy-status)](https://app.netlify.com/sites/dhunanyan/deploys)
 
 Welcome to the source code for my personal portfolio website! Crafted with the latest in web technologies and built to showcase my skills, experience, and projects, this site represents both my journey as a software developer and my commitment to delivering high-quality, performant web applications.
-
-<p align="center">
-  Built with <a href="https://dhunanyan.com" alt="Next.js">Next.js</a> and hosted with <a href="https://dhunanyan.com" alt="https://www.netlify.com">Netlify</a>
-</p>
 
 <p align="center">
   <a href="https://app.netlify.com/sites/dhunanyan/deploys" alt="Netlify Deploys">
