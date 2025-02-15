@@ -47,7 +47,11 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           >
             {button}
           </Link>
-          <NextLink href="/blogs" className="welcome__button">
+          <NextLink
+            href="https://blog.dhunanyan.com"
+            target="_blank"
+            className="welcome__button"
+          >
             Check out my Blog
           </NextLink>
         </div>

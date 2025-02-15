@@ -15,13 +15,7 @@ type NavItem = 'welcome' | 'about' | 'experience' | 'work' | 'contact';
 
 const NAV_ITEMS = ['welcome', 'about', 'experience', 'work', 'contact'];
 
-const BLOG_NAV_ITEMS = ['welcome', 'home', 'blogs'];
-
-export type HeaderPropsType = {
-  isBlog?: boolean;
-};
-
-export const Header = ({ isBlog = false }: HeaderPropsType) => {
+export const Header = () => {
   const [activeItem, setActiveItem] = React.useState<NavItem>('welcome');
   const [offset, setOffset] = React.useState<number>(0);
 
@@ -88,49 +82,22 @@ export const Header = ({ isBlog = false }: HeaderPropsType) => {
           </Link>
           <div className="header__nav-container">
             <ul className={`header__list header__list--${activeItem}`}>
-              {isBlog
-                ? BLOG_NAV_ITEMS.map((item, index) => (
-                    <li key={index} className="header__item">
-                      {index === 0 ? (
-                        <Link
-                          to={item}
-                          spy
-                          smooth
-                          offset={offset}
-                          className="header__link"
-                          activeClass="header__link--active"
-                          onSetActive={() => setActiveItem(item as NavItem)}
-                        >
-                          <span>{index === 0 ? '' : `0${index}.`}</span>
-                          <span>{item}</span>
-                        </Link>
-                      ) : (
-                        <NextLink
-                          href={`/${item === 'home' ? '' : item}`}
-                          className="header__link"
-                        >
-                          <span>{index === 0 ? '' : `0${index}.`}</span>
-                          <span>{item}</span>
-                        </NextLink>
-                      )}
-                    </li>
-                  ))
-                : NAV_ITEMS.map((item, index) => (
-                    <li key={index} className="header__item">
-                      <Link
-                        to={item}
-                        spy
-                        smooth
-                        offset={offset}
-                        className="header__link"
-                        activeClass="header__link--active"
-                        onSetActive={() => setActiveItem(item as NavItem)}
-                      >
-                        <span>{index === 0 ? '' : `0${index}.`}</span>
-                        <span>{item}</span>
-                      </Link>
-                    </li>
-                  ))}
+              {NAV_ITEMS.map((item, index) => (
+                <li key={index} className="header__item">
+                  <Link
+                    to={item}
+                    spy
+                    smooth
+                    offset={offset}
+                    className="header__link"
+                    activeClass="header__link--active"
+                    onSetActive={() => setActiveItem(item as NavItem)}
+                  >
+                    <span>{index === 0 ? '' : `0${index}.`}</span>
+                    <span>{item}</span>
+                  </Link>
+                </li>
+              ))}
             </ul>
           </div>
           <Link

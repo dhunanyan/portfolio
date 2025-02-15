@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { HtmlMeta } from '@data';
 
-import { Footer } from '@components';
+import { Footer, Header } from '@components';
 import './globals.scss';
 
 export const metadata: Metadata = HtmlMeta['index'];
@@ -28,6 +28,7 @@ export default function RootLayout({
         <meta name="theme-color" content="#0a192f" />
       </head>
       <body>
+        <Header />
         {children}
         <Footer />
       </body>

@@ -73,6 +73,30 @@
       filter: blur(0);
       opacity: 1;
     }
+
+    img,
+    video {
+      transition: all 220ms ease-in-out;
+    }
+
+    video {
+      top: 35px;
+      bottom: 0;
+      opacity: 0;
+      position: absolute;
+      width: 100%;
+      z-index: -1;
+    }
+
+    &:hover {
+      img {
+        opacity: 0;
+      }
+
+      video {
+        opacity: 1;
+      }
+    }
   }
 
   &__links {
@@ -105,6 +129,11 @@
         text-decoration: underline;
       }
     }
+  }
+
+  &__link {
+    align-items: center;
+    display: flex;
   }
 
   &__content {
