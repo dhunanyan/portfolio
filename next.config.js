@@ -1,5 +1,4 @@
 /** @type {import('next').NextConfig} */
-const path = require('path');
 
 module.exports = {
   images: {
@@ -16,12 +15,6 @@ module.exports = {
 
     // Prevent warnings related to canvas
     config.resolve.alias.canvas = false;
-
-    // Add pdfjs-dist worker
-    config.resolve.alias['pdfjs-dist'] = path.join(
-      __dirname,
-      'node_modules/pdfjs-dist'
-    );
 
     return config;
   },
