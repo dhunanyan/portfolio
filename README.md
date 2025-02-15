@@ -47,17 +47,18 @@ This portfolio site is built with Next.js, a powerful React framework for buildi
 
 ## 🎨 Colors
 
-| Color                 | Hex                                                                  |
-| --------------------- | -------------------------------------------------------------------- |
-| $primary-color        | ![#0a192f](https://via.placeholder.com/10/0a192f?text=+) `#0a192f`   |
-| $secondary-color      | ![#112240](https://via.placeholder.com/10/ccd6f6?text=+) `#ccd6f6`   |
-| $tertiary-color       | ![#233554](https://via.placeholder.com/10/232A39?text=+) `#1e293b80` |
-| $alt-color            | ![#8892b0](https://via.placeholder.com/10/8892b0?text=+) `#8892b0`   |
-| $alt-secondary-color  | ![#a8b2d1](https://via.placeholder.com/10/495670?text=+) `#495670`   |
-| $tint-color           | ![#ccd6f6](https://via.placeholder.com/10/64ffda?text=+) `#64ffda`   |
-| $tint-secondary-color | ![#e6f1ff](https://via.placeholder.com/10/89d0c2?text=+) `#89d0c2`   |
-| $tint-tertiary-color  | ![#64ffda](https://via.placeholder.com/10/293C43?text=+) `#2dd4bf1a` |
-| $tint-color-opacity   | ![#64ffda](https://via.placeholder.com/10/386463?text=+) `#64ffdb46` |
+| Color                  | Hex                                                            |
+| ---------------------- | -------------------------------------------------------------- |
+| $primary-color         | ![](https://singlecolorimage.com/get/0a192f/20x20) `#0a192f`   |
+| $secondary-color       | ![](https://singlecolorimage.com/get/ccd6f6/20x20) `#ccd6f6`   |
+| $tertiary-color        | ![](https://singlecolorimage.com/get/232A39/20x20) `#1e293b80` |
+| $alt-color             | ![](https://singlecolorimage.com/get/8892b0/20x20) `#8892b0`   |
+| $alt-secondary-color   | ![](https://singlecolorimage.com/get/495670/20x20) `#495670`   |
+| $tint-color            | ![](https://singlecolorimage.com/get/64ffda/20x20) `#64ffda`   |
+| $tint-secondary-color  | ![](https://singlecolorimage.com/get/89d0c2/20x20) `#89d0c2`   |
+| $tint-tertiary-color   | ![](https://singlecolorimage.com/get/386463/20x20) `#2dd4bf1a` |
+| $tint-color-opacity    | ![](https://singlecolorimage.com/get/5ADDC1/20x20) `#64ffdb46` |
+| $tint-color-opacity-v2 | ![](https://singlecolorimage.com/get/2F434A/20x20) `#64ffdb1e` |
 
 ## 🚧 Roadmap
 

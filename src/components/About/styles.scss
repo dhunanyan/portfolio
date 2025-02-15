@@ -169,7 +169,6 @@
 
         &__overlay--me {
           background-color: transparent;
-          backdrop-filter: blur(0px);
           box-shadow: 0px 7px 15px 4px $tint-color;
           -webkit-box-shadow: 0px 7px 15px 4px $tint-color;
           -moz-box-shadow: 0px 7px 15px 4px $tint-color;
@@ -352,8 +351,7 @@
   }
 
   &__overlay {
-    backdrop-filter: blur(10px);
-    background-color: $tint-color-opacity;
+    background-color: $tint-color-opacity-v2;
     border-radius: $image-border-radius;
     bottom: 0;
     box-shadow: 0px 2px 5px 0px $tint-color;
