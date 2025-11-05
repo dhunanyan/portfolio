@@ -6,4 +6,5 @@ export type {
   JobResponseType,
   ExperienceSectionResponseType,
   BlogResponseType,
+  CommitHeatmapDataType,
 } from './types';

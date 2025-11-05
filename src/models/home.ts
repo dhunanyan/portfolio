@@ -32,11 +32,19 @@ export type JobModel = {
   skills: string[];
 };
 
+export type CommitHeatmapDataType = {
+  date: string;
+  commits: number;
+}[];
+
 export type ExperienceSectionModel = {
   id: string;
   index: string;
   title: string;
   description: Document;
+  commitHeatmapTitle: string;
+  commitHeatmapDescription: string;
+  commitHeatmapData: CommitHeatmapDataType;
   work: JobModel[];
   workTitle: string;
   education: JobModel[];

@@ -53,6 +53,8 @@ export type JobResponseType = {
   };
 }[];
 
+export type CommitHeatmapDataType = { date: string; commits: number }[];
+
 export type ExperienceSectionResponseType = {
   items: {
     fields: {
@@ -60,6 +62,9 @@ export type ExperienceSectionResponseType = {
       index: string;
       title: string;
       description: Document;
+      commitHeatmapTitle: string;
+      commitHeatmapDescription: string;
+      commitHeatmapData: CommitHeatmapDataType;
       work: JobResponseType;
       workTitle: string;
       education: JobResponseType;

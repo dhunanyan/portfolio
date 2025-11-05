@@ -1,6 +1,8 @@
+'use client';
 import * as React from 'react';
 import { Job } from './Job';
 
+import { CommitsHeatmap } from '@components';
 import { ExperienceSectionModel } from '@models';
 import { richTextRenderer } from '@utils';
 
@@ -19,6 +21,9 @@ export const Experience = ({ data }: ExperiencePropsType) => {
     index,
     title,
     description,
+    commitHeatmapTitle,
+    commitHeatmapDescription,
+    commitHeatmapData,
     work,
     workTitle,
     education,
@@ -34,7 +39,12 @@ export const Experience = ({ data }: ExperiencePropsType) => {
           <span className="experience__line" />
         </h2>
         {richTextRenderer(description, 'experience__description')}
-
+        <h2 className="experience__subtitle">
+          <span>{commitHeatmapTitle}</span>
+          <span className="experience__line" />
+        </h2>
+        <p className="experience__description">{commitHeatmapDescription}</p>
+        <CommitsHeatmap data={commitHeatmapData} />
         <h2 className="experience__subtitle">
           <span>{workTitle}</span>
           <span className="experience__line" />
