@@ -3,28 +3,29 @@
   "version": "1.0.0",
   "private": true,
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=20.9.0"
   },
   "scripts": {
     "prepare": "husky",
     "dev": "next dev",
-    "build": "next build",
+    "build": "next build --webpack",
     "start": "next start",
-    "lint": "next lint",
+    "lint": "eslint . --max-warnings=0",
+    "lint:fix": "eslint . --fix",
     "prettier:write": "prettier --write **/*.{ts,tsx,json,md}",
     "prettier:check": "prettier --check **/*.{ts,tsx,json,md}"
   },
   "dependencies": {
-    "@contentful/rich-text-react-renderer": "^16.0.0",
+    "@contentful/rich-text-react-renderer": "^16.2.1",
     "@contentful/rich-text-types": "^17.0.0",
     "contentful": "^11.2.0",
     "highlight.js": "^11.10.0",
-    "next": "^14.2.14",
+    "next": "16.2.5",
     "prismjs": "^1.29.0",
-    "react": "^18.3.1",
-    "react-dom": "^18.3.1",
+    "react": "19.2.6",
+    "react-dom": "19.2.6",
     "react-icons": "^4.10.1",
-    "react-scroll": "^1.9.0",
+    "react-scroll": "^1.9.3",
     "react-syntax-highlighter": "^15.6.1",
     "sass": "^1.79.4"
   },
@@ -32,16 +33,15 @@
     "@svgr/webpack": "^8.1.0",
     "@types/highlight.js": "^10.1.0",
     "@types/node": "^22.7.4",
-    "@types/react": "^18.3.11",
-    "@types/react-dom": "^18.3.0",
+    "@types/react": "^19.2.14",
+    "@types/react-dom": "^19.2.3",
     "@types/react-scroll": "^1.8.10",
     "@types/react-syntax-highlighter": "^15.5.13",
-    "eslint": "^8.50.0",
-    "eslint-config-next": "^14.2.14",
+    "eslint": "^9",
+    "eslint-config-next": "16.2.5",
     "husky": "^9.1.6",
     "lint-staged": "^15.2.10",
     "prettier": "^3.3.3",
-    "raw-loader": "^4.0.2",
     "typescript": "^5.6.2"
   }
 }

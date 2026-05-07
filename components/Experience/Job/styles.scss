@@ -1,0 +1,238 @@
+@use '../../../styles/mixins' as *;
+@use '../../../styles/variables' as *;
+
+.job {
+  background-color: $tertiary-color;
+  border-radius: 8px;
+  box-shadow:
+    0 0 #0000,
+    0 0 #0000,
+    inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  margin: 10px 0 10px auto;
+  max-width: 700px;
+  padding: 8px;
+  transition: all 280ms $animation;
+
+  @media screen and (min-width: 768px) {
+    background-color: unset;
+    box-shadow: unset;
+    flex-direction: row;
+    padding: 20px;
+    margin: 0 0 0 auto;
+
+    &:hover {
+      background-color: $tertiary-color;
+      box-shadow:
+        0 0 #0000,
+        0 0 #0000,
+        inset 0 1px 0 0 rgba(148, 163, 184, 0.1);
+      transform: translate(-10px, 0);
+
+      .job {
+        &__title h3 {
+          color: $tint-color;
+          transform: translate(5px, 0);
+
+          span:last-of-type svg {
+            opacity: 1;
+            transform: translateX(10px);
+          }
+        }
+
+        &__date p {
+          color: $secondary-color;
+        }
+
+        &__description ul li p::before {
+          color: $tint-color;
+        }
+      }
+    }
+  }
+
+  @media screen and (min-width: 1024px) {
+    &:hover {
+      transform: translate(-20px, 0);
+    }
+  }
+
+  &__date {
+    margin: 0 0 10px 0;
+    min-width: 170px;
+    transition: all 150ms ease-in-out;
+
+    @media screen and (min-width: 768px) {
+      margin: 0 20px 0 0;
+    }
+
+    p {
+      color: $secondary-color;
+      font-size: 16px;
+      font-family: $font-mono;
+      transition: all 150ms ease-in-out;
+      width: max-content;
+
+      @media screen and (min-width: 425px) {
+        font-size: 22px;
+      }
+
+      @media screen and (min-width: 768px) {
+        color: $alt-color;
+        flex-direction: row;
+        font-size: 16px;
+      }
+    }
+  }
+
+  &__content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+  }
+
+  &__title {
+    h3 {
+      align-items: center;
+      color: $tint-color;
+      display: flex;
+      margin: 0 0 10px;
+      cursor: pointer;
+      transition: all 250ms $animation;
+
+      @media screen and (min-width: 768px) {
+        color: $secondary-color;
+      }
+
+      &:hover {
+        text-decoration: underline;
+      }
+
+      span:first-of-type {
+        font-family: $font-sans;
+        font-size: 13px;
+        font-weight: 600;
+        line-height: 14px;
+
+        @media screen and (min-width: 425px) {
+          font-size: 18px;
+          line-height: 18px;
+        }
+      }
+
+      span:last-of-type {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+
+        svg {
+          margin: 0 0 0 8px;
+          height: 20px;
+          transition:
+            opacity 150ms ease-in,
+            transform 150ms ease-in;
+          width: 20px;
+
+          @media screen and (min-width: 768px) {
+            margin: 0;
+            opacity: 0;
+            transform: unset;
+            transform: translate(8px, 0);
+          }
+        }
+      }
+    }
+  }
+
+  &__subtitle {
+    color: $alt-secondary-color;
+    font-family: $font-mono;
+    font-size: 18px;
+    font-weight: 600;
+    line-height: 18px;
+    margin: 0 0 10px;
+    transition: all 150ms ease-in-out;
+  }
+
+  &__description ul {
+    align-items: flex-start;
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+
+    li {
+      display: flex;
+      align-items: flex-end;
+
+      p {
+        color: $alt-color;
+        font-family: $font-sans;
+        font-size: 12px;
+        line-height: 14px;
+        transition: all 150ms ease-in-out;
+
+        @media screen and (min-width: 425px) {
+          font-size: 14px;
+          line-height: 18px;
+        }
+
+        &::before {
+          color: $tint-color;
+          content: '•';
+          margin: 0 5px 0 0;
+          transition: all 150ms ease-in-out;
+          width: 2px;
+
+          @media screen and (min-width: 768px) {
+            color: $alt-color;
+          }
+        }
+      }
+    }
+  }
+
+  &__button {
+    background-color: transparent;
+    color: $secondary-color;
+    display: inline;
+    font-family: $font-sans;
+    margin: 0 0 0 auto;
+    transition: all 150ms ease-in-out;
+    width: max-content;
+
+    &:hover {
+      color: $tint-color;
+      text-decoration: underline;
+    }
+  }
+
+  &__skills {
+    align-items: center;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 5px;
+    margin: 10px 0 0;
+  }
+
+  &__skill {
+    background-color: $tint-tertiary-color;
+    border-radius: 25px;
+    padding: 5px 8px;
+
+    p {
+      color: $tint-color;
+      font-family: $font-sans;
+      font-size: 11px;
+
+      @media screen and (min-width: 425px) {
+        font-size: 13px;
+      }
+    }
+
+    @media screen and (min-width: 425px) {
+      padding: 7px 14px;
+    }
+  }
+}

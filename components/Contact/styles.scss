@@ -1,0 +1,87 @@
+@use '../../styles/mixins' as *;
+@use '../../styles/variables' as *;
+
+.contact {
+  &__container {
+    @include container;
+    & {
+      display: flex;
+      flex-direction: column;
+    }
+  }
+
+  &__title {
+    @include title;
+  }
+
+  &__side-info {
+    color: $alt-secondary-color;
+    font-family: $font-mono;
+    font-size: 16px;
+    font-weight: 700;
+    line-height: 16px;
+    margin: 10px 0 14px auto;
+    transition: all 150ms ease-in-out;
+
+    @media screen and (min-width: 425px) {
+      font-size: 24px;
+      line-height: 24px;
+      margin: 22px 0 22px auto;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 32px;
+      line-height: 32px;
+      margin: 30px 0 30px auto;
+    }
+  }
+
+  &__subtitle {
+    color: $tint-color;
+    font-family: $font-sans;
+    font-size: 20px;
+    font-weight: 700;
+    line-height: 20px;
+    margin: 30px auto 0 auto;
+
+    @media screen and (min-width: 425px) {
+      font-size: 28px;
+      line-height: 28px;
+      margin: 40px auto 0 auto;
+    }
+
+    @media screen and (min-width: 768px) {
+      font-size: 32px;
+      line-height: 32px;
+      margin: 50px auto 0 auto;
+    }
+  }
+
+  &__description {
+    @include description;
+    & {
+      margin: 8px auto 0 auto;
+      max-width: 520px;
+      text-align: center !important;
+      width: 100%;
+      transition: all 150ms ease-in-out;
+    }
+
+    @media screen and (min-width: 375px) {
+      margin: 10px auto 0 auto;
+    }
+
+    @media screen and (min-width: 425px) {
+      margin: 20px auto 0 auto;
+    }
+  }
+
+  &__button {
+    @include button;
+    & {
+      border: 0;
+      font-family: $font-mono;
+      margin: 30px auto 0 auto;
+    }
+  }
+}

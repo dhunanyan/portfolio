@@ -1,0 +1,197 @@
+@use './variables.scss' as *;
+
+@mixin container {
+  max-width: 1180px;
+  margin: 0 auto;
+  padding: 24px 16px;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 375px) {
+    padding: 28px 18px;
+  }
+
+  @media screen and (min-width: 425px) {
+    padding: 32px 22px;
+  }
+
+  @media screen and (min-width: 768px) {
+    padding: 36px 40px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    padding: 48px 56px;
+  }
+}
+
+@mixin button {
+  align-items: center;
+  background-color: transparent;
+  border: 1px solid $tint-color;
+  border-radius: 12px;
+  box-shadow: inset 0 0 0 1px rgba(109, 255, 216, 0.16);
+  color: $tint-color;
+  display: flex;
+  font-size: 12px;
+  font-weight: 500;
+  justify-content: center;
+  letter-spacing: 0.4px;
+  padding: 10px 16px;
+  text-align: center;
+  transition: all 160ms ease-out;
+
+  &:hover {
+    background-color: $tint-color;
+    box-shadow: 0px 10px 24px -14px rgba(109, 255, 216, 0.9);
+    color: $primary-color-v2;
+    transform: translateY(-2px);
+  }
+
+  @media screen and (min-width: 375px) {
+    font-size: 14px;
+    padding: 12px 18px;
+  }
+
+  @media screen and (min-width: 425px) {
+    font-size: 15px;
+    padding: 13px 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 15px;
+    padding: 14px 22px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+    padding: 15px 24px;
+  }
+}
+
+@mixin title {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  span {
+    min-width: max-content;
+
+    &:first-of-type {
+      color: $tint-color;
+      font-family: $font-mono;
+      font-weight: 100;
+      margin: auto 5px 0 0;
+
+      @media screen and (min-width: 375px) {
+        font-size: 18px;
+      }
+
+      @media screen and (min-width: 425px) {
+        font-size: 22px;
+      }
+
+      @media screen and (min-width: 768px) {
+        font-size: 24px;
+      }
+    }
+
+    &:last-of-type {
+      background-color: $alt-secondary-color;
+      height: 1px;
+      margin: 0 0 0 20px;
+      opacity: 0.7;
+      width: 100%;
+    }
+  }
+
+  @media screen and (min-width: 375px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 425px) {
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+@mixin blogTitle {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-size: 20px;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 425px) {
+    font-size: 28px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 32px;
+  }
+}
+
+@mixin subtitle {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-size: 16px;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 425px) {
+    font-size: 20px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 26px;
+  }
+}
+
+@mixin subSubtitle {
+  align-items: center;
+  color: $secondary-color;
+  display: flex;
+  font-family: $font-sans;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all 150ms linear;
+
+  @media screen and (min-width: 425px) {
+    font-size: 16px;
+  }
+
+  @media screen and (min-width: 768px) {
+    font-size: 20px;
+  }
+}
+
+@mixin description {
+  color: $alt-color;
+  font-family: $font-sans;
+  font-size: 14px;
+  line-height: 1.7;
+  text-align: left;
+  transition: all 150ms linear;
+
+  b,
+  span {
+    color: $secondary-color;
+    font-weight: 700;
+  }
+
+  @media screen and (min-width: 425px) {
+    font-size: 15px;
+  }
+
+  @media screen and (min-width: 1024px) {
+    font-size: 16px;
+  }
+}
