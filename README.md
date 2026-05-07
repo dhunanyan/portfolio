@@ -73,7 +73,7 @@ Planned enhancements for future versions include:
 1. **Clone the repository**
 
 ```bash
-git clone https://github.com/davithunanyan/portfolio.git
+git clone https://github.com/dhunanyan/portfolio.git
 ```
 
 2. **Navigate to the project directory**

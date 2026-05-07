@@ -13,6 +13,7 @@
 }
 
 html {
+  background: #0a0f1e;
   font-size: 16px;
   scroll-behavior: smooth;
   text-size-adjust: 100%;
@@ -102,7 +103,10 @@ textarea {
 }
 
 button {
+  background: transparent;
+  color: inherit;
   cursor: pointer;
+  opacity: 1;
 }
 
 img,

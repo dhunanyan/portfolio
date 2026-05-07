@@ -4,7 +4,6 @@ import {
   Experience,
   Work,
   Contact,
-  Overlay,
 } from '@components';
 import {
   getAboutSection,
@@ -26,7 +25,6 @@ export default async function Page() {
         <Experience data={experience} />
         <Work />
         <Contact data={contact} />
-        <Overlay />
       </main>
     </>
   );

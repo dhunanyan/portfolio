@@ -1,0 +1,121 @@
+'use client';
+import * as React from 'react';
+import { motion, AnimatePresence } from 'motion/react';
+import { Menu, X } from 'lucide-react';
+import { headerContent } from '@data';
+
+import './styles.scss';
+import { Icons } from '@components/icons';
+
+export const Header = () => {
+  const [scrolled, setScrolled] = React.useState(false);
+  const [mobileOpen, setMobileOpen] = React.useState(false);
+
+  React.useEffect(() => {
+    const handleScroll = () => setScrolled(window.scrollY > 40);
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+
+  const handleNav = (href: string) => {
+    setMobileOpen(false);
+    const el = document.querySelector(href);
+    if (el) el.scrollIntoView({ behavior: 'smooth' });
+  };
+
+  return (
+    <>
+      <motion.nav
+        initial={{ y: -80, opacity: 0 }}
+        animate={{ y: 0, opacity: 1 }}
+        transition={{ duration: 0.6, ease: [0.22, 1, 0.36, 1] }}
+        className={`header ${scrolled ? 'header--scrolled' : ''}`}
+      >
+        <div className="header__container">
+          <button
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="header__logo"
+          >
+            <span className="header__logo-icon">
+              <Icons.Logo size={40} />
+            </span>
+            <span className="header__logo-text">{headerContent.logoText}</span>
+          </button>
+
+          <div className="header__desktop-nav">
+            {headerContent.navLinks.map((link, i) => (
+              <motion.button
+                key={link.href}
+                initial={{ opacity: 0, y: -10 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.1 + i * 0.07, duration: 0.4 }}
+                onClick={() => handleNav(link.href)}
+                className="header__link"
+              >
+                <span className="header__link-index">0{i + 1}.</span>
+                <span className="header__link-label">{link.label}</span>
+                <span className="header__link-line" />
+              </motion.button>
+            ))}
+            <motion.a
+              initial={{ opacity: 0, y: -10 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.45, duration: 0.4 }}
+              href="#contact"
+              onClick={(e) => {
+                e.preventDefault();
+                handleNav('#contact');
+              }}
+              className="header__connect"
+            >
+              {headerContent.connectLabel}
+            </motion.a>
+          </div>
+
+          <button
+            className="header__mobile-toggle"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+          </button>
+        </div>
+      </motion.nav>
+
+      <AnimatePresence>
+        {mobileOpen && (
+          <motion.div
+            initial={{ opacity: 0, x: '100%' }}
+            animate={{ opacity: 1, x: 0 }}
+            exit={{ opacity: 0, x: '100%' }}
+            transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+            className="header__mobile-menu"
+          >
+            {headerContent.navLinks.map((link, i) => (
+              <motion.button
+                key={link.href}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: i * 0.08 }}
+                onClick={() => handleNav(link.href)}
+                className="header__mobile-link"
+              >
+                <span className="header__mobile-index">0{i + 1}.</span>
+                <span className="header__mobile-label">{link.label}</span>
+              </motion.button>
+            ))}
+            <motion.button
+              initial={{ opacity: 0, y: 20 }}
+              animate={{ opacity: 1, y: 0 }}
+              transition={{ delay: 0.35 }}
+              onClick={() => handleNav('#contact')}
+              className="header__mobile-connect"
+            >
+              {headerContent.connectLabel}
+            </motion.button>
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </>
+  );
+};

@@ -1,156 +1,314 @@
-@use '../../styles/mixins' as *;
 @use '../../styles/variables' as *;
+
+@keyframes welcome-caret-pulse {
+  0%,
+  100% {
+    opacity: 1;
+  }
+
+  50% {
+    opacity: 0.35;
+  }
+}
 
 .welcome {
   align-items: center;
+  background-color: #0a0f1e;
   display: flex;
-  justify-content: flex-start;
   min-height: 100vh;
+  overflow: hidden;
+  position: relative;
 
-  &__container {
-    @include container;
-    & {
+  &__canvas {
+    inset: 0;
+    pointer-events: none;
+    position: absolute;
+    z-index: 0;
+  }
+
+  &__orb {
+    border-radius: 50%;
+    pointer-events: none;
+    position: absolute;
+  }
+
+  &__orb--left {
+    background: rgba(100, 255, 218, 0.05);
+    filter: blur(64px);
+    height: 18rem;
+    left: -8rem;
+    top: 25%;
+    width: 18rem;
+  }
+
+  &__orb--right {
+    background: rgba(0, 180, 216, 0.05);
+    bottom: 25%;
+    filter: blur(64px);
+    height: 24rem;
+    right: 0;
+    width: 24rem;
+  }
+
+  &__orb--center {
+    background: rgba(124, 58, 237, 0.03);
+    filter: blur(96px);
+    height: 37.5rem;
+    left: 50%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+    width: 37.5rem;
+  }
+
+  &__rail {
+    align-items: center;
+    bottom: 0;
+    display: none;
+    flex-direction: column;
+    gap: 1.25rem;
+    position: fixed;
+    z-index: 30;
+
+    @media screen and (min-width: 1024px) {
       display: flex;
-      flex-direction: column;
-      margin-top: 30px;
-      width: 100%;
-    }
-
-    @media screen and (orientation: landscape) {
-      margin-top: 120px;
-    }
-
-    @media screen and (orientation: portrait) and (min-width: 768px) {
-      margin-top: 0;
     }
   }
 
-  &__welcome {
-    color: $tint-color;
+  &__rail--left {
+    left: 2rem;
+  }
+
+  &__rail--right {
+    right: 2rem;
+  }
+
+  &__rail-link {
+    color: $alt-color;
+    display: inline-flex;
+    transition:
+      color 200ms ease,
+      transform 200ms ease;
+
+    &:hover {
+      color: $tint-color;
+      transform: translateY(-4px);
+    }
+  }
+
+  &__email-link {
+    color: $alt-color;
     font-family: $font-mono;
     font-size: 12px;
-    margin: 0 0 2px 1px;
-    transition: all 150ms linear;
+    letter-spacing: 0.15em;
+    transition: color 200ms ease;
+    writing-mode: vertical-rl;
 
-    @media screen and (min-width: 425px) {
-      font-size: 14px;
-      margin: 0 0 4px 4px;
-    }
-
-    @media screen and (min-width: 425px) {
-      font-size: 14px;
-      margin: 0 0 4px 4px;
-    }
-
-    @media screen and (min-width: 768px) {
-      font-size: 18px;
-      margin: 0 0 6px 4px;
-    }
-
-    @media screen and (min-width: 1024px) {
-      font-size: 18px;
-      margin: 0 0 10px 4px;
+    &:hover {
+      color: $tint-color;
     }
   }
 
-  &__title {
+  &__rail-line {
+    background: linear-gradient(
+      to bottom,
+      rgba(136, 146, 176, 0.5),
+      transparent
+    );
+    height: 5rem;
+    margin-top: 0.5rem;
+    width: 1px;
+  }
+
+  &__content {
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: 6rem 1.5rem 4rem;
+    position: relative;
+    width: 100%;
+    z-index: 10;
+
+    @media screen and (min-width: 1024px) {
+      padding-left: 4rem;
+      padding-right: 4rem;
+    }
+  }
+
+  &__intro {
+    margin-bottom: 1.25rem;
+  }
+
+  &__intro-label {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 14px;
+
+    @media screen and (min-width: 768px) {
+      font-size: 16px;
+    }
+  }
+
+  &__name {
     color: $secondary-color;
     font-family: $font-sans;
-    font-size: 24px;
+    font-size: 3rem;
     font-weight: 700;
-    line-height: 24px;
-    transition: all 150ms linear;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0 0 1rem;
 
-    @media screen and (min-width: 375px) {
-      font-size: 32px;
-      line-height: 32px;
-    }
-
-    @media screen and (min-width: 425px) {
-      font-size: 48px;
-      line-height: 48px;
+    @media screen and (min-width: 640px) {
+      font-size: 3.75rem;
     }
 
     @media screen and (min-width: 768px) {
-      font-size: 64px;
-      line-height: 64px;
+      font-size: 4.5rem;
     }
 
     @media screen and (min-width: 1024px) {
-      font-size: 72px;
-      line-height: 72px;
+      font-size: 6rem;
     }
   }
 
-  &__subtitle {
-    color: $alt-color;
+  &__role-wrap {
+    align-items: center;
+    display: flex;
+    gap: 0.5rem;
+    margin-bottom: 2rem;
+  }
+
+  &__role {
+    color: #4a5568;
     font-family: $font-sans;
-    font-size: 20px;
+    font-size: 2.25rem;
     font-weight: 700;
-    line-height: 20px;
-    margin: 2px 0 0;
-    transition: all 150ms linear;
+    letter-spacing: -0.02em;
+    line-height: 1.05;
+    margin: 0;
 
-    @media screen and (min-width: 375px) {
-      font-size: 24px;
-      margin: 4px 0 0;
-      line-height: 24px;
-    }
-
-    @media screen and (min-width: 425px) {
-      font-size: 32px;
-      margin: 10px 0 0;
-      line-height: 32px;
+    @media screen and (min-width: 640px) {
+      font-size: 3rem;
     }
 
     @media screen and (min-width: 768px) {
-      font-size: 64px;
-      line-height: 64px;
+      font-size: 3.75rem;
     }
 
     @media screen and (min-width: 1024px) {
-      font-size: 72px;
-      line-height: 72px;
+      font-size: 4.5rem;
     }
+  }
+
+  &__role-gradient {
+    background: linear-gradient(90deg, #64ffda 0%, #00b4d8 100%);
+    color: transparent;
+    -webkit-background-clip: text;
+    background-clip: text;
+  }
+
+  &__role-caret {
+    animation: welcome-caret-pulse 1.3s ease-in-out infinite;
+    color: $tint-color;
   }
 
   &__description {
-    @include description;
-    & {
-      margin: 8px 0 0 2px;
-      max-width: 700px;
+    color: $alt-color;
+    font-family: $font-sans;
+    font-size: 16px;
+    line-height: 1.7;
+    margin: 0 0 2.5rem;
+    max-width: 40rem;
+
+    @media screen and (min-width: 768px) {
+      font-size: 18px;
     }
 
-    @media screen and (min-width: 375px) {
-      margin: 10px 0 0 2px;
-    }
-
-    @media screen and (min-width: 425px) {
-      margin: 20px 0 0 4px;
+    span {
+      color: $tint-color;
     }
   }
 
-  &__buttons {
+  &__actions {
     align-items: center;
     display: flex;
-    justify-content: flex-start;
-    margin: 30px auto 0 auto;
-
-    @media screen and (min-width: 768px) {
-      margin: 20px auto 0 4px;
-    }
+    flex-wrap: wrap;
+    gap: 1rem;
   }
 
   &__button {
-    @include button;
-    & {
-      cursor: pointer;
-      font-family: $font-mono;
-      border: 0;
+    align-items: center;
+    border-radius: 6px;
+    display: inline-flex;
+    font-family: $font-mono;
+    font-size: 13px;
+    gap: 0.5rem;
+    justify-content: center;
+    overflow: hidden;
+    padding: 0.875rem 1.75rem;
+    position: relative;
+    transition: all 300ms ease;
+  }
+
+  &__button-label,
+  &__button-icon {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__button--primary {
+    background: transparent;
+    border: 1px solid $tint-color;
+    color: $tint-color;
+
+    &:hover {
+      box-shadow: 0px 12px 28px -16px rgba(100, 255, 218, 0.6);
     }
 
-    &:first-of-type {
-      margin: 0 20px 0 0;
+    &:hover .welcome__button-overlay {
+      transform: translateY(0);
     }
+  }
+
+  &__button-overlay {
+    background: rgba(100, 255, 218, 0.1);
+    inset: 0;
+    position: absolute;
+    transform: translateY(100%);
+    transition: transform 300ms ease;
+  }
+
+  &__button--secondary {
+    background: rgba(30, 58, 95, 0.3);
+    border: 1px solid #1e3a5f;
+    color: $secondary-color;
+
+    &:hover {
+      border-color: rgba(100, 255, 218, 0.4);
+      color: $tint-color;
+    }
+  }
+
+  &__scroll {
+    align-items: center;
+    background: transparent;
+    bottom: 2.5rem;
+    color: $alt-color;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    left: 50%;
+    position: absolute;
+    transform: translateX(-50%);
+    transition: color 200ms ease;
+
+    &:hover {
+      color: $tint-color;
+    }
+  }
+
+  &__scroll-label {
+    font-family: $font-mono;
+    font-size: 12px;
+    letter-spacing: 0.15em;
+    text-transform: uppercase;
   }
 }

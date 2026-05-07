@@ -1,42 +1,288 @@
-@use '../../styles/mixins' as *;
 @use '../../styles/variables' as *;
 
 .experience {
+  background: #0d1b2a;
+  padding: 7rem 0;
+  position: relative;
+
+  &__top-line {
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(100, 255, 218, 0.2),
+      transparent
+    );
+    height: 1px;
+    inset: 0 0 auto;
+    position: absolute;
+  }
+
   &__container {
-    @include container;
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: 0 1.5rem;
   }
 
-  &__title {
-    @include title;
-    & {
-      margin: 0 0 30px 0;
+  &__header {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 4rem;
+  }
+
+  &__index {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 0.875rem;
+  }
+
+  &__heading {
+    color: $secondary-color;
+    font-family: $font-sans;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__line {
+    background: linear-gradient(to right, #1e3a5f, transparent);
+    flex: 1;
+    height: 1px;
+    max-width: 16rem;
+  }
+
+  &__tabs {
+    background: #112240;
+    border: 1px solid #1e3a5f;
+    border-radius: 10px;
+    display: flex;
+    gap: 0.25rem;
+    margin-bottom: 2.5rem;
+    padding: 0.25rem;
+    width: fit-content;
+  }
+
+  &__tab {
+    align-items: center;
+    border-radius: 8px;
+    color: rgba(226, 236, 255, 0.85);
+    display: inline-flex;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    gap: 0.4rem;
+    padding: 0.55rem 1rem;
+    text-transform: capitalize;
+    transition: all 200ms ease;
+
+    &:hover {
+      color: $secondary-color;
     }
   }
 
-  &__subtitle {
-    @include title;
-    & {
-      margin: 30px 0 0 0;
-    }
-
-    span:first-of-type {
-      order: 2;
-    }
-
-    span.experience__line {
-      margin: 0 20px 0 0;
-    }
+  &__tab--active {
+    background: $tint-color;
+    color: #0a0f1e;
   }
 
-  &__description {
-    @include description;
-    & {
-      margin: 20px 0 0;
-      max-width: 700px;
+  &__layout {
+    display: grid;
+    gap: 2rem;
+
+    @media (min-width: 768px) {
+      grid-template-columns: 240px 1fr;
     }
   }
 
   &__list {
-    margin: 50px 0 0 auto;
+    position: relative;
+  }
+
+  &__list-line {
+    background: #1e3a5f;
+    inset: 0 auto 0 0;
+    position: absolute;
+    width: 1px;
+  }
+
+  &__list-item {
+    border-left: 2px solid transparent;
+    padding: 1rem 1rem 1rem 1.25rem;
+    text-align: left;
+    transition: all 200ms ease;
+    width: 100%;
+
+    &:hover {
+      background: rgba(100, 255, 218, 0.03);
+      border-left-color: rgba(100, 255, 218, 0.4);
+    }
+  }
+
+  &__list-item--active {
+    background: rgba(100, 255, 218, 0.05);
+    border-left-color: $tint-color;
+  }
+
+  &__list-head {
+    align-items: center;
+    display: flex;
+    gap: 0.45rem;
+    margin-bottom: 0.15rem;
+  }
+
+  &__list-company {
+    color: rgba(226, 236, 255, 0.85);
+    font-size: 0.75rem;
+    font-weight: 500;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__list-item--active &__list-company {
+    color: $tint-color;
+  }
+
+  &__list-role {
+    color: #4a5568;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    margin: 0;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+
+  &__list-item--active &__list-role {
+    color: $secondary-color;
+  }
+
+  &__list-icon {
+    color: #4a5568;
+    min-width: 12px;
+  }
+
+  &__list-item--active &__list-icon {
+    color: $tint-color;
+  }
+
+  &__card {
+    background: #112240;
+    border: 1px solid #1e3a5f;
+    border-radius: 12px;
+    overflow: hidden;
+    padding: 2rem;
+    position: relative;
+  }
+
+  &__card-glow {
+    background: rgba(100, 255, 218, 0.03);
+    border-radius: 50%;
+    filter: blur(56px);
+    height: 12rem;
+    pointer-events: none;
+    position: absolute;
+    right: 0;
+    top: 0;
+    width: 12rem;
+  }
+
+  &__card-content {
+    position: relative;
+    z-index: 1;
+  }
+
+  &__card-header {
+    align-items: start;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    justify-content: space-between;
+    margin-bottom: 0.75rem;
+  }
+
+  &__card-title {
+    color: $secondary-color;
+    font-size: 1.25rem;
+    font-weight: 600;
+    margin: 0;
+  }
+
+  &__card-title-highlight {
+    color: $tint-color;
+
+    a {
+      align-items: center;
+      display: inline-flex;
+      gap: 0.25rem;
+
+      &:hover {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  &__card-institution {
+    color: $tint-color;
+    font-size: 0.9rem;
+    margin: 0.4rem 0 0;
+  }
+
+  &__card-project {
+    color: #4a90e2;
+    font-family: $font-mono;
+    font-size: 0.72rem;
+    margin: 0.3rem 0 0;
+  }
+
+  &__card-period {
+    align-items: center;
+    background: rgba(10, 15, 30, 0.5);
+    border: 1px solid #1e3a5f;
+    border-radius: 9999px;
+    color: $secondary-color;
+    display: inline-flex;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    gap: 0.4rem;
+    padding: 0.45rem 0.75rem;
+
+    svg {
+      color: $tint-color;
+    }
+  }
+
+  &__card-description {
+    color: $alt-color;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 1rem 0 1.5rem;
+
+    span {
+      align-items: center;
+      color: $tint-color;
+      display: inline-flex;
+      font-weight: 900;
+      font-size: 20px;
+      justify-content: center;
+      line-height: 16px;
+      padding: 0px 8px 0;
+      height: max-content;
+      width: max-content;
+    }
+  }
+
+  &__card-tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
+  }
+
+  &__tag {
+    background: rgba(100, 255, 218, 0.1);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 9999px;
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    padding: 0.3rem 0.75rem;
   }
 }

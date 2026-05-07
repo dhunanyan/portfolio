@@ -1,136 +1,58 @@
-@use '../../styles/mixins' as *;
 @use '../../styles/variables' as *;
 
 .footer {
-  margin: 50px 0 0 0;
+  background: #0a0f1e;
+  border-top: 1px solid rgba(30, 58, 95, 0.4);
+  padding: 2.5rem 1.5rem;
 
   &__container {
-    @include container;
-    & {
-      align-items: center;
-      display: flex;
-      justify-content: center;
-      padding-bottom: 60px;
-    }
-    @media screen and (min-width: 768px) {
-      padding-bottom: 20px;
-    }
-  }
-
-  &__content {
     align-items: center;
     display: flex;
     flex-direction: column;
-    justify-content: center;
+    gap: 1.25rem;
+    margin: 0 auto;
+    max-width: 72rem;
   }
 
-  &__title {
+  &__socials {
     align-items: center;
     display: flex;
-    flex-direction: column;
-    transition: all 150ms ease-in-out;
+    gap: 1.25rem;
 
-    @media screen and (min-width: 768px) {
-      flex-direction: row;
-    }
-
-    &-separator {
+    @media (min-width: 768px) {
       display: none;
-
-      @media screen and (min-width: 768px) {
-        display: block;
-      }
-    }
-
-    > span {
-      color: $alt-color;
-      font-family: $font-mono;
-      font-size: 10px;
-      line-height: 10px;
-      margin: 2px 6px 2px 0;
-      text-align: center;
-
-      @media screen and (min-width: 425px) {
-        margin: 5px 6px 5px 0;
-        width: max-content;
-      }
-
-      @media screen and (min-width: 768px) {
-        font-size: 14px;
-        line-height: 14px;
-        margin: 0 6px 0 0;
-      }
-
-      span {
-        color: $tint-color;
-        margin: 0 6px;
-      }
     }
 
     a {
-      color: $secondary-color;
-      font-family: $font-mono;
-      margin: 0 0 0 6px;
-      transition: all 120ms ease-out;
+      color: $alt-color;
+      transition: color 200ms ease;
 
       &:hover {
         color: $tint-color;
+      }
+    }
+  }
+
+  &__credit {
+    color: #4a5568;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    margin: 0;
+    text-align: center;
+
+    a {
+      color: $tint-color;
+
+      &:hover {
         text-decoration: underline;
       }
     }
   }
 
-  &__motto {
-    align-items: center;
-    display: flex;
-    margin: 0 0 10px 0;
-
-    @media screen and (min-width: 768px) {
-      margin: 0 0 18px 0;
-    }
-
-    p {
-      align-items: center;
-      display: flex;
-      margin: 0 10px;
-      max-height: 26px;
-      height: 26px;
-    }
-
-    &-text {
-      color: $alt-color;
-      font-family: $font-mono;
-      font-size: 12px;
-      font-style: italic;
-      line-height: 12px;
-      text-align: center;
-
-      @media screen and (min-width: 375px) {
-        width: max-content;
-      }
-
-      @media screen and (min-width: 768px) {
-        font-size: 14px;
-        line-height: 14px;
-      }
-    }
-
-    &-quot {
-      color: $tint-color;
-      font-family: $font-mono;
-      font-size: 42px;
-    }
-
-    &-line {
-      background-color: $alt-secondary-color;
-      display: flex;
-      flex: 1 0 40px;
-      height: 1px;
-      width: 100%;
-
-      @media screen and (min-width: 375px) {
-        flex: 1 0 10px;
-      }
-    }
+  &__copyright {
+    color: #2d3748;
+    font-family: $font-mono;
+    font-size: 0.7rem;
+    margin: 0;
   }
 }

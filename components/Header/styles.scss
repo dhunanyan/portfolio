@@ -1,348 +1,201 @@
-@use '../../styles/mixins' as *;
 @use '../../styles/variables' as *;
 
 .header {
-  align-items: center;
-  backdrop-filter: blur(12px);
-  background-color: $primary-color-opacity;
-  border-bottom: 1px solid rgba(109, 255, 216, 0.15);
-  box-shadow: 0px 10px 24px -20px rgba(0, 0, 0, 0.9);
-  display: flex;
-  font-family: $font-mono;
+  background: transparent;
+  inset: 0 0 auto;
   position: fixed;
-  width: 100%;
-  z-index: 1000;
+  transition: all 300ms ease;
+  z-index: 50;
 
-  h2.header__link {
-    color: $tint-color;
+  &--scrolled {
+    backdrop-filter: blur(16px);
+    background: rgba(10, 15, 30, 0.9);
+    border-bottom: 1px solid rgba(30, 58, 95, 0.4);
+    box-shadow: 0 16px 28px -22px rgba(0, 0, 0, 0.8);
   }
 
   &__container {
-    @include container;
-    & {
-      display: flex;
-      justify-content: space-between;
-      padding-bottom: 14px;
-      padding-top: 14px;
-      width: 100%;
-    }
-
-    @media screen and (min-width: 375px) {
-      padding-bottom: 14px;
-      padding-top: 14px;
-    }
-
-    @media screen and (min-width: 425px) {
-      padding-bottom: 15px;
-      padding-top: 15px;
-    }
-
-    @media screen and (min-width: 768px) {
-      padding-bottom: 18px;
-      padding-top: 18px;
-    }
-
-    @media screen and (min-width: 1024px) {
-      padding-bottom: 20px;
-      padding-top: 20px;
-    }
+    align-items: center;
+    display: flex;
+    height: 64px;
+    justify-content: space-between;
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: 0 1.5rem;
   }
 
   &__logo {
-    box-shadow: unset;
-    cursor: pointer;
-    height: 40px;
-    margin: 0 5px 0 0;
-    position: relative;
-    transition:
-      all 120ms ease-out,
-      box-shadow 250ms ease-out;
-    width: 40px;
-
-    &:hover {
-      transform: scale(1.1) rotate(180deg);
-      .header__logo-image--bold {
-        opacity: 1;
-      }
-    }
-
-    @media screen and (min-width: 375px) {
-      margin: 0 20px 0 0;
-    }
-
-    @media screen and (min-width: 768px) {
-      height: 50px;
-      width: 50px;
-    }
-
-    * {
-      pointer-events: none;
-    }
-
-    &--active {
-      transform: scale(1.1) rotate(180deg);
-
-      .header__logo-image--bold {
-        box-shadow: 0px 0px 16px -4px $tint-secondary-color;
-        opacity: 1;
-
-        @media screen and (min-width: 768px) {
-          box-shadow: unset;
-        }
-      }
-    }
-  }
-
-  &__logo-mark {
-    display: block;
-    height: 100%;
-    position: relative;
-    width: 100%;
-  }
-
-  &__logo-image {
-    min-width: 100%;
-    transition: all 120ms ease-out;
-
-    &--bold {
-      border-radius: 50%;
-      opacity: 0;
-    }
-  }
-
-  &__nav {
-    align-items: center;
-    display: flex;
-    margin: 0 auto;
-    transition: all 150ms ease-in-out;
-
-    @media screen and (min-width: 768px) {
-      margin: 0 0 0 auto;
-
-      &:hover {
-        .header__link {
-          span:last-of-type {
-            color: $alt-color;
-          }
-        }
-      }
-    }
-
-    &-container {
-      max-width: 120px;
-      overflow-x: hidden;
-
-      @media screen and (min-width: 375px) {
-        max-width: 140px;
-      }
-
-      @media screen and (min-width: 768px) {
-        max-width: 100%;
-        overflow: auto;
-      }
-    }
-
-    &-arrow {
-      color: $alt-color;
-      background-color: transparent;
-      display: flex;
-      font-size: 20px;
-      transition: all 150ms ease-in-out;
-
-      &:hover {
-        color: $tint-color;
-      }
-
-      @media screen and (min-width: 375px) {
-        font-size: 24px;
-      }
-
-      @media screen and (min-width: 768px) {
-        display: none;
-        margin: 0 0 0 auto;
-      }
-
-      &--disabled {
-        opacity: 0.2;
-
-        &:hover {
-          color: $alt-color;
-        }
-      }
-    }
-  }
-
-  &__list {
-    align-items: center;
-    display: flex;
-    transition: all 250ms $animation-2;
-
-    &--welcome {
-      transform: translate(calc(-120px * 0), 0);
-    }
-    &--about {
-      transform: translate(calc(-120px * 1), 0);
-    }
-    &--experience {
-      transform: translate(calc(-120px * 2), 0);
-    }
-    &--work {
-      transform: translate(calc(-120px * 3), 0);
-    }
-    &--contact {
-      transform: translate(calc(-120px * 4), 0);
-    }
-
-    @media screen and (min-width: 375px) {
-      &--welcome {
-        transform: translate(calc(-120px * 0), 0);
-      }
-      &--about {
-        transform: translate(calc(-140px * 1), 0);
-      }
-      &--experience {
-        transform: translate(calc(-140px * 2), 0);
-      }
-      &--work {
-        transform: translate(calc(-140px * 3), 0);
-      }
-      &--contact {
-        transform: translate(calc(-140px * 4), 0);
-      }
-    }
-
-    @media screen and (min-width: 768px) {
-      &--about,
-      &--experience,
-      &--work,
-      &--contact,
-      &--welcome {
-        transform: translate(0, 0);
-      }
-    }
-  }
-
-  &__item {
     align-items: center;
     display: flex;
     justify-content: center;
-    margin: 0;
-    min-width: 100%;
+    gap: 8px;
     transition: all 150ms ease-out;
 
-    @media screen and (min-width: 768px) {
-      &:first-of-type {
-        display: none;
+    &-icon {
+      background-color: $primary-color;
+      border-radius: 8px;
+      border: 1px solid $tint-color;
+      color: $tint-color;
+      cursor: pointer;
+      transition: all 150ms ease-out;
+
+      svg {
+        align-items: center;
+        display: flex;
+        justify-content: center;
+        width: 100%;
+      }
+
+      &:hover {
+        background-color: $tint-color;
+        color: $primary-color;
+      }
+
+      &:active {
+        transform: scale(0.9);
       }
     }
 
-    @media screen and (min-width: 768px) {
-      display: block;
-      margin: 0 28px;
-      min-width: auto;
+    &-text {
+      color: $secondary-color;
+      cursor: pointer;
+      font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande',
+        'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+      font-size: 20px;
+      font-weight: 700;
+      transition: all 150ms ease-out;
+
+      &:hover {
+        color: $tint-color;
+        text-decoration: underline;
+      }
+
+      &:active {
+        transform: scale(0.95);
+      }
+    }
+  }
+
+  &__desktop-nav {
+    align-items: center;
+    display: none;
+    gap: 0.25rem;
+
+    @media (min-width: 768px) {
+      display: flex;
     }
   }
 
   &__link {
-    align-items: center;
-    cursor: pointer;
-    display: flex;
-    font-size: 13px;
-    justify-content: center;
-    height: 40px;
-    overflow: hidden;
+    padding: 0.5rem 1rem;
     position: relative;
-    text-align: center;
-    text-transform: capitalize;
 
-    @media screen and (min-width: 768px) {
-      &:hover {
-        span:last-of-type {
-          color: $secondary-color !important;
-        }
-
-        &::before {
-          opacity: 1;
-          transform: translateY(0);
-        }
-      }
+    &:hover .header__link-label {
+      color: $secondary-color;
     }
 
-    span {
-      pointer-events: none;
-      transition: all 120ms ease-out;
-
-      &:first-of-type {
-        color: $tint-color;
-      }
-      &:last-of-type {
-        margin: 0 0 0 5px;
-        color: $secondary-color;
-      }
-    }
-
-    &::before {
-      border-top: solid 3px $tint-color;
-      border-bottom: dotted 2px $tint-color;
-      bottom: 0;
-      content: '';
-      height: 2px;
-      opacity: 0;
-      position: absolute;
-      width: 100%;
-      transform: translateY(100%);
-      transition: all 120ms ease-out;
+    &:hover .header__link-line {
+      transform: scaleX(1);
     }
   }
 
-  &__cv {
-    @include button;
-    & {
-      border: 4px solid $tint-secondary-color;
-      border-radius: 50%;
-      box-shadow: 0px 0px -0px -0px $tint-secondary-color;
-      color: $tint-secondary-color;
-      font-size: 14px;
-      height: 36px;
-      margin: 0 0 0 5px;
-      padding: 0;
-      transition: all 250ms ease-in-out;
-      width: 36px;
-    }
+  &__link-index {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+    margin-right: 0.25rem;
+  }
 
-    &--active {
-      box-shadow: 0px 0px 16px -2px $tint-secondary-color;
-    }
+  &__link-label {
+    color: $alt-color;
+    font-size: 0.875rem;
+    transition: color 200ms ease;
+  }
 
-    @media screen and (min-width: 375px) and (min-width: 425px) and (min-width: 768px) and (min-width: 1024px) {
-      padding: 0;
-    }
+  &__link-line {
+    background: $tint-color;
+    bottom: 0.25rem;
+    height: 1px;
+    left: 1rem;
+    position: absolute;
+    right: 1rem;
+    transform: scaleX(0);
+    transform-origin: left;
+    transition: transform 200ms ease;
+  }
 
-    @media screen and (min-width: 375px) {
-      margin: auto 0 auto 0 20px;
-      padding: 0;
-    }
-
-    @media screen and (min-width: 768px) {
-      box-shadow: 0px 2px 1px 0px $tint-color;
-      border: 1px solid $tint-color;
-      border-radius: 4px;
-      color: $tint-color;
-      height: calc(40px - 1 * 5px);
-      margin: auto 0 auto 20px;
-      padding: 0;
-      width: calc(40px - 1 * 5px);
-    }
+  &__connect {
+    border: 1px solid $tint-color;
+    border-radius: 6px;
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 0.875rem;
+    margin-left: 1rem;
+    padding: 0.5rem 1.25rem;
+    transition: all 200ms ease;
 
     &:hover {
-      transform: scale(1.125);
-      box-shadow: unset;
-      background-color: $tint-secondary-color;
+      background: rgba(100, 255, 218, 0.1);
+      box-shadow: 0 8px 20px -16px rgba(100, 255, 218, 0.8);
+    }
+  }
 
-      @media screen and (min-width: 768px) {
-        background-color: $tint-color;
-        box-shadow: 0px 2px 5px 0px $tint-color;
-      }
+  &__mobile-toggle {
+    color: $secondary-color;
+    display: inline-flex;
+    padding: 0.5rem;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__mobile-menu {
+    align-items: center;
+    backdrop-filter: blur(20px);
+    background: rgba(13, 27, 42, 0.98);
+    display: flex;
+    flex-direction: column;
+    inset: 0;
+    justify-content: center;
+    gap: 2rem;
+    position: fixed;
+    z-index: 40;
+
+    @media (min-width: 768px) {
+      display: none;
+    }
+  }
+
+  &__mobile-link {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    gap: 0.25rem;
+  }
+
+  &__mobile-index {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 0.75rem;
+  }
+
+  &__mobile-label {
+    color: $secondary-color;
+    font-size: 1.5rem;
+  }
+
+  &__mobile-connect {
+    border: 1px solid $tint-color;
+    border-radius: 6px;
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 1rem;
+    margin-top: 1rem;
+    padding: 0.75rem 2rem;
+
+    &:hover {
+      background: rgba(100, 255, 218, 0.1);
     }
   }
 }

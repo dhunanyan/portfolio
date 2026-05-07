@@ -7,7 +7,5 @@ export { Work } from './Work';
 export { Contact } from './Contact';
 export { Footer } from './Footer';
 export { NotFound } from './NotFound';
-export { Blog } from './Blog';
 export { PreviewBlogs } from './PreviewBlogs';
-export { CodeSnippet } from './CodeSnippet';
 export { CommitsHeatmap } from './CommitsHeatmap';
