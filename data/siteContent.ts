@@ -385,7 +385,7 @@ export const workContent = {
       github: 'https://github.com/dhunanyan/scss-to-css-converter',
       live: 'https://scss2css.dhunanyan.com',
       npm: 'https://www.npmjs.com/package/@dhunanyan/scss-to-css-converter',
-      accent: '#7c3aed',
+      accent: '#06b2f1',
     },
   ],
 };
@@ -415,7 +415,9 @@ export const contactContent = {
 };
 
 export const footerContent = {
-  creditPrefix: 'Designed & Built by',
+  creditPrefix: 'Designed & Built with',
+  icon: '♥',
+  by: 'by',
   creditName: 'dhunanyan',
-  allRights: 'All rights reserved',
+  allRights: 'Davit Hunanyan. All rights reserved',
 };

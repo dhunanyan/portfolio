@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView, AnimatePresence } from 'motion/react';
-import { Github, ExternalLink, ArrowRight } from 'lucide-react';
+import { Github, ExternalLink, ArrowRight, Npm } from '@components/icons';
 import Image from 'next/image';
 import { commonContent, workContent } from '@data';
 
@@ -79,7 +79,9 @@ export const Work = () => {
                     <p className="work__item-title">{project.title}</p>
                     <p className="work__item-subtitle">{project.subtitle}</p>
                   </div>
-                  <ArrowRight size={14} className="work__item-arrow" />
+                  <span className="work__item-arrow">
+                    <ArrowRight size={14} />
+                  </span>
                 </div>
                 <div className="work__item-tags">
                   {project.tags.slice(0, 3).map((tag) => (
@@ -118,9 +120,9 @@ export const Work = () => {
                 <div className="work__media-badges">
                   <span
                     style={{
-                      background: `${active.accent}20`,
-                      borderColor: `${active.accent}40`,
-                      color: active.accent,
+                      background: `${active.accent}ff`,
+                      borderColor: `${active.accent}90`,
+                      color: 'white',
                     }}
                   >
                     {active.subtitle}
@@ -135,7 +137,7 @@ export const Work = () => {
                       rel="noreferrer"
                       onClick={(e) => e.stopPropagation()}
                     >
-                      <Github size={16} />
+                      <Npm size={16} />
                     </a>
                   )}
                   {active.github && (
@@ -192,7 +194,9 @@ export const Work = () => {
           <a href={commonContent.githubUrl} target="_blank" rel="noreferrer">
             <Github size={16} />
             <span>{workContent.githubCtaLabel}</span>
-            <ArrowRight size={14} className="work__github-cta-arrow" />
+            <span className="work__github-cta-arrow">
+              <ArrowRight size={14} />
+            </span>
           </a>
         </motion.div>
       </div>

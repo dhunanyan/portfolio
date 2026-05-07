@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from 'lucide-react';
+import { Menu, X } from '@components/icons';
 import { headerContent } from '@data';
 
 import './styles.scss';

@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'motion/react';
-import { ArrowDown, ExternalLink, Github, Linkedin } from 'lucide-react';
+import { ArrowDown, ExternalLink, Github, Linkedin } from '@components/icons';
 import { commonContent, welcomeContent } from '@data';
 
 import './styles.scss';
@@ -238,7 +238,9 @@ export const Welcome = ({ data }: WelcomePropsType) => {
             <span className="welcome__button-label">
               {welcomeContent.primaryCta}
             </span>
-            <ExternalLink size={14} className="welcome__button-icon" />
+            <span className="welcome__button-icon">
+              <ExternalLink size={14} />
+            </span>
           </a>
           <a
             href="#work"

@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Mail, Github, Linkedin, Send, CheckCircle } from 'lucide-react';
+import { Mail, Github, Linkedin, Send, CheckCircle } from '@components/icons';
 import { commonContent, contactContent } from '@data';
 
 import './styles.scss';

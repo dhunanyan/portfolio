@@ -20,7 +20,6 @@
     "@contentful/rich-text-types": "^17.0.0",
     "contentful": "^11.2.0",
     "highlight.js": "^11.10.0",
-    "lucide-react": "0.487.0",
     "motion": "^12.38.0",
     "next": "16.2.5",
     "prismjs": "^1.29.0",

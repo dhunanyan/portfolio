@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'motion/react';
-import { Github, Linkedin, Mail } from 'lucide-react';
+import { Github, Linkedin, Mail } from '@components/icons';
 import { commonContent, footerContent } from '@data';
 
 import './styles.scss';
@@ -11,18 +11,10 @@ export const Footer = () => {
     <footer className="footer">
       <div className="footer__container">
         <div className="footer__socials">
-          <a
-            href={commonContent.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={commonContent.githubUrl} target="_blank" rel="noreferrer">
             <Github size={18} />
           </a>
-          <a
-            href={commonContent.linkedinUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
+          <a href={commonContent.linkedinUrl} target="_blank" rel="noreferrer">
             <Linkedin size={18} />
           </a>
           <a href={`mailto:${commonContent.email}`}>
@@ -35,12 +27,10 @@ export const Footer = () => {
           whileInView={{ opacity: 1 }}
           className="footer__credit"
         >
-          {footerContent.creditPrefix}{' '}
-          <a
-            href={commonContent.githubUrl}
-            target="_blank"
-            rel="noreferrer"
-          >
+          {footerContent.creditPrefix}
+          <span>{footerContent.icon}</span>
+          {footerContent.by}
+          <a href={commonContent.githubUrl} target="_blank" rel="noreferrer">
             {footerContent.creditName}
           </a>
         </motion.p>

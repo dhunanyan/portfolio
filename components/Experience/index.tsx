@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Briefcase, GraduationCap, Calendar, ExternalLink } from 'lucide-react';
+import { Briefcase, GraduationCap, Calendar, ExternalLink } from '@components/icons';
 import { experienceContent } from '@data';
 
 import './styles.scss';
@@ -78,12 +78,13 @@ export const Experience = ({ data }: ExperiencePropsType) => {
               >
                 <div className="experience__list-head">
                   {item.type === 'work' ? (
-                    <Briefcase size={12} className="experience__list-icon" />
+                    <span className="experience__list-icon">
+                      <Briefcase size={12} />
+                    </span>
                   ) : (
-                    <GraduationCap
-                      size={12}
-                      className="experience__list-icon"
-                    />
+                    <span className="experience__list-icon">
+                      <GraduationCap size={12} />
+                    </span>
                   )}
                   <span className="experience__list-company">
                     {item.type === 'work' ? item.company : item.institution}

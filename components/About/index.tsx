@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Github, Linkedin, FileText } from 'lucide-react';
+import { Github, Linkedin, FileText } from '@components/icons';
 import Image from 'next/image';
 import { aboutContent, commonContent } from '@data';
 
