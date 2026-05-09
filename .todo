@@ -1,6 +1,3 @@
-- add proper metadata
-- add single export Icon.MyIconName instead of import {MyIconName}
-- commit heatmap
 - fix header issue when realod the page
 - remove motion
 - remove redundant utils or components

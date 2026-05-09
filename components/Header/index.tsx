@@ -1,11 +1,10 @@
 'use client';
 import * as React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
-import { Menu, X } from '@components/icons';
+import { Icons } from '@components/icons';
 import { headerContent } from '@data';
 
 import './styles.scss';
-import { Icons } from '@components/icons';
 
 export const Header = () => {
   const [scrolled, setScrolled] = React.useState(false);
@@ -77,7 +76,7 @@ export const Header = () => {
             onClick={() => setMobileOpen(!mobileOpen)}
             aria-label="Toggle menu"
           >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
+            {mobileOpen ? <Icons.X size={22} /> : <Icons.Menu size={22} />}
           </button>
         </div>
       </motion.nav>

@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Github, Linkedin, FileText } from '@components/icons';
+import { Icons } from '@components/icons';
 import Image from 'next/image';
 import { aboutContent, commonContent } from '@data';
 
@@ -66,7 +66,7 @@ export const About = ({ data }: AboutPropsType) => {
                 rel="noreferrer"
                 className="about__action"
               >
-                <Github size={15} />
+                <Icons.Github size={15} />
                 {aboutContent.actions.github}
               </a>
               <a
@@ -75,7 +75,7 @@ export const About = ({ data }: AboutPropsType) => {
                 rel="noreferrer"
                 className="about__action"
               >
-                <Linkedin size={15} />
+                <Icons.Linkedin size={15} />
                 {aboutContent.actions.linkedin}
               </a>
               <a
@@ -83,7 +83,7 @@ export const About = ({ data }: AboutPropsType) => {
                 target="_blank"
                 className="about__action about__action--cv"
               >
-                <FileText size={15} />
+                <Icons.FileText size={15} />
                 {aboutContent.actions.cv}
               </a>
             </motion.div>

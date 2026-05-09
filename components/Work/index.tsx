@@ -1,16 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView, AnimatePresence } from 'motion/react';
-import {
-  Github,
-  ExternalLink,
-  ArrowRight,
-  Npm,
-  Ovsx,
-  Box,
-  Docs,
-  Vscm,
-} from '@components/icons';
+import { Icons } from '@components/icons';
 import Image from 'next/image';
 import { commonContent, workContent } from '@data';
 
@@ -123,7 +114,7 @@ export const Work = () => {
                       <p className="work__item-subtitle">{project.subtitle}</p>
                     </div>
                     <span className="work__item-arrow">
-                      <ArrowRight size={14} />
+                      <Icons.ArrowRight size={14} />
                     </span>
                   </div>
                   <div className="work__item-tags">
@@ -180,7 +171,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Npm size={16} />
+                        <Icons.Npm size={16} />
                       </a>
                     )}
                     {active.ovsx && (
@@ -190,7 +181,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Ovsx size={16} />
+                        <Icons.Ovsx size={16} />
                       </a>
                     )}
                     {active.vscm && (
@@ -200,7 +191,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Vscm size={16} />
+                        <Icons.Vscm size={16} />
                       </a>
                     )}
                     {active.docs && (
@@ -210,7 +201,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Docs size={16} />
+                        <Icons.Docs size={16} />
                       </a>
                     )}
                     {active.ghPackages && (
@@ -220,7 +211,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Box size={16} />
+                        <Icons.Box size={16} />
                       </a>
                     )}
                     {active.github && (
@@ -230,7 +221,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <Github size={16} />
+                        <Icons.Github size={16} />
                       </a>
                     )}
                     {active.live && (
@@ -240,7 +231,7 @@ export const Work = () => {
                         rel="noreferrer"
                         onClick={(e) => e.stopPropagation()}
                       >
-                        <ExternalLink size={16} />
+                        <Icons.ExternalLink size={16} />
                       </a>
                     )}
                   </div>
@@ -278,10 +269,10 @@ export const Work = () => {
           className="work__github-cta"
         >
           <a href={commonContent.githubUrl} target="_blank" rel="noreferrer">
-            <Github size={16} />
+            <Icons.Github size={16} />
             <span>{workContent.githubCtaLabel}</span>
             <span className="work__github-cta-arrow">
-              <ArrowRight size={14} />
+              <Icons.ArrowRight size={14} />
             </span>
           </a>
         </motion.div>

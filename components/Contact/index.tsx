@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Mail, Github, Linkedin, Send, CheckCircle } from '@components/icons';
+import { Icons } from '@components/icons';
 import { commonContent, contactContent } from '@data';
 
 import './styles.scss';
@@ -58,7 +58,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                 className="contact__mail-link"
               >
                 <div className="contact__mail-icon">
-                  <Mail size={16} />
+                  <Icons.Mail size={16} />
                 </div>
                 <span>{commonContent.email}</span>
               </a>
@@ -70,7 +70,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Github size={18} />
+                <Icons.Github size={18} />
                 {contactContent.socialLabels.github}
               </a>
               <a
@@ -78,7 +78,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                 target="_blank"
                 rel="noreferrer"
               >
-                <Linkedin size={18} />
+                <Icons.Linkedin size={18} />
                 {contactContent.socialLabels.linkedin}
               </a>
             </div>
@@ -99,7 +99,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                   className="contact__success"
                 >
                   <div className="contact__success-icon">
-                    <CheckCircle size={28} />
+                    <Icons.CheckCircle size={28} />
                   </div>
                   <h4>{contactContent.successTitle}</h4>
                   <p>{contactContent.successDescription}</p>
@@ -155,7 +155,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
                   >
-                    <Send size={15} />
+                    <Icons.Send size={15} />
                     {contactContent.form.submitLabel}
                   </motion.button>
                 </form>

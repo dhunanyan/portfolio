@@ -8,7 +8,7 @@ import {
   gitlabPersonalHeatmap,
   gitlabWorkHeatmap,
 } from '@data';
-import { Activity, Calendar } from '@components/icons';
+import { Icons } from '@components/icons';
 import { CommitsHeatmap } from '@components/CommitsHeatmap';
 
 import './styles.scss';
@@ -135,13 +135,13 @@ export const Commitment = () => {
               <p className="commitment__panel-title">Contribution Overview</p>
               <p className="commitment__panel-subtitle">
                 <span className="commitment__panel-subline">
-                  <Activity size={13} />
+                  <Icons.Activity size={13} />
                   <span>
                     <strong>Source:</strong> {activeTab}
                   </span>
                 </span>
                 <span className="commitment__panel-subline">
-                  <Calendar size={13} />
+                  <Icons.Calendar size={13} />
                   <span>
                     <strong>Year:</strong> {activeYear}
                   </span>

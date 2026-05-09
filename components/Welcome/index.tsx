@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'motion/react';
-import { ArrowDown, ExternalLink, Github, Linkedin } from '@components/icons';
+import { Icons } from '@components/icons';
 import { commonContent, welcomeContent } from '@data';
 
 import './styles.scss';
@@ -150,7 +150,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           rel="noreferrer"
           className="welcome__rail-link"
         >
-          <Github size={20} />
+          <Icons.Github size={20} />
         </a>
         <a
           href={commonContent.linkedinUrl}
@@ -158,7 +158,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           rel="noreferrer"
           className="welcome__rail-link"
         >
-          <Linkedin size={20} />
+          <Icons.Linkedin size={20} />
         </a>
         <div className="welcome__rail-line" />
       </motion.div>
@@ -239,7 +239,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
               {welcomeContent.primaryCta}
             </span>
             <span className="welcome__button-icon">
-              <ExternalLink size={14} />
+              <Icons.ExternalLink size={14} />
             </span>
           </a>
           <a
@@ -269,7 +269,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           animate={{ y: [0, 6, 0] }}
           transition={{ repeat: Infinity, duration: 1.5, ease: 'easeInOut' }}
         >
-          <ArrowDown size={16} />
+          <Icons.ArrowDown size={16} />
         </motion.div>
       </motion.button>
     </section>

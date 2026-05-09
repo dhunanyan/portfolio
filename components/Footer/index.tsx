@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion } from 'motion/react';
-import { Github, Linkedin, Mail } from '@components/icons';
+import { Icons } from '@components/icons';
 import { commonContent, footerContent } from '@data';
 
 import './styles.scss';
@@ -12,13 +12,13 @@ export const Footer = () => {
       <div className="footer__container">
         <div className="footer__socials">
           <a href={commonContent.githubUrl} target="_blank" rel="noreferrer">
-            <Github size={18} />
+            <Icons.Github size={18} />
           </a>
           <a href={commonContent.linkedinUrl} target="_blank" rel="noreferrer">
-            <Linkedin size={18} />
+            <Icons.Linkedin size={18} />
           </a>
           <a href={`mailto:${commonContent.email}`}>
-            <Mail size={18} />
+            <Icons.Mail size={18} />
           </a>
         </div>
 

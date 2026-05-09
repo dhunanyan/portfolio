@@ -1,7 +1,7 @@
 'use client';
 import * as React from 'react';
 import { motion, useInView } from 'motion/react';
-import { Briefcase, GraduationCap, Calendar, ExternalLink } from '@components/icons';
+import { Icons } from '@components/icons';
 import { experienceContent } from '@data';
 
 import './styles.scss';
@@ -55,8 +55,8 @@ export const Experience = ({ data }: ExperiencePropsType) => {
               onClick={() => setActiveTab(tab)}
               className={`experience__tab ${activeTab === tab ? 'experience__tab--active' : ''}`}
             >
-              {tab === 'work' && <Briefcase size={13} />}
-              {tab === 'education' && <GraduationCap size={13} />}
+              {tab === 'work' && <Icons.Briefcase size={13} />}
+              {tab === 'education' && <Icons.GraduationCap size={13} />}
               {tab}
             </button>
           ))}
@@ -79,11 +79,11 @@ export const Experience = ({ data }: ExperiencePropsType) => {
                 <div className="experience__list-head">
                   {item.type === 'work' ? (
                     <span className="experience__list-icon">
-                      <Briefcase size={12} />
+                      <Icons.Briefcase size={12} />
                     </span>
                   ) : (
                     <span className="experience__list-icon">
-                      <GraduationCap size={12} />
+                      <Icons.GraduationCap size={12} />
                     </span>
                   )}
                   <span className="experience__list-company">
@@ -121,7 +121,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
                           rel="noreferrer"
                         >
                           {activeItem.company}
-                          <ExternalLink size={13} />
+                          <Icons.ExternalLink size={13} />
                         </a>
                       </span>
                     )}
@@ -138,7 +138,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
                   )}
                 </div>
                 <div className="experience__card-period">
-                  <Calendar size={13} />
+                  <Icons.Calendar size={13} />
                   <span>{activeItem.period}</span>
                 </div>
               </div>
