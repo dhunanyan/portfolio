@@ -19,6 +19,7 @@ import {
   Box,
   Docs,
   Vscm,
+  Activity,
 } from './Lucide';
 
 export const Icons = {
@@ -42,6 +43,7 @@ export const Icons = {
   Box,
   Docs,
   Vscm,
+  Activity,
 };
 
 export {
@@ -65,4 +67,5 @@ export {
   Box,
   Docs,
   Vscm,
+  Activity,
 };

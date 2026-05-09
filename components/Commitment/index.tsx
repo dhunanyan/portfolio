@@ -5,12 +5,10 @@ import { motion, useInView } from 'motion/react';
 import {
   commitmentContent,
   githubHeatmap,
-  githubHeatmapPeriod,
   gitlabPersonalHeatmap,
-  gitlabPersonalHeatmapPeriod,
   gitlabWorkHeatmap,
-  gitlabWorkHeatmapPeriod,
 } from '@data';
+import { Activity, Calendar } from '@components/icons';
 import { CommitsHeatmap } from '@components/CommitsHeatmap';
 
 import './styles.scss';
@@ -22,6 +20,66 @@ export const Commitment = () => {
   const inView = useInView(ref, { once: true, margin: '-80px' });
   const [activeTab, setActiveTab] =
     React.useState<CommitmentTab>('gitlab-work');
+
+  const dataByTab = React.useMemo(
+    () => ({
+      github: githubHeatmap,
+      'gitlab-work': gitlabWorkHeatmap,
+      'gitlab-personal': gitlabPersonalHeatmap,
+    }),
+    []
+  );
+
+  const yearsByTab = React.useMemo(() => {
+    const entries = Object.entries(dataByTab).map(([tab, items]) => {
+      const years = Array.from(
+        new Set(items.map((item) => Number(item.date.slice(0, 4))))
+      ).sort((a, b) => b - a);
+      return [tab, years];
+    });
+
+    return Object.fromEntries(entries) as Record<CommitmentTab, number[]>;
+  }, [dataByTab]);
+
+  const [selectedYearByTab, setSelectedYearByTab] = React.useState<
+    Record<CommitmentTab, number>
+  >({
+    github: yearsByTab.github[0],
+    'gitlab-work': yearsByTab['gitlab-work'][0],
+    'gitlab-personal': yearsByTab['gitlab-personal'][0],
+  });
+
+  const activeYear = selectedYearByTab[activeTab];
+  const activeData = dataByTab[activeTab];
+  const filteredData = React.useMemo(() => {
+    const commitsByDate = new Map(
+      activeData
+        .filter((item) => item.date.startsWith(String(activeYear)))
+        .map((item) => [item.date, item.commits])
+    );
+
+    const yearDays: { date: string; commits: number }[] = [];
+    const start = new Date(Date.UTC(activeYear, 0, 1));
+    const end = new Date(Date.UTC(activeYear, 11, 31));
+
+    for (
+      let day = new Date(start);
+      day <= end;
+      day.setUTCDate(day.getUTCDate() + 1)
+    ) {
+      const date = day.toISOString().split('T')[0];
+      yearDays.push({
+        date,
+        commits: commitsByDate.get(date) ?? 0,
+      });
+    }
+
+    return yearDays;
+  }, [activeData, activeYear]);
+  const yearTotal = React.useMemo(
+    () => filteredData.reduce((sum, item) => sum + item.commits, 0),
+    [filteredData]
+  );
 
   return (
     <section id="commitment" ref={ref} className="commitment">
@@ -72,37 +130,72 @@ export const Commitment = () => {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="commitment__panel"
         >
-          {activeTab === 'gitlab-work' && (
-            <>
-              <div className="commitment__subsection-row">
-                <span className="commitment__subsection">
-                  {gitlabWorkHeatmapPeriod}
+          <div className="commitment__panel-header">
+            <div className="commitment__panel-heading">
+              <p className="commitment__panel-title">Contribution Overview</p>
+              <p className="commitment__panel-subtitle">
+                <span className="commitment__panel-subline">
+                  <Activity size={13} />
+                  <span>
+                    <strong>Source:</strong> {activeTab}
+                  </span>
                 </span>
-              </div>
-              <CommitsHeatmap data={gitlabWorkHeatmap} />
-            </>
-          )}
+                <span className="commitment__panel-subline">
+                  <Calendar size={13} />
+                  <span>
+                    <strong>Year:</strong> {activeYear}
+                  </span>
+                </span>
+              </p>
+            </div>
+            <div className="commitment__panel-metric">
+              <span className="commitment__panel-metric-value">
+                {yearTotal}
+              </span>
+              <span className="commitment__panel-metric-label">
+                contributions
+              </span>
+            </div>
+          </div>
 
-          {activeTab === 'github' && (
-            <>
-              <div className="commitment__subsection-row">
-                <span className="commitment__subsection">
-                  {githubHeatmapPeriod}
-                </span>
-              </div>
-              <CommitsHeatmap data={githubHeatmap} />
-            </>
-          )}
+          <div className="commitment__panel-layout">
+            <div className="commitment__main">
+              <CommitsHeatmap data={filteredData} />
+            </div>
 
-          {activeTab === 'gitlab-personal' && (
-            <>
-              <div className="commitment__subsection-row">
-                <span className="commitment__subsection">
-                  {gitlabPersonalHeatmapPeriod}
-                </span>
-              </div>
-              <CommitsHeatmap data={gitlabPersonalHeatmap} />
-            </>
+            <div className="commitment__years">
+              <p className="commitment__years-label">Choose year</p>
+              <ul>
+                {yearsByTab[activeTab].map((year) => (
+                  <li key={`${activeTab}-${year}`}>
+                    <button
+                      onClick={() =>
+                        setSelectedYearByTab((prev) => ({
+                          ...prev,
+                          [activeTab]: year,
+                        }))
+                      }
+                      className={`commitment__year ${year === activeYear ? 'commitment__year--active' : ''}`}
+                    >
+                      {year}
+                    </button>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </div>
+
+          {filteredData.length === 0 && activeTab === 'github' && (
+            <div className="commitment__empty">
+              <h3>{commitmentContent.empty.github.title}</h3>
+              <p>{commitmentContent.empty.github.description}</p>
+            </div>
+          )}
+          {filteredData.length === 0 && activeTab === 'gitlab-personal' && (
+            <div className="commitment__empty">
+              <h3>{commitmentContent.empty.gitlabPersonal.title}</h3>
+              <p>{commitmentContent.empty.gitlabPersonal.description}</p>
+            </div>
           )}
         </motion.div>
       </div>

@@ -71,6 +71,8 @@ export const CommitsHeatmap = ({ data }: CommitsHeatmapPropsType) => {
   }
 
   const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+  const todayDate = new Date();
+  const today = `${todayDate.getUTCFullYear()}-${String(todayDate.getUTCMonth() + 1).padStart(2, '0')}-${String(todayDate.getUTCDate()).padStart(2, '0')}`;
 
   const handleMouseEnter = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -105,18 +107,23 @@ export const CommitsHeatmap = ({ data }: CommitsHeatmapPropsType) => {
         <div className="heatmap__container">
           {weeks.map((week, wi) => (
             <div key={wi} className="heatmap__week">
-              {week.map((day, di) => (
+              {week.map((day, di) => {
+                const isFuture = Boolean(day && day.date > today);
+                const isInteractive = Boolean(day && !isFuture);
+
+                return (
                 <div
                   key={di}
                   className={`heatmap__square heatmap__square--${getColorClass(
                     day?.commits ?? 0
-                  )}`}
+                  )} ${isFuture ? 'heatmap__square--future' : ''}`}
                   onMouseEnter={(e) => {
-                    if (day) handleMouseEnter(e, day);
+                    if (isInteractive && day) handleMouseEnter(e, day);
                   }}
                   onMouseLeave={handleMouseLeave}
                 />
-              ))}
+                );
+              })}
             </div>
           ))}
         </div>

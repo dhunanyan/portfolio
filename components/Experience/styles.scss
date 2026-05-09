@@ -79,8 +79,13 @@
   }
 
   &__tab--active {
-    background: $tint-color;
+    background-color: $tint-color;
     color: #0a0f1e;
+
+    &:hover {
+      background-color: rgba($tint-color, 0.8);
+      color: #0a0f1e;
+    }
   }
 
   &__layout {

@@ -141,6 +141,15 @@ export const ArrowRight = ({
   </svg>
 );
 
+export const Activity = ({
+  size = 24,
+  color = 'currentColor',
+}: IconPropsType) => (
+  <svg {...baseProps(size, color)}>
+    <path d="M22 12h-4l-3 9-5-18-3 9H2" />
+  </svg>
+);
+
 export const Npm = ({ size = 128, color = 'currentColor' }: IconPropsType) => (
   <svg height={size} width={size} viewBox="0 0 128 128">
     <path

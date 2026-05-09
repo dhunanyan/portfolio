@@ -2,6 +2,10 @@
 - add single export Icon.MyIconName instead of import {MyIconName}
 - commit heatmap
 - fix header issue when realod the page
+- remove motion
+- remove redundant utils or components
+- refactor to reuse utils
+- form box for contact
 - fix the issues when click on the CV and come back to prev page
 - create common function for onClick={(event) => {
   event.preventDefault();
