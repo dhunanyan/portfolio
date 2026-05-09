@@ -30,14 +30,12 @@ This portfolio site is built with Next.js, a powerful React framework for buildi
 - **Fast & Responsive**: Built with modern web standards for a smooth and responsive experience across devices.
 - **SEO Optimized**: Utilizing Next.js SEO features to ensure the portfolio stands out on search engines.
 - **Dynamic Routing**: Each project and experience section dynamically routes to a detailed page.
-- **API-Driven Content**: Project details, blogs, and experience info fetched using server-side rendered data fetching from [**Contentful**](https://www.contentful.com 'Contentful').
 - **Styled Components**: Elegant UI, with styled-components providing a maintainable and component-based CSS structure.
 
 ## 🖥️ Tech Stack
 
 - **Framework**: [Next.js](https://nextjs.org 'Next.js') (React)
 - **Styling** / **Animations**: [SASS](https://sass-lang.com 'SASS')
-- **Content**: [Contentful](https://www.contentful.com 'Contentful')
 - **TypeScript** ✔️
 - **ESLint** ✔️
 - **Prettier** ✔️

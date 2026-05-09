@@ -1,5 +1,14 @@
 - add proper metadata
-- change the github icon to npm in the projects section
+- add single export Icon.MyIconName instead of import {MyIconName}
+- commit heatmap
+- fix header issue when realod the page
+- fix the issues when click on the CV and come back to prev page
+- create common function for onClick={(event) => {
+  event.preventDefault();
+  document
+  .querySelector('#contact')
+  ?.scrollIntoView({ behavior: 'smooth' });
+  }}
 
 BLOG:
 This is great.

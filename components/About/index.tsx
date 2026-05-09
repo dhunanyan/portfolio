@@ -49,12 +49,10 @@ export const About = ({ data }: AboutPropsType) => {
             <p>
               My goal is to always build apps that are visually beautiful,
               accessible, and highly performant. I&apos;m currently working as a{' '}
-              <strong>{aboutContent.paragraphHighlights.role}</strong>
-              , where I bring ideas to life through clean, efficient code.
+              <strong>{aboutContent.paragraphHighlights.role}</strong>, where I
+              bring ideas to life through clean, efficient code.
             </p>
-            <p>
-              {aboutContent.paragraphs[2]}
-            </p>
+            <p>{aboutContent.paragraphs[2]}</p>
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
@@ -82,6 +80,7 @@ export const About = ({ data }: AboutPropsType) => {
               </a>
               <a
                 href={commonContent.cvUrl}
+                target="_blank"
                 className="about__action about__action--cv"
               >
                 <FileText size={15} />

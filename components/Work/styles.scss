@@ -7,7 +7,12 @@
   position: relative;
 
   &__top-line {
-    background: linear-gradient(to right, transparent, rgba(100, 255, 218, 0.2), transparent);
+    background: linear-gradient(
+      to right,
+      transparent,
+      rgba(100, 255, 218, 0.2),
+      transparent
+    );
     height: 1px;
     inset: 0 0 auto;
     position: absolute;
@@ -48,45 +53,68 @@
   &__intro {
     color: $alt-color;
     font-size: 0.95rem;
-    margin: 0 0 4rem;
+    margin: 0 0 2rem;
     max-width: 40rem;
   }
 
-  &__featured {
-    margin-bottom: 1.5rem;
+  &__tabs {
+    display: flex;
+    gap: 0.65rem;
+    margin-bottom: 1.2rem;
+  }
 
-    span {
+  &__tab {
+    background: rgba(13, 27, 42, 0.55);
+    border: 1px solid #1e3a5f;
+    border-radius: 9999px;
+    color: #9fb3c8;
+    cursor: pointer;
+    font-family: $font-sans;
+    font-size: 0.72rem;
+    font-weight: 600;
+    letter-spacing: 0.03em;
+    padding: 0.45rem 0.85rem;
+    text-transform: uppercase;
+    transition: all 180ms ease;
+
+    &:hover {
+      border-color: rgba(100, 255, 218, 0.5);
+      color: rgba(226, 236, 255, 0.95);
+    }
+
+    &--active {
+      background: rgba(100, 255, 218, 0.12);
+      border-color: rgba(100, 255, 218, 0.6);
       color: $tint-color;
-      font-family: $font-mono;
-      font-size: 0.75rem;
-      letter-spacing: 0.2em;
-      text-transform: uppercase;
     }
   }
 
   &__layout {
     display: grid;
-    gap: 2rem;
+    gap: 10px;
 
     @media (min-width: 1024px) {
-      grid-template-columns: 280px 1fr;
+      grid-template-columns: 300px 1fr;
     }
   }
 
   &__list {
     display: flex;
     flex-direction: column;
-    gap: 0.75rem;
+    gap: 0.55rem;
+    max-height: 600px;
+    overflow-y: auto;
+    padding-right: 20px;
   }
 
   &__item {
     background: rgba(13, 27, 42, 0.5);
     border: 1px solid #1e3a5f;
-    border-radius: 12px;
-    padding: 1rem;
+    border-radius: 10px;
+    padding: 0.75rem 0.75rem 0.65rem;
     position: relative;
     text-align: left;
-    transition: all 300ms ease;
+    transition: all 220ms ease;
 
     &:hover {
       background: rgba(17, 34, 64, 0.5);
@@ -101,7 +129,7 @@
 
   &__item-active-bg {
     background: rgba(100, 255, 218, 0.03);
-    border-radius: 12px;
+    border-radius: 10px;
     inset: 0;
     position: absolute;
   }
@@ -115,15 +143,15 @@
   &__item-head {
     align-items: start;
     display: flex;
+    gap: 0.45rem;
     justify-content: space-between;
-    gap: 0.5rem;
   }
 
   &__item-title {
     color: rgba(226, 236, 255, 0.9);
-    font-size: 0.9rem;
-    font-weight: 500;
-    margin: 0 0 0.2rem;
+    font-size: 0.82rem;
+    font-weight: 600;
+    margin: 0 0 0.12rem;
   }
 
   &__item--active &__item-title {
@@ -133,13 +161,13 @@
   &__item-subtitle {
     color: #4a5568;
     font-family: $font-mono;
-    font-size: 0.72rem;
+    font-size: 0.66rem;
     margin: 0;
   }
 
   &__item-arrow {
     color: #4a5568;
-    margin-top: 0.25rem;
+    margin-top: 0.15rem;
     transition: all 200ms ease;
   }
 
@@ -156,16 +184,16 @@
   &__item-tags {
     display: flex;
     flex-wrap: wrap;
-    gap: 0.35rem;
-    margin-top: 0.75rem;
+    gap: 0.3rem;
+    margin-top: 0.55rem;
 
     span {
       background: #0a0f1e;
       border-radius: 4px;
       color: #4a5568;
       font-family: $font-mono;
-      font-size: 0.62rem;
-      padding: 0.2rem 0.45rem;
+      font-size: 0.6rem;
+      padding: 0.16rem 0.4rem;
     }
   }
 
@@ -177,12 +205,12 @@
   }
 
   &__media {
-    height: 18rem;
+    height: 400px;
     overflow: hidden;
     position: relative;
 
     @media (max-width: 767px) {
-      height: 14rem;
+      height: 300px;
     }
   }
 
@@ -199,7 +227,12 @@
   }
 
   &__media-gradient {
-    background: linear-gradient(to bottom, transparent, rgba(17, 34, 64, 0.2), #112240);
+    background: linear-gradient(
+      to bottom,
+      transparent,
+      rgba(17, 34, 64, 0.2),
+      #112240
+    );
   }
 
   &__media-accent {
@@ -277,8 +310,19 @@
     }
   }
 
+  &__empty {
+    border: 1px dashed #2d4669;
+    border-radius: 12px;
+    color: #9fb3c8;
+    font-family: $font-mono;
+    font-size: 0.8rem;
+    margin-top: 1rem;
+    padding: 1rem;
+    text-align: center;
+  }
+
   &__github-cta {
-    margin-top: 4rem;
+    margin-top: 3rem;
     text-align: center;
 
     a {

@@ -149,3 +149,48 @@ export const Npm = ({ size = 128, color = 'currentColor' }: IconPropsType) => (
     />
   </svg>
 );
+
+export const Ovsx = ({ size = 24, color = 'currentColor' }: IconPropsType) => (
+  <svg height={size} width={size} viewBox="0 0 131 131">
+    <path
+      d="M30 44.2L52.6 5H7.3zM4.6 88.5h45.3L27.2 49.4zm51 0l22.6 39.2 22.6-39.2z"
+      fill={color}
+    />
+    <path
+      d="M52.6 5L30 44.2h45.2zM27.2 49.4l22.7 39.1 22.6-39.1zm51 0L55.6 88.5h45.2z"
+      fill={color}
+    />
+  </svg>
+);
+
+export const Vscm = ({ size = 24, color = 'currentColor' }: IconPropsType) => (
+  <svg
+    stroke={color}
+    fill={color}
+    strokeWidth="0"
+    viewBox="0 0 16 16"
+    height={size}
+    width={size}
+  >
+    <path d="M10.8634 13.9195C10.6568 14.0195 10.4233 14.0246 10.2185 13.9444C10.1162 13.9044 10.021 13.843 9.93997 13.7614L4.81616 9.06268L2.58433 10.7656C2.37657 10.9241 2.08597 10.9111 1.89301 10.7347L1.17719 10.0802C0.941168 9.86437 0.940898 9.49112 1.17661 9.27496L3.11213 7.5L1.17661 5.72504C0.940898 5.50888 0.941168 5.13563 1.17719 4.91982L1.89301 4.2653C2.08597 4.08887 2.37657 4.07588 2.58433 4.2344L4.81616 5.93732L9.93997 1.23855C9.97037 1.20797 10.0028 1.18023 10.0368 1.15538C10.2748 0.981429 10.5922 0.949298 10.8634 1.08048L13.5399 2.37507C13.8212 2.5111 14 2.79721 14 3.11109V8H10.752V4.53356L6.86419 7.5L10.752 10.4664V8H14V11.8889C14 12.2028 13.8211 12.4889 13.5399 12.625L10.8634 13.9195Z"></path>
+  </svg>
+);
+
+export const Docs = ({ size = 24, color = 'currentColor' }: IconPropsType) => (
+  <svg {...baseProps(size, color)}>
+    <path d="M12 7v14" />
+    <path d="M16 12h2" />
+    <path d="M16 8h2" />
+    <path d="M3 18a1 1 0 0 1-1-1V4a1 1 0 0 1 1-1h5a4 4 0 0 1 4 4 4 4 0 0 1 4-4h5a1 1 0 0 1 1 1v13a1 1 0 0 1-1 1h-6a3 3 0 0 0-3 3 3 3 0 0 0-3-3z" />
+    <path d="M6 12h2" />
+    <path d="M6 8h2" />
+  </svg>
+);
+
+export const Box = ({ size = 24, color = 'currentColor' }: IconPropsType) => (
+  <svg {...baseProps(size, color)}>
+    <path d="M21 8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16Z" />
+    <path d="m3.3 7 8.7 5 8.7-5" />
+    <path d="M12 22V12" />
+  </svg>
+);

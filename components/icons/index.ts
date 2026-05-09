@@ -15,6 +15,10 @@ import {
   ArrowDown,
   ArrowRight,
   Npm,
+  Ovsx,
+  Box,
+  Docs,
+  Vscm,
 } from './Lucide';
 
 export const Icons = {
@@ -34,6 +38,10 @@ export const Icons = {
   ArrowDown,
   ArrowRight,
   Npm,
+  Ovsx,
+  Box,
+  Docs,
+  Vscm,
 };
 
 export {
@@ -53,4 +61,8 @@ export {
   ArrowDown,
   ArrowRight,
   Npm,
+  Ovsx,
+  Box,
+  Docs,
+  Vscm,
 };

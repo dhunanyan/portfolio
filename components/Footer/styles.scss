@@ -47,6 +47,11 @@
         text-decoration: underline;
       }
     }
+
+    span {
+      color: $tint-color;
+      margin: 0 5px;
+    }
   }
 
   &__copyright {

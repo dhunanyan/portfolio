@@ -1,30 +1,14 @@
-import {
-  Welcome,
-  About,
-  Experience,
-  Work,
-  Contact,
-} from '@components';
-import {
-  getAboutSection,
-  getCommonSections,
-  getExperienceSection,
-} from '@utils/contentful';
+import { Welcome, About, Experience, Work, Contact } from '@components';
 
 export default async function Page() {
-  const commonSections = (await getCommonSections()) ?? [];
-  const [contact, welcome] = commonSections;
-  const about = await getAboutSection();
-  const experience = await getExperienceSection();
-
   return (
     <>
       <main>
-        <Welcome data={welcome} />
-        <About data={about} />
-        <Experience data={experience} />
+        <Welcome />
+        <About />
+        <Experience />
         <Work />
-        <Contact data={contact} />
+        <Contact />
       </main>
     </>
   );

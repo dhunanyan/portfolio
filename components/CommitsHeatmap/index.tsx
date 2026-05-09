@@ -1,6 +1,10 @@
 import * as React from 'react';
 import './CommitsHeatmap.scss';
-import type { CommitHeatmapDataType } from '@config';
+
+export type CommitHeatmapDataType = {
+  date: string;
+  commits: number;
+}[];
 
 export type CommitsHeatmapPropsType = {
   data: CommitHeatmapDataType;
