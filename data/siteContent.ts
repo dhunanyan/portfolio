@@ -16,6 +16,7 @@ export const headerContent = {
     { label: 'About', href: '#about' },
     { label: 'Experience', href: '#experience' },
     { label: 'Work', href: '#work' },
+    { label: 'Commitment', href: '#commitment' },
     { label: 'Contact', href: '#contact' },
   ],
   connectLabel: 'Connect',

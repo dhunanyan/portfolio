@@ -66,7 +66,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
     resize();
     window.addEventListener('resize', resize);
 
-    for (let i = 0; i < 70; i++) {
+    for (let i = 0; i < 200; i++) {
       particles.push({
         x: Math.random() * canvas.width,
         y: Math.random() * canvas.height,
@@ -106,7 +106,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
 
           if (dist < 120) {
             ctx.beginPath();
-            ctx.strokeStyle = `rgba(100, 255, 218, ${0.06 * (1 - dist / 120)})`;
+            ctx.strokeStyle = `rgba(100, 255, 218, ${0.15 * (1 - dist / 120)})`;
             ctx.lineWidth = 0.5;
             ctx.moveTo(particles[i].x, particles[i].y);
             ctx.lineTo(particles[j].x, particles[j].y);
@@ -169,7 +169,10 @@ export const Welcome = ({ data }: WelcomePropsType) => {
         transition={{ delay: 1.2, duration: 0.6 }}
         className="welcome__rail welcome__rail--right"
       >
-        <a href={`mailto:${commonContent.email}`} className="welcome__email-link">
+        <a
+          href={`mailto:${commonContent.email}`}
+          className="welcome__email-link"
+        >
           {commonContent.email}
         </a>
         <div className="welcome__rail-line" />
@@ -182,7 +185,9 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           transition={{ delay: 0.3, duration: 0.5 }}
           className="welcome__intro"
         >
-          <span className="welcome__intro-label">{welcomeContent.introLabel}</span>
+          <span className="welcome__intro-label">
+            {welcomeContent.introLabel}
+          </span>
         </motion.div>
 
         <motion.h1
