@@ -1,6 +1,16 @@
 export { HtmlMeta } from './HtmlMeta';
-export { PersonalInfo, NotFoundData } from './Data';
 export {
+  gitlabWorkHeatmap,
+  gitlabWorkHeatmapPeriod,
+} from './gitlabWorkHeatmap';
+export {
+  gitlabPersonalHeatmap,
+  gitlabPersonalHeatmapPeriod,
+} from './gitlabPersonalHeatmap';
+export { githubHeatmap, githubHeatmapPeriod } from './githubHeatmap';
+export {
+  PersonalInfo,
+  notFoundData,
   aboutContent,
   commonContent,
   contactContent,
@@ -9,4 +19,5 @@ export {
   headerContent,
   welcomeContent,
   workContent,
+  commitmentContent,
 } from './siteContent';

@@ -21,16 +21,26 @@ export const CommitsHeatmap = ({ data }: CommitsHeatmapPropsType) => {
 
   const heatmapRef = React.useRef<HTMLDivElement | null>(null);
 
-  const startDate = new Date(data[0].date);
-  const endDate = new Date(data[data.length - 1].date);
+  const sortedData = [...data].sort((a, b) => a.date.localeCompare(b.date));
+  const startDate = new Date(`${sortedData[0].date}T00:00:00.000Z`);
+  const endDate = new Date(
+    `${sortedData[sortedData.length - 1].date}T00:00:00.000Z`
+  );
+
+  const commitsByDate = new Map(sortedData.map((entry) => [entry.date, entry]));
+
   const allDays: CommitHeatmapDataType = [];
-  for (let d = new Date(startDate); d <= endDate; d.setDate(d.getDate() + 1)) {
+  for (
+    let d = new Date(startDate);
+    d <= endDate;
+    d.setUTCDate(d.getUTCDate() + 1)
+  ) {
     const dateStr = d.toISOString().split('T')[0];
-    const existing = data.find((x) => x.date === dateStr);
+    const existing = commitsByDate.get(dateStr);
     allDays.push(existing || { date: dateStr, commits: 0 });
   }
 
-  const maxCommits = Math.max(...data.map((d) => d.commits));
+  const maxCommits = Math.max(...sortedData.map((entry) => entry.commits), 1);
 
   const getColorClass = (commits: number) => {
     if (commits === 0) return 'level-0';
@@ -41,12 +51,26 @@ export const CommitsHeatmap = ({ data }: CommitsHeatmapPropsType) => {
     return 'level-4';
   };
 
-  const weeks: CommitHeatmapDataType[] = [];
-  for (let i = 0; i < allDays.length; i += 7) {
-    weeks.push(allDays.slice(i, i + 7));
+  const firstWeekday = startDate.getUTCDay();
+  const paddedDays: ({ date: string; commits: number } | null)[] = [
+    ...Array.from({ length: firstWeekday }, () => null),
+    ...allDays,
+  ];
+
+  const remainder = paddedDays.length % 7;
+  if (remainder !== 0) {
+    const trailing = 7 - remainder;
+    for (let i = 0; i < trailing; i += 1) {
+      paddedDays.push(null);
+    }
   }
 
-  const daysOfWeek = ['Wed', 'Thu', 'Fri', 'Sat', 'Sun', 'Mon', 'Tue'];
+  const weeks: ({ date: string; commits: number } | null)[][] = [];
+  for (let i = 0; i < paddedDays.length; i += 7) {
+    weeks.push(paddedDays.slice(i, i + 7));
+  }
+
+  const daysOfWeek = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
 
   const handleMouseEnter = (
     e: React.MouseEvent<HTMLDivElement>,
@@ -85,9 +109,11 @@ export const CommitsHeatmap = ({ data }: CommitsHeatmapPropsType) => {
                 <div
                   key={di}
                   className={`heatmap__square heatmap__square--${getColorClass(
-                    day.commits
+                    day?.commits ?? 0
                   )}`}
-                  onMouseEnter={(e) => handleMouseEnter(e, day)}
+                  onMouseEnter={(e) => {
+                    if (day) handleMouseEnter(e, day);
+                  }}
                   onMouseLeave={handleMouseLeave}
                 />
               ))}

@@ -1,3 +1,16 @@
+export enum PersonalInfo {
+  Username = 'dhunanyan',
+  Mail = 'davit.hunanyan@me.com',
+  GitHub = 'https://github.com/dhunanyan',
+  LinkedIn = 'https://www.linkedin.com/in/dhunanyan',
+}
+
+export const notFoundData = {
+  code: 404,
+  message: 'This page could not be found.',
+  goBack: 'Back to home',
+};
+
 export const headerContent = {
   navLinks: [
     { label: 'About', href: '#about' },
@@ -604,6 +617,30 @@ export const workContent = {
       accent: '#22c55e',
     },
   ],
+};
+
+export const commitmentContent = {
+  tabs: [
+    { id: 'github', label: 'GitHub', subsection: 'GitHub' },
+    { id: 'gitlab-work', label: 'GitLab (Work)', subsection: 'GitLab' },
+    {
+      id: 'gitlab-personal',
+      label: 'GitLab (Personal)',
+      subsection: 'GitLab',
+    },
+  ] as const,
+  empty: {
+    github: {
+      title: 'GitHub Activity Coming Soon',
+      description:
+        'This panel is reserved for public contribution activity and selected open-source streaks.',
+    },
+    gitlabPersonal: {
+      title: 'Personal GitLab Activity Coming Soon',
+      description:
+        'This panel will show personal GitLab contribution patterns once data export is connected.',
+    },
+  },
 };
 
 export const contactContent = {

@@ -16,25 +16,16 @@
     "prettier:check": "prettier --check **/*.{ts,tsx,json,md}"
   },
   "dependencies": {
-    "highlight.js": "^11.10.0",
     "motion": "^12.38.0",
     "next": "16.2.5",
-    "prismjs": "^1.29.0",
     "react": "19.2.6",
     "react-dom": "19.2.6",
-    "react-icons": "^4.10.1",
-    "react-scroll": "^1.9.3",
-    "react-syntax-highlighter": "^15.6.1",
     "sass": "^1.79.4"
   },
   "devDependencies": {
-    "@svgr/webpack": "^8.1.0",
-    "@types/highlight.js": "^10.1.0",
     "@types/node": "^22.7.4",
     "@types/react": "^19.2.14",
     "@types/react-dom": "^19.2.3",
-    "@types/react-scroll": "^1.8.10",
-    "@types/react-syntax-highlighter": "^15.5.13",
     "eslint": "^9",
     "eslint-config-next": "16.2.5",
     "husky": "^9.1.6",

@@ -1,9 +1,9 @@
 import * as React from 'react';
 import Link from 'next/link';
 
-import { NotFoundData } from '@data';
+import { notFoundData } from '@data';
 
-const { code, message, goBack } = NotFoundData;
+const { code, message, goBack } = notFoundData;
 
 import './styles.scss';
 

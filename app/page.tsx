@@ -1,4 +1,4 @@
-import { Welcome, About, Experience, Work, Contact } from '@components';
+import { Welcome, About, Experience, Work, Commitment, Contact } from '@components';
 
 export default async function Page() {
   return (
@@ -8,6 +8,7 @@ export default async function Page() {
         <About />
         <Experience />
         <Work />
+        <Commitment />
         <Contact />
       </main>
     </>

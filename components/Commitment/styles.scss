@@ -1,0 +1,139 @@
+@use '../../styles/variables' as *;
+
+.commitment {
+  background: #0a0f1e;
+  padding: 7rem 0;
+  position: relative;
+
+  &__top-line {
+    background: linear-gradient(to right, transparent, rgba(100, 255, 218, 0.2), transparent);
+    height: 1px;
+    left: 0;
+    position: absolute;
+    right: 0;
+    top: 0;
+  }
+
+  &__container {
+    margin: 0 auto;
+    max-width: 72rem;
+    padding: 0 1.5rem;
+  }
+
+  &__header {
+    align-items: center;
+    display: flex;
+    gap: 1rem;
+    margin-bottom: 1.6rem;
+  }
+
+  &__index {
+    color: $tint-color;
+    font-family: $font-mono;
+    font-size: 0.875rem;
+  }
+
+  &__heading {
+    color: $secondary-color;
+    font-family: $font-sans;
+    font-size: 2rem;
+    font-weight: 600;
+  }
+
+  &__line {
+    background: linear-gradient(to right, #1e3a5f, transparent);
+    flex: 1;
+    height: 1px;
+    max-width: 16rem;
+  }
+
+  &__intro {
+    color: $alt-color;
+    font-family: $font-sans;
+    font-size: 0.95rem;
+    line-height: 1.75;
+    margin: 0 0 1.25rem;
+    max-width: 46rem;
+  }
+
+  &__tabs {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.6rem;
+    margin-bottom: 1rem;
+  }
+
+  &__tab {
+    background: rgba(17, 34, 64, 0.65);
+    border: 1px solid rgba(100, 255, 218, 0.2);
+    border-radius: 999px;
+    color: $alt-color;
+    cursor: pointer;
+    font-family: $font-mono;
+    font-size: 0.76rem;
+    padding: 0.5rem 0.9rem;
+    transition: all 180ms ease;
+
+    &:hover {
+      border-color: rgba(100, 255, 218, 0.5);
+      color: $secondary-color;
+    }
+  }
+
+  &__tab--active {
+    background: rgba(100, 255, 218, 0.12);
+    border-color: rgba(100, 255, 218, 0.6);
+    color: $tint-color;
+  }
+
+  &__panel {
+    background: rgba(17, 34, 64, 0.45);
+    border: 1px solid rgba(100, 255, 218, 0.16);
+    border-radius: 14px;
+    min-height: 17rem;
+    padding: 1rem;
+  }
+
+  &__subsection-row {
+    display: flex;
+    gap: 0.75rem;
+    margin-bottom: 0.25rem;
+  }
+
+  &__subsection {
+    background: rgba(10, 15, 30, 0.75);
+    border: 1px solid rgba(100, 255, 218, 0.15);
+    border-radius: 999px;
+    color: $secondary-color;
+    font-family: $font-mono;
+    font-size: 0.68rem;
+    letter-spacing: 0.02em;
+    padding: 0.28rem 0.56rem;
+    text-transform: uppercase;
+  }
+
+  &__empty {
+    align-items: center;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    min-height: 13.5rem;
+    text-align: center;
+
+    h3 {
+      color: $secondary-color;
+      font-family: $font-sans;
+      font-size: 1.05rem;
+      margin: 0 0 0.5rem;
+    }
+
+    p {
+      color: $alt-color;
+      font-family: $font-sans;
+      font-size: 0.9rem;
+      line-height: 1.6;
+      margin: 0;
+      max-width: 34rem;
+    }
+  }
+}

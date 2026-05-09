@@ -1,3 +1,5 @@
+@use '../../styles/variables' as *;
+
 $gap-size: 4px;
 $square-size: 16px;
 
@@ -13,20 +15,22 @@ $square-size: 16px;
 }
 
 .heatmap {
-  position: relative;
-  display: flex;
   align-items: flex-start;
-  background-color: #0f172a;
-  border-radius: 8px;
+  background: rgba(10, 18, 35, 0.86);
+  border: 1px solid rgba(100, 255, 218, 0.14);
+  border-radius: 10px;
   box-shadow: 0 0 10px rgba(0, 255, 200, 0.05);
   color: #94a3b8;
-  margin: 30px 0;
-  padding: 12px 20px;
-  width: calc(100% - 2 * 20px);
+  display: flex;
+  margin: 0.75rem 0 0;
+  padding: 12px 14px;
+  position: relative;
+  width: 100%;
 
   &__days {
     display: flex;
     flex-direction: column;
+    gap: 4px;
     height: calc(7 * ($square-size + $gap-size) - $gap-size);
     justify-content: space-between;
     padding: 16px 8px 20px;
@@ -36,6 +40,7 @@ $square-size: 16px;
       color: #53d2b4;
       display: flex;
       font-size: 12px;
+      font-family: $font-mono;
       height: $square-size;
       justify-content: flex-end;
       text-align: right;
@@ -59,7 +64,7 @@ $square-size: 16px;
     }
 
     &::-webkit-scrollbar-track {
-      background: #0b1423;
+      background: #0a1220;
       border-radius: 8px;
     }
 
@@ -109,7 +114,7 @@ $square-size: 16px;
     }
 
     &--level-0 {
-      background-color: #162c3d;
+      background-color: #153041;
     }
 
     &--level-1 {
@@ -150,6 +155,23 @@ $square-size: 16px;
       color: #64ffda;
       display: block;
       margin-top: 2px;
+    }
+  }
+
+  @media (max-width: 767px) {
+    padding: 10px 10px;
+
+    &__days {
+      padding: 14px 6px 18px;
+    }
+
+    &__day-label {
+      font-size: 11px;
+    }
+
+    &__square {
+      height: 14px;
+      width: 14px;
     }
   }
 }

@@ -1,19 +1,14 @@
 <h1 align="center">
   <a href="https://dhunanyan.com" alt="Official Website">
-    <p>dhunanyan.com</p>
-    <img alt="Logo" src="https://raw.githubusercontent.com/dhunanyan/portfolio/master/public/svg/i_logo-bg.svg" width="100" />
+    <img alt="Logo" src="https://raw.githubusercontent.com/dhunanyan/portfolio/master/public/og.png" />
   </a>
 </h1>
 
 ## 🌐 Davit Hunanyan - Portfolio [![Netlify Status](https://api.netlify.com/api/v1/badges/a77080ba-aa75-4807-ad50-b0e00c0c31da/deploy-status)](https://app.netlify.com/sites/dhunanyan/deploys)
 
-Welcome to the source code for my personal portfolio website! Crafted with the latest in web technologies and built to showcase my skills, experience, and projects, this site represents both my journey as a software developer and my commitment to delivering high-quality, performant web applications.
+[www.dhunanyan.com](www.dhunanyan.com)
 
-<p align="center">
-  <a href="https://app.netlify.com/sites/dhunanyan/deploys" alt="Netlify Deploys">
-    <img alt="Netlify Status" src="https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/i_netlify.svg"  />
-  </a>
-</p>
+Welcome to the source code for my personal portfolio website! Crafted with the latest in web technologies and built to showcase my skills, experience, and projects, this site represents both my journey as a software developer and my commitment to delivering high-quality, performant web applications.
 
 ## 📸 Screenshots
 

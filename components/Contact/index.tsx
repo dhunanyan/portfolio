@@ -35,7 +35,7 @@ export const Contact = ({ data }: ContactPropsType) => {
           transition={{ duration: 0.6 }}
           className="contact__header"
         >
-          <span className="contact__index">04.</span>
+          <span className="contact__index">05.</span>
           <h2 className="contact__heading">Contact</h2>
           <div className="contact__line" />
         </motion.div>

@@ -1,11 +1,10 @@
 export { Header } from './Header';
-export { Overlay } from './Overlay';
 export { Welcome } from './Welcome';
 export { About } from './About';
 export { Experience } from './Experience';
 export { Work } from './Work';
+export { Commitment } from './Commitment';
 export { Contact } from './Contact';
 export { Footer } from './Footer';
 export { NotFound } from './NotFound';
 export { CommitsHeatmap } from './CommitsHeatmap';
-export { CodeSnippet } from './CodeSnippet';
