@@ -1,7 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { HtmlMeta } from '@data';
 
-import { Footer, Header } from '@components';
+import { BfcacheRestoreGuard, Footer, Header } from '@components';
 import './globals.scss';
 
 export const metadata: Metadata = {
@@ -78,6 +78,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body>
+        <BfcacheRestoreGuard />
         <Header />
         {children}
         <Footer />

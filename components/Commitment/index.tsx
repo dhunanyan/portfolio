@@ -1,7 +1,7 @@
 'use client';
 
 import * as React from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import {
   commitmentContent,
   githubHeatmap,
@@ -22,8 +22,6 @@ const commitmentTabIcons: Record<CommitmentTab, React.ReactNode> = {
 };
 
 export const Commitment = () => {
-  const ref = React.useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [activeTab, setActiveTab] =
     React.useState<CommitmentTab>('gitlab-work');
 
@@ -86,15 +84,26 @@ export const Commitment = () => {
     () => filteredData.reduce((sum, item) => sum + item.commits, 0),
     [filteredData]
   );
+  const setYearForActiveTab = (year: number) => {
+    setSelectedYearByTab((prev) => ({
+      ...prev,
+      [activeTab]: year,
+    }));
+  };
+  const emptyStateByTab = {
+    github: commitmentContent.empty.github,
+    'gitlab-personal': commitmentContent.empty.gitlabPersonal,
+  } as const;
+  const emptyState = emptyStateByTab[activeTab as 'github' | 'gitlab-personal'];
 
   return (
-    <section id="commitment" ref={ref} className="commitment">
+    <section id="commitment" className="commitment">
       <div className="commitment__top-line" />
 
       <div className="commitment__container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="commitment__header"
         >
@@ -105,7 +114,7 @@ export const Commitment = () => {
 
         <motion.p
           initial={{ opacity: 0, y: 18 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.5 }}
           className="commitment__intro"
         >
@@ -115,7 +124,7 @@ export const Commitment = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.5 }}
           className="commitment__tabs"
         >
@@ -135,7 +144,7 @@ export const Commitment = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 18 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.3, duration: 0.5 }}
           className="commitment__panel"
         >
@@ -178,12 +187,7 @@ export const Commitment = () => {
                 {yearsByTab[activeTab].map((year) => (
                   <li key={`${activeTab}-${year}`}>
                     <button
-                      onClick={() =>
-                        setSelectedYearByTab((prev) => ({
-                          ...prev,
-                          [activeTab]: year,
-                        }))
-                      }
+                      onClick={() => setYearForActiveTab(year)}
                       className={`commitment__year ${year === activeYear ? 'commitment__year--active' : ''}`}
                     >
                       {year}
@@ -194,16 +198,10 @@ export const Commitment = () => {
             </div>
           </div>
 
-          {filteredData.length === 0 && activeTab === 'github' && (
+          {filteredData.length === 0 && emptyState && (
             <div className="commitment__empty">
-              <h3>{commitmentContent.empty.github.title}</h3>
-              <p>{commitmentContent.empty.github.description}</p>
-            </div>
-          )}
-          {filteredData.length === 0 && activeTab === 'gitlab-personal' && (
-            <div className="commitment__empty">
-              <h3>{commitmentContent.empty.gitlabPersonal.title}</h3>
-              <p>{commitmentContent.empty.gitlabPersonal.description}</p>
+              <h3>{emptyState.title}</h3>
+              <p>{emptyState.description}</p>
             </div>
           )}
         </motion.div>

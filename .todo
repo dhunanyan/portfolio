@@ -1,18 +1,9 @@
-- fix header issue when realod the page
-- remove motion
-- remove redundant utils or components
-- refactor to reuse utils
+-
 - form box for contact
 - fix the issues when click on the CV and come back to prev page
 - convert buttons of projects to slider
 - convert buttons of commitments years to slider
 - add events section where I took part
-- create common function for onClick={(event) => {
-  event.preventDefault();
-  document
-  .querySelector('#contact')
-  ?.scrollIntoView({ behavior: 'smooth' });
-  }}
 
 BLOG:
 This is great.

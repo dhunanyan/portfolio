@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import { Icons } from '@components/icons';
 import Image from 'next/image';
 import { aboutContent, commonContent } from '@data';
@@ -14,17 +14,14 @@ export type AboutPropsType = {
 export const About = ({ data }: AboutPropsType) => {
   void data;
 
-  const ref = React.useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   return (
-    <section id="about" ref={ref} className="about">
+    <section id="about" className="about">
       <div className="about__grid-bg" />
 
       <div className="about__container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="about__header"
         >
@@ -36,7 +33,7 @@ export const About = ({ data }: AboutPropsType) => {
         <div className="about__content">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="about__text"
           >
@@ -56,7 +53,7 @@ export const About = ({ data }: AboutPropsType) => {
 
             <motion.div
               initial={{ opacity: 0, y: 10 }}
-              animate={inView ? { opacity: 1, y: 0 } : {}}
+              animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.7, duration: 0.4 }}
               className="about__actions"
             >
@@ -91,7 +88,7 @@ export const About = ({ data }: AboutPropsType) => {
 
           <motion.div
             initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ duration: 0.6, delay: 0.2 }}
             className="about__photo-wrap"
           >
@@ -118,7 +115,7 @@ export const About = ({ data }: AboutPropsType) => {
               <motion.div
                 key={group.title}
                 initial={{ opacity: 0, y: 14 }}
-                animate={inView ? { opacity: 1, y: 0 } : {}}
+                animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 + groupIndex * 0.08, duration: 0.45 }}
                 className="about__skills-card"
               >

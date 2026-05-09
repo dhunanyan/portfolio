@@ -3,6 +3,7 @@ import * as React from 'react';
 import { motion } from 'motion/react';
 import { Icons } from '@components/icons';
 import { commonContent, welcomeContent } from '@data';
+import { createSmoothScrollClickHandler, smoothScrollTo } from '@utils/scroll';
 
 import './styles.scss';
 
@@ -126,9 +127,9 @@ export const Welcome = ({ data }: WelcomePropsType) => {
     };
   }, []);
 
-  const scrollToAbout = () => {
-    document.querySelector('#about')?.scrollIntoView({ behavior: 'smooth' });
-  };
+  const scrollToAbout = () => smoothScrollTo('#about');
+  const handleContactClick = createSmoothScrollClickHandler('#contact');
+  const handleWorkClick = createSmoothScrollClickHandler('#work');
 
   return (
     <section id="welcome" className="welcome">
@@ -231,12 +232,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
         >
           <a
             href="#contact"
-            onClick={(event) => {
-              event.preventDefault();
-              document
-                .querySelector('#contact')
-                ?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={handleContactClick}
             className="welcome__button welcome__button--primary"
           >
             <span className="welcome__button-overlay" />
@@ -249,12 +245,7 @@ export const Welcome = ({ data }: WelcomePropsType) => {
           </a>
           <a
             href="#work"
-            onClick={(event) => {
-              event.preventDefault();
-              document
-                .querySelector('#work')
-                ?.scrollIntoView({ behavior: 'smooth' });
-            }}
+            onClick={handleWorkClick}
             className="welcome__button welcome__button--secondary"
           >
             {welcomeContent.secondaryCta}

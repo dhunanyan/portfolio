@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import { Icons } from '@components/icons';
 import { experienceContent } from '@data';
 import Image from 'next/image';
@@ -47,8 +47,6 @@ const experienceMediaById: Record<
 export const Experience = ({ data }: ExperiencePropsType) => {
   void data;
 
-  const ref = React.useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [activeTab, setActiveTab] = React.useState<Tab>('all');
   const [activeId, setActiveId] = React.useState(experienceContent.items[0].id);
 
@@ -59,15 +57,23 @@ export const Experience = ({ data }: ExperiencePropsType) => {
     experienceContent.items.find((item) => item.id === activeId) ||
     experienceContent.items[0];
   const activeMedia = experienceMediaById[activeItem.id];
+  const tabIconByType: Partial<Record<Tab, React.ReactNode>> = {
+    work: <Icons.Briefcase size={13} />,
+    education: <Icons.GraduationCap size={13} />,
+  };
+  const itemIconByType: Record<'work' | 'education', React.ReactNode> = {
+    work: <Icons.Briefcase size={12} />,
+    education: <Icons.GraduationCap size={12} />,
+  };
 
   return (
-    <section id="experience" ref={ref} className="experience">
+    <section id="experience" className="experience">
       <div className="experience__top-line" />
 
       <div className="experience__container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="experience__header"
         >
@@ -78,7 +84,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.5 }}
           className="experience__tabs"
         >
@@ -88,8 +94,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
               onClick={() => setActiveTab(tab)}
               className={`experience__tab ${activeTab === tab ? 'experience__tab--active' : ''}`}
             >
-              {tab === 'work' && <Icons.Briefcase size={13} />}
-              {tab === 'education' && <Icons.GraduationCap size={13} />}
+              {tabIconByType[tab]}
               {tab}
             </button>
           ))}
@@ -98,7 +103,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
         <div className="experience__layout">
           <motion.div
             initial={{ opacity: 0, x: -20 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.5 }}
             className="experience__list"
           >
@@ -110,15 +115,9 @@ export const Experience = ({ data }: ExperiencePropsType) => {
                 className={`experience__list-item ${activeId === item.id ? 'experience__list-item--active' : ''}`}
               >
                 <div className="experience__list-head">
-                  {item.type === 'work' ? (
-                    <span className="experience__list-icon">
-                      <Icons.Briefcase size={12} />
-                    </span>
-                  ) : (
-                    <span className="experience__list-icon">
-                      <Icons.GraduationCap size={12} />
-                    </span>
-                  )}
+                  <span className="experience__list-icon">
+                    {itemIconByType[item.type]}
+                  </span>
                   <span className="experience__list-company">
                     {item.type === 'work' ? item.company : item.institution}
                   </span>

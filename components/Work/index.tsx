@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { motion, useInView, AnimatePresence } from 'motion/react';
+import { motion, AnimatePresence } from 'motion/react';
 import { Icons } from '@components/icons';
 import Image from 'next/image';
 import { commonContent, workContent } from '@data';
@@ -8,6 +8,10 @@ import { commonContent, workContent } from '@data';
 import './styles.scss';
 
 type WorkTab = (typeof workContent.tabs)[number]['id'];
+type WorkActionLink = {
+  href?: string;
+  icon: React.ReactElement;
+};
 
 const workTabIcons: Record<WorkTab, React.ReactNode> = {
   featured: <Icons.Activity size={13} />,
@@ -17,9 +21,6 @@ const workTabIcons: Record<WorkTab, React.ReactNode> = {
 };
 
 export const Work = () => {
-  const ref = React.useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
-
   const getTabProjects = React.useCallback(
     (tab: WorkTab) =>
       workContent.projects.filter((project) =>
@@ -46,15 +47,32 @@ export const Work = () => {
     setActiveTab(tab);
     setActiveProject(nextProjects[0]?.id ?? '');
   };
+  const handleProjectSelect = (projectId: string) =>
+    setActiveProject(projectId);
+  const handleActionClick = (event: React.MouseEvent<HTMLAnchorElement>) => {
+    event.stopPropagation();
+  };
+
+  const actionLinks: WorkActionLink[] = [
+    { href: active?.npm, icon: <Icons.Npm size={16} /> },
+    { href: active?.ovsx, icon: <Icons.Ovsx size={16} /> },
+    { href: active?.vscm, icon: <Icons.Vscm size={16} /> },
+    { href: active?.docs, icon: <Icons.Docs size={16} /> },
+    { href: active?.ghPackages, icon: <Icons.Box size={16} /> },
+    { href: active?.github, icon: <Icons.Github size={16} /> },
+    { href: active?.live, icon: <Icons.ExternalLink size={16} /> },
+  ].filter((item): item is { href: string; icon: React.ReactElement } =>
+    item.href !== undefined
+  );
 
   return (
-    <section id="work" ref={ref} className="work">
+    <section id="work" className="work">
       <div className="work__top-line" />
 
       <div className="work__container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="work__header"
         >
@@ -65,7 +83,7 @@ export const Work = () => {
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.1, duration: 0.5 }}
           className="work__intro"
         >
@@ -74,7 +92,7 @@ export const Work = () => {
 
         <motion.div
           initial={{ opacity: 0 }}
-          animate={inView ? { opacity: 1 } : {}}
+          animate={{ opacity: 1 }}
           transition={{ delay: 0.2 }}
           className="work__tabs"
         >
@@ -96,7 +114,7 @@ export const Work = () => {
             <motion.div
               key={`work-list-${activeTab}`}
               initial={{ opacity: 0, x: -20 }}
-              animate={inView ? { opacity: 1, x: 0 } : {}}
+              animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.25, duration: 0.5 }}
               className="work__list"
             >
@@ -104,9 +122,9 @@ export const Work = () => {
                 <motion.button
                   key={project.id}
                   initial={{ opacity: 0, x: -15 }}
-                  animate={inView ? { opacity: 1, x: 0 } : {}}
+                  animate={{ opacity: 1, x: 0 }}
                   transition={{ delay: 0.3 + i * 0.06 }}
-                  onClick={() => setActiveProject(project.id)}
+                  onClick={() => handleProjectSelect(project.id)}
                   className={`work__item ${activeProject === project.id ? 'work__item--active' : ''}`}
                   type="button"
                 >
@@ -172,76 +190,17 @@ export const Work = () => {
                   </div>
 
                   <div className="work__media-actions">
-                    {active.npm && (
+                    {actionLinks.map((link) => (
                       <a
-                        href={active.npm}
+                        key={link.href}
+                        href={link.href}
                         target="_blank"
                         rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
+                        onClick={handleActionClick}
                       >
-                        <Icons.Npm size={16} />
+                        {link.icon}
                       </a>
-                    )}
-                    {active.ovsx && (
-                      <a
-                        href={active.ovsx}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Icons.Ovsx size={16} />
-                      </a>
-                    )}
-                    {active.vscm && (
-                      <a
-                        href={active.ovsx}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Icons.Vscm size={16} />
-                      </a>
-                    )}
-                    {active.docs && (
-                      <a
-                        href={active.docs}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Icons.Docs size={16} />
-                      </a>
-                    )}
-                    {active.ghPackages && (
-                      <a
-                        href={active.ghPackages}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Icons.Box size={16} />
-                      </a>
-                    )}
-                    {active.github && (
-                      <a
-                        href={active.github}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Icons.Github size={16} />
-                      </a>
-                    )}
-                    {active.live && (
-                      <a
-                        href={active.live}
-                        target="_blank"
-                        rel="noreferrer"
-                        onClick={(e) => e.stopPropagation()}
-                      >
-                        <Icons.ExternalLink size={16} />
-                      </a>
-                    )}
+                    ))}
                   </div>
                 </div>
 
@@ -272,7 +231,7 @@ export const Work = () => {
 
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.5, duration: 0.5 }}
           className="work__github-cta"
         >

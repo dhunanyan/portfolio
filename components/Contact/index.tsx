@@ -1,6 +1,6 @@
 'use client';
 import * as React from 'react';
-import { motion, useInView } from 'motion/react';
+import { motion } from 'motion/react';
 import { Icons } from '@components/icons';
 import { commonContent, contactContent } from '@data';
 
@@ -13,25 +13,33 @@ export type ContactPropsType = {
 export const Contact = ({ data }: ContactPropsType) => {
   void data;
 
-  const ref = React.useRef<HTMLElement | null>(null);
-  const inView = useInView(ref, { once: true, margin: '-80px' });
   const [sent, setSent] = React.useState(false);
   const [form, setForm] = React.useState({ name: '', email: '', message: '' });
+  const resetForm = () => setForm({ name: '', email: '', message: '' });
 
   const handleSubmit = (event: React.FormEvent) => {
     event.preventDefault();
     setSent(true);
   };
+  const handleFormChange =
+    (field: 'name' | 'email' | 'message') =>
+    (event: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+      setForm((prev) => ({ ...prev, [field]: event.target.value }));
+    };
+  const handleSendAnother = () => {
+    setSent(false);
+    resetForm();
+  };
 
   return (
-    <section id="contact" ref={ref} className="contact">
+    <section id="contact" className="contact">
       <div className="contact__top-line" />
       <div className="contact__bg-glow" />
 
       <div className="contact__container">
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6 }}
           className="contact__header"
         >
@@ -43,7 +51,7 @@ export const Contact = ({ data }: ContactPropsType) => {
         <div className="contact__layout">
           <motion.div
             initial={{ opacity: 0, x: -30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.1, duration: 0.6 }}
             className="contact__intro"
           >
@@ -86,7 +94,7 @@ export const Contact = ({ data }: ContactPropsType) => {
 
           <motion.div
             initial={{ opacity: 0, x: 30 }}
-            animate={inView ? { opacity: 1, x: 0 } : {}}
+            animate={{ opacity: 1, x: 0 }}
             transition={{ delay: 0.2, duration: 0.6 }}
           >
             <div className="contact__form-card">
@@ -104,10 +112,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                   <h4>{contactContent.successTitle}</h4>
                   <p>{contactContent.successDescription}</p>
                   <button
-                    onClick={() => {
-                      setSent(false);
-                      setForm({ name: '', email: '', message: '' });
-                    }}
+                    onClick={handleSendAnother}
                   >
                     {contactContent.sendAnotherLabel}
                   </button>
@@ -120,9 +125,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                       type="text"
                       required
                       value={form.name}
-                      onChange={(e) =>
-                        setForm({ ...form, name: e.target.value })
-                      }
+                      onChange={handleFormChange('name')}
                       placeholder={contactContent.form.namePlaceholder}
                     />
                   </div>
@@ -132,9 +135,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                       type="email"
                       required
                       value={form.email}
-                      onChange={(e) =>
-                        setForm({ ...form, email: e.target.value })
-                      }
+                      onChange={handleFormChange('email')}
                       placeholder={contactContent.form.emailPlaceholder}
                     />
                   </div>
@@ -144,9 +145,7 @@ export const Contact = ({ data }: ContactPropsType) => {
                       required
                       rows={5}
                       value={form.message}
-                      onChange={(e) =>
-                        setForm({ ...form, message: e.target.value })
-                      }
+                      onChange={handleFormChange('message')}
                       placeholder={contactContent.form.messagePlaceholder}
                     />
                   </div>

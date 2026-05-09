@@ -3,6 +3,7 @@ import * as React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Icons } from '@components/icons';
 import { headerContent } from '@data';
+import { createSmoothScrollClickHandler, smoothScrollTo } from '@utils/scroll';
 
 import './styles.scss';
 
@@ -19,8 +20,16 @@ export const Header = () => {
 
   const handleNav = (href: string) => {
     setMobileOpen(false);
-    const el = document.querySelector(href);
-    if (el) el.scrollIntoView({ behavior: 'smooth' });
+    smoothScrollTo(href);
+  };
+  const toggleMobileMenu = () => setMobileOpen((prev) => !prev);
+
+  const handleConnectClick = createSmoothScrollClickHandler('#contact', () => {
+    setMobileOpen(false);
+  });
+  const handleMobileConnect = () => {
+    setMobileOpen(false);
+    smoothScrollTo('#contact');
   };
 
   return (
@@ -33,7 +42,7 @@ export const Header = () => {
       >
         <div className="header__container">
           <button
-            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            onClick={() => smoothScrollTo('#welcome')}
             className="header__logo"
           >
             <span className="header__logo-icon">
@@ -62,10 +71,7 @@ export const Header = () => {
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.45, duration: 0.4 }}
               href="#contact"
-              onClick={(e) => {
-                e.preventDefault();
-                handleNav('#contact');
-              }}
+              onClick={handleConnectClick}
               className="header__connect"
             >
               {headerContent.connectLabel}
@@ -74,7 +80,7 @@ export const Header = () => {
 
           <button
             className="header__mobile-toggle"
-            onClick={() => setMobileOpen(!mobileOpen)}
+            onClick={toggleMobileMenu}
             aria-label="Toggle menu"
           >
             {mobileOpen ? <Icons.X size={22} /> : <Icons.Menu size={22} />}
@@ -108,7 +114,7 @@ export const Header = () => {
               initial={{ opacity: 0, y: 20 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ delay: 0.35 }}
-              onClick={() => handleNav('#contact')}
+              onClick={handleMobileConnect}
               className="header__mobile-connect"
             >
               {headerContent.connectLabel}

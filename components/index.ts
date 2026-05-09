@@ -8,3 +8,4 @@ export { Contact } from './Contact';
 export { Footer } from './Footer';
 export { NotFound } from './NotFound';
 export { CommitsHeatmap } from './CommitsHeatmap';
+export { BfcacheRestoreGuard } from './BfcacheRestoreGuard';
