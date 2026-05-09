@@ -9,6 +9,13 @@ import './styles.scss';
 
 type WorkTab = (typeof workContent.tabs)[number]['id'];
 
+const workTabIcons: Record<WorkTab, React.ReactNode> = {
+  featured: <Icons.Activity size={13} />,
+  'open-source': <Icons.Github size={13} />,
+  'made-to-order': <Icons.Briefcase size={13} />,
+  private: <Icons.Box size={13} />,
+};
+
 export const Work = () => {
   const ref = React.useRef<HTMLElement | null>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
@@ -78,6 +85,7 @@ export const Work = () => {
               onClick={() => handleTabChange(tab.id)}
               type="button"
             >
+              <span className="work__tab-icon">{workTabIcons[tab.id]}</span>
               {tab.label}
             </button>
           ))}

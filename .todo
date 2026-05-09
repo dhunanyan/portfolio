@@ -6,7 +6,7 @@
 - fix the issues when click on the CV and come back to prev page
 - convert buttons of projects to slider
 - convert buttons of commitments years to slider
-- add icons to buttons
+- add events section where I took part
 - create common function for onClick={(event) => {
   event.preventDefault();
   document

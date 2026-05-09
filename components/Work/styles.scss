@@ -64,14 +64,17 @@
   }
 
   &__tab {
+    align-items: center;
     background: rgba(13, 27, 42, 0.55);
     border: 1px solid #1e3a5f;
     border-radius: 9999px;
     color: #9fb3c8;
     cursor: pointer;
+    display: inline-flex;
     font-family: $font-sans;
     font-size: 0.72rem;
     font-weight: 600;
+    gap: 0.38rem;
     letter-spacing: 0.03em;
     padding: 0.45rem 0.85rem;
     text-transform: uppercase;
@@ -87,6 +90,12 @@
       border-color: rgba(100, 255, 218, 0.6);
       color: $tint-color;
     }
+  }
+
+  &__tab-icon {
+    align-items: center;
+    display: inline-flex;
+    line-height: 1;
   }
 
   &__layout {

@@ -15,6 +15,12 @@ import './styles.scss';
 
 type CommitmentTab = (typeof commitmentContent.tabs)[number]['id'];
 
+const commitmentTabIcons: Record<CommitmentTab, React.ReactNode> = {
+  github: <Icons.Github size={13} />,
+  'gitlab-work': <Icons.Briefcase size={13} />,
+  'gitlab-personal': <Icons.GitLab size={13} />,
+};
+
 export const Commitment = () => {
   const ref = React.useRef<HTMLElement | null>(null);
   const inView = useInView(ref, { once: true, margin: '-80px' });
@@ -119,6 +125,9 @@ export const Commitment = () => {
               onClick={() => setActiveTab(tab.id)}
               className={`commitment__tab ${activeTab === tab.id ? 'commitment__tab--active' : ''}`}
             >
+              <span className="commitment__tab-icon">
+                {commitmentTabIcons[tab.id]}
+              </span>
               {tab.label}
             </button>
           ))}

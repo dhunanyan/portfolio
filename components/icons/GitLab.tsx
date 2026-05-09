@@ -8,7 +8,7 @@ export const GitLab = ({
   <svg
     stroke={color}
     fill={color}
-    stroke-width="0"
+    strokeWidth="0"
     viewBox="0 0 512 512"
     height={size}
     width={size}
