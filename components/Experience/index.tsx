@@ -3,6 +3,7 @@ import * as React from 'react';
 import { motion, useInView } from 'motion/react';
 import { Icons } from '@components/icons';
 import { experienceContent } from '@data';
+import Image from 'next/image';
 
 import './styles.scss';
 
@@ -10,6 +11,37 @@ type Tab = (typeof experienceContent.tabs)[number];
 
 export type ExperiencePropsType = {
   data?: unknown;
+};
+
+const experienceMediaById: Record<
+  string,
+  { logo: string; building: string; altBase: string }
+> = {
+  'grand-parade-md': {
+    logo: '/experience/grandparade-logo.png',
+    building: '/experience/grandparade-building.png',
+    altBase: 'Grand Parade',
+  },
+  'grand-parade-jr': {
+    logo: '/experience/grandparade-logo.png',
+    building: '/experience/grandparade-building.png',
+    altBase: 'Grand Parade',
+  },
+  'grand-parade-intern': {
+    logo: '/experience/grandparade-logo.png',
+    building: '/experience/grandparade-building.png',
+    altBase: 'Grand Parade',
+  },
+  agh: {
+    logo: '/experience/agh-logo.png',
+    building: '/experience/agh-building.png',
+    altBase: 'AGH University',
+  },
+  uken: {
+    logo: '/experience/uken-logo.png',
+    building: '/experience/uken-building.png',
+    altBase: 'UKEN University',
+  },
 };
 
 export const Experience = ({ data }: ExperiencePropsType) => {
@@ -26,6 +58,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
   const activeItem =
     experienceContent.items.find((item) => item.id === activeId) ||
     experienceContent.items[0];
+  const activeMedia = experienceMediaById[activeItem.id];
 
   return (
     <section id="experience" ref={ref} className="experience">
@@ -110,7 +143,9 @@ export const Experience = ({ data }: ExperiencePropsType) => {
               <div className="experience__card-header">
                 <div>
                   <h3 className="experience__card-title">
-                    {activeItem.type === 'work' ? activeItem.role : activeItem.degree}
+                    {activeItem.type === 'work'
+                      ? activeItem.role
+                      : activeItem.degree}
                     {activeItem.type === 'work' && (
                       <span className="experience__card-title-highlight">
                         {' '}
@@ -155,6 +190,29 @@ export const Experience = ({ data }: ExperiencePropsType) => {
                   ))}
                 </ul>
               </div>
+
+              {activeMedia && (
+                <div className="experience__media-grid">
+                  <div className="experience__media-box experience__media-box--logo">
+                    <Image
+                      src={activeMedia.logo}
+                      alt={`${activeMedia.altBase} logo`}
+                      fill
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      className="experience__media-image experience__media-image--logo"
+                    />
+                  </div>
+                  <div className="experience__media-box experience__media-box--building">
+                    <Image
+                      src={activeMedia.building}
+                      alt={`${activeMedia.altBase} building`}
+                      fill
+                      sizes="(max-width: 767px) 100vw, 50vw"
+                      className="experience__media-image experience__media-image--building"
+                    />
+                  </div>
+                </div>
+              )}
 
               <div className="experience__card-tags">
                 {activeItem.tags.map((tag, index) => (
