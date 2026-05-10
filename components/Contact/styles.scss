@@ -243,7 +243,19 @@
         background-color: $tint-color;
         box-shadow: 0 10px 24px -18px rgba(100, 255, 218, 0.8);
       }
+
+      &:disabled {
+        cursor: not-allowed;
+        opacity: 0.65;
+      }
     }
+  }
+
+  &__form-error {
+    color: #ff9da4;
+    font-family: $font-mono;
+    font-size: 0.78rem;
+    margin-top: 0.8rem;
   }
 
   &__success {

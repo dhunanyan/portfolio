@@ -14,12 +14,39 @@ export const Contact = ({ data }: ContactPropsType) => {
   void data;
 
   const [sent, setSent] = React.useState(false);
+  const [isSubmitting, setIsSubmitting] = React.useState(false);
+  const [submitError, setSubmitError] = React.useState<string | null>(null);
   const [form, setForm] = React.useState({ name: '', email: '', message: '' });
   const resetForm = () => setForm({ name: '', email: '', message: '' });
 
-  const handleSubmit = (event: React.FormEvent) => {
+  const handleSubmit = async (event: React.FormEvent) => {
     event.preventDefault();
-    setSent(true);
+    setSubmitError(null);
+    setIsSubmitting(true);
+
+    try {
+      const response = await fetch('/api/contact', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json' },
+        body: JSON.stringify(form),
+      });
+
+      const responseData = (await response.json()) as
+        | { ok?: boolean; error?: string }
+        | undefined;
+
+      if (!response.ok || !responseData?.ok) {
+        setSubmitError(responseData?.error || 'Failed to send message.');
+        return;
+      }
+
+      setSent(true);
+      resetForm();
+    } catch {
+      setSubmitError('Network error. Please try again.');
+    } finally {
+      setIsSubmitting(false);
+    }
   };
   const handleFormChange =
     (field: 'name' | 'email' | 'message') =>
@@ -28,6 +55,7 @@ export const Contact = ({ data }: ContactPropsType) => {
     };
   const handleSendAnother = () => {
     setSent(false);
+    setSubmitError(null);
     resetForm();
   };
 
@@ -153,10 +181,16 @@ export const Contact = ({ data }: ContactPropsType) => {
                     type="submit"
                     whileHover={{ scale: 1.02 }}
                     whileTap={{ scale: 0.98 }}
+                    disabled={isSubmitting}
                   >
                     <Icons.Send size={15} />
-                    {contactContent.form.submitLabel}
+                    {isSubmitting ? 'Sending...' : contactContent.form.submitLabel}
                   </motion.button>
+                  {submitError && (
+                    <p className="contact__form-error" role="alert">
+                      {submitError}
+                    </p>
+                  )}
                 </form>
               )}
             </div>

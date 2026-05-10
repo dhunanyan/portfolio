@@ -97,6 +97,27 @@ yarn dev
 
 This command starts the app in development mode. Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
 
+## 📩 Resend Contact Form Setup
+
+The contact form is integrated with a server route at `POST /api/contact` using Resend.
+
+1. **Create API key in Resend**
+   - In Resend Dashboard go to **API Keys** and create a key with at least sending access.
+2. **Verify your sending domain**
+   - In Resend Dashboard go to **Domains**, add your domain, and complete DNS verification.
+3. **Set environment variables**
+   - Copy `.env.example` to `.env.local` and fill values:
+
+```bash
+RESEND_API_KEY=re_xxxxxxxxx
+CONTACT_FROM_EMAIL="Portfolio Contact <contact@yourdomain.com>"
+CONTACT_TO_EMAIL="you@yourdomain.com"
+```
+
+Notes:
+- `CONTACT_FROM_EMAIL` must be an address from a verified domain in Resend.
+- `RESEND_API_KEY` must remain server-side only and never be exposed in client code.
+
 ## 🛠 Building and Running for Production
 
 1. **Generate Static Build**

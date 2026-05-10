@@ -20,6 +20,7 @@
     "next": "16.2.5",
     "react": "19.2.6",
     "react-dom": "19.2.6",
+    "resend": "^6.12.3",
     "sass": "^1.79.4"
   },
   "devDependencies": {
