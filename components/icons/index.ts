@@ -20,6 +20,7 @@ import { Ovsx } from './Ovsx';
 import { Send } from './Send';
 import { Vscm } from './Vscm';
 import { X } from './X';
+import { Star } from './Star';
 
 export const Icons = {
   Logo,
@@ -42,6 +43,7 @@ export const Icons = {
   Npm,
   Ovsx,
   Send,
+  Star,
   Vscm,
   X,
 };

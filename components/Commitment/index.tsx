@@ -10,15 +10,33 @@ import {
 } from '@data';
 import { Icons } from '@components/icons';
 import { CommitsHeatmap } from '@components/CommitsHeatmap';
+import Slider from 'react-slick';
 
 import './styles.scss';
 
 type CommitmentTab = (typeof commitmentContent.tabs)[number]['id'];
+type SliderArrowProps = {
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 
 const commitmentTabIcons: Record<CommitmentTab, React.ReactNode> = {
   github: <Icons.Github size={13} />,
   'gitlab-work': <Icons.Briefcase size={13} />,
   'gitlab-personal': <Icons.GitLab size={13} />,
+};
+const CommitmentSliderArrow = ({ className, onClick }: SliderArrowProps) => {
+  const isPrev = className?.includes('slick-prev');
+  return (
+    <button
+      type="button"
+      className={`commitment__slider-arrow ${isPrev ? 'commitment__slider-arrow--prev' : 'commitment__slider-arrow--next'} ${className || ''}`}
+      onClick={onClick}
+      aria-label={isPrev ? 'Previous years' : 'Next years'}
+    >
+      <Icons.ArrowDown size={14} />
+    </button>
+  );
 };
 
 export const Commitment = () => {
@@ -95,6 +113,51 @@ export const Commitment = () => {
     'gitlab-personal': commitmentContent.empty.gitlabPersonal,
   } as const;
   const emptyState = emptyStateByTab[activeTab as 'github' | 'gitlab-personal'];
+  const yearsSliderSettings = React.useMemo(
+    () => ({
+      arrows: true,
+      infinite: false,
+      vertical: true,
+      verticalSwiping: true,
+      speed: 260,
+      slidesToShow: 3,
+      slidesToScroll: 2,
+      adaptiveHeight: false,
+      nextArrow: <CommitmentSliderArrow />,
+      prevArrow: <CommitmentSliderArrow />,
+      responsive: [
+        {
+          breakpoint: 1200,
+          settings: {
+            slidesToScroll: 2,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToScroll: 2,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToScroll: 2,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 540,
+          settings: {
+            slidesToScroll: 1,
+            slidesToShow: 2,
+          },
+        },
+      ],
+    }),
+    []
+  );
 
   return (
     <section id="commitment" className="commitment">
@@ -178,23 +241,31 @@ export const Commitment = () => {
 
           <div className="commitment__panel-layout">
             <div className="commitment__main">
+              <p className="commitment__main-label">Heatmap</p>
               <CommitsHeatmap data={filteredData} />
             </div>
 
             <div className="commitment__years">
               <p className="commitment__years-label">Choose year</p>
-              <ul>
+              <Slider
+                key={activeTab}
+                {...yearsSliderSettings}
+                className="commitment__years-slider"
+              >
                 {yearsByTab[activeTab].map((year) => (
-                  <li key={`${activeTab}-${year}`}>
+                  <div
+                    key={`${activeTab}-${year}`}
+                    className="commitment__year-slide"
+                  >
                     <button
                       onClick={() => setYearForActiveTab(year)}
                       className={`commitment__year ${year === activeYear ? 'commitment__year--active' : ''}`}
                     >
                       {year}
                     </button>
-                  </li>
+                  </div>
                 ))}
-              </ul>
+              </Slider>
             </div>
           </div>
 

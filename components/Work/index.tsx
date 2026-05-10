@@ -2,6 +2,7 @@
 import * as React from 'react';
 import { motion, AnimatePresence } from 'motion/react';
 import { Icons } from '@components/icons';
+import Slider from 'react-slick';
 import Image from 'next/image';
 import { commonContent, workContent } from '@data';
 
@@ -12,12 +13,29 @@ type WorkActionLink = {
   href?: string;
   icon: React.ReactElement;
 };
+type SliderArrowProps = {
+  className?: string;
+  onClick?: React.MouseEventHandler<HTMLButtonElement>;
+};
 
 const workTabIcons: Record<WorkTab, React.ReactNode> = {
-  featured: <Icons.Activity size={13} />,
+  featured: <Icons.Star size={13} />,
   'open-source': <Icons.Github size={13} />,
   'made-to-order': <Icons.Briefcase size={13} />,
   private: <Icons.Box size={13} />,
+};
+const WorkSliderArrow = ({ className, onClick }: SliderArrowProps) => {
+  const isPrev = className?.includes('slick-prev');
+  return (
+    <button
+      type="button"
+      className={`work__slider-arrow ${isPrev ? 'work__slider-arrow--prev' : 'work__slider-arrow--next'} ${className || ''}`}
+      onClick={onClick}
+      aria-label={isPrev ? 'Previous projects' : 'Next projects'}
+    >
+      <Icons.ArrowDown size={14} />
+    </button>
+  );
 };
 
 export const Work = () => {
@@ -61,8 +79,53 @@ export const Work = () => {
     { href: active?.ghPackages, icon: <Icons.Box size={16} /> },
     { href: active?.github, icon: <Icons.Github size={16} /> },
     { href: active?.live, icon: <Icons.ExternalLink size={16} /> },
-  ].filter((item): item is { href: string; icon: React.ReactElement } =>
-    item.href !== undefined
+  ].filter(
+    (item): item is { href: string; icon: React.ReactElement } =>
+      item.href !== undefined
+  );
+
+  const projectSliderSettings = React.useMemo(
+    () => ({
+      arrows: true,
+      infinite: false,
+      vertical: true,
+      verticalSwiping: true,
+      speed: 300,
+      slidesToShow: 4,
+      slidesToScroll: 3,
+      adaptiveHeight: false,
+      nextArrow: <WorkSliderArrow />,
+      prevArrow: <WorkSliderArrow />,
+      responsive: [
+        {
+          breakpoint: 1280,
+          settings: {
+            slidesToScroll: 3,
+            slidesToShow: 4,
+          },
+        },
+        {
+          breakpoint: 1024,
+          settings: {
+            slidesToScroll: 3,
+            slidesToShow: 4,
+          },
+        },
+        {
+          breakpoint: 768,
+          settings: {
+            slidesToScroll: 2,
+            slidesToShow: 3,
+          },
+        },
+        {
+          breakpoint: 540,
+          slidesToScroll: 1,
+          settings: { slidesToShow: 2 },
+        },
+      ],
+    }),
+    []
   );
 
   return (
@@ -118,38 +181,41 @@ export const Work = () => {
               transition={{ delay: 0.25, duration: 0.5 }}
               className="work__list"
             >
-              {tabProjects.map((project, i) => (
-                <motion.button
-                  key={project.id}
-                  initial={{ opacity: 0, x: -15 }}
-                  animate={{ opacity: 1, x: 0 }}
-                  transition={{ delay: 0.3 + i * 0.06 }}
-                  onClick={() => handleProjectSelect(project.id)}
-                  className={`work__item ${activeProject === project.id ? 'work__item--active' : ''}`}
-                  type="button"
-                >
-                  {activeProject === project.id && (
-                    <motion.div
-                      layoutId="activeProjectBg"
-                      className="work__item-active-bg"
-                    />
-                  )}
-                  <div className="work__item-head">
-                    <div>
-                      <p className="work__item-title">{project.title}</p>
-                      <p className="work__item-subtitle">{project.subtitle}</p>
-                    </div>
-                    <span className="work__item-arrow">
-                      <Icons.ArrowRight size={14} />
-                    </span>
+              <Slider
+                key={activeTab}
+                {...projectSliderSettings}
+                className="work__projects-slider"
+              >
+                {tabProjects.map((project) => (
+                  <div key={project.id} className="work__slide">
+                    <button
+                      onClick={() => handleProjectSelect(project.id)}
+                      className={`work__item ${activeProject === project.id ? 'work__item--active' : ''}`}
+                      type="button"
+                    >
+                      {activeProject === project.id && (
+                        <div className="work__item-active-bg" />
+                      )}
+                      <div className="work__item-head">
+                        <div>
+                          <p className="work__item-title">{project.title}</p>
+                          <p className="work__item-subtitle">
+                            {project.subtitle}
+                          </p>
+                        </div>
+                        <span className="work__item-arrow">
+                          <Icons.ArrowRight size={14} />
+                        </span>
+                      </div>
+                      <div className="work__item-tags">
+                        {project.tags.slice(0, 3).map((tag) => (
+                          <span key={tag}>{tag}</span>
+                        ))}
+                      </div>
+                    </button>
                   </div>
-                  <div className="work__item-tags">
-                    {project.tags.slice(0, 3).map((tag) => (
-                      <span key={tag}>{tag}</span>
-                    ))}
-                  </div>
-                </motion.button>
-              ))}
+                ))}
+              </Slider>
             </motion.div>
 
             <AnimatePresence mode="wait">

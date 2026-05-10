@@ -1,5 +1,7 @@
 import type { Metadata, Viewport } from 'next';
 import { HtmlMeta } from '@data';
+import 'slick-carousel/slick/slick.css';
+import 'slick-carousel/slick/slick-theme.css';
 
 import { BfcacheRestoreGuard, Footer, Header } from '@components';
 import './globals.scss';
