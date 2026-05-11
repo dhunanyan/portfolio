@@ -13,6 +13,7 @@ export type AboutPropsType = {
 
 export const About = ({ data }: AboutPropsType) => {
   void data;
+  const [openSkillGroupIndex, setOpenSkillGroupIndex] = React.useState(0);
 
   return (
     <section id="about" className="about">
@@ -117,14 +118,24 @@ export const About = ({ data }: AboutPropsType) => {
                 initial={{ opacity: 0, y: 14 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ delay: 0.25 + groupIndex * 0.08, duration: 0.45 }}
-                className="about__skills-card"
+                className={`about__skills-card ${openSkillGroupIndex === groupIndex ? 'about__skills-card--open' : ''}`}
               >
-                <div className="about__skills-head">
+                <button
+                  type="button"
+                  className="about__skills-head"
+                  aria-expanded={openSkillGroupIndex === groupIndex}
+                  onClick={() => setOpenSkillGroupIndex(groupIndex)}
+                >
                   <p className="about__skills-title">{group.title}</p>
-                  <span className="about__skills-count">
-                    {group.skills.length}
+                  <span className="about__skills-head-right">
+                    <span className="about__skills-count">
+                      {group.skills.length}
+                    </span>
+                    <span className="about__skills-arrow" aria-hidden="true">
+                      <Icons.ArrowDown size={14} />
+                    </span>
                   </span>
-                </div>
+                </button>
 
                 <div className="about__skills-list">
                   {group.skills.map((skill) => (

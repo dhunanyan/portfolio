@@ -21,9 +21,9 @@ type SliderArrowProps = {
 };
 
 const commitmentTabIcons: Record<CommitmentTab, React.ReactNode> = {
-  github: <Icons.Github size={13} />,
-  'gitlab-work': <Icons.Briefcase size={13} />,
-  'gitlab-personal': <Icons.GitLab size={13} />,
+  personal: <Icons.Github size={13} />,
+  work: <Icons.GitLab size={13} />,
+  studies: <Icons.GitLab size={13} />,
 };
 const CommitmentSliderArrow = ({ className, onClick }: SliderArrowProps) => {
   const isPrev = className?.includes('slick-prev');
@@ -40,14 +40,13 @@ const CommitmentSliderArrow = ({ className, onClick }: SliderArrowProps) => {
 };
 
 export const Commitment = () => {
-  const [activeTab, setActiveTab] =
-    React.useState<CommitmentTab>('gitlab-work');
+  const [activeTab, setActiveTab] = React.useState<CommitmentTab>('work');
 
   const dataByTab = React.useMemo(
     () => ({
-      github: githubHeatmap,
-      'gitlab-work': gitlabWorkHeatmap,
-      'gitlab-personal': gitlabPersonalHeatmap,
+      personal: githubHeatmap,
+      work: gitlabWorkHeatmap,
+      studies: gitlabPersonalHeatmap,
     }),
     []
   );
@@ -66,9 +65,9 @@ export const Commitment = () => {
   const [selectedYearByTab, setSelectedYearByTab] = React.useState<
     Record<CommitmentTab, number>
   >({
-    github: yearsByTab.github[0],
-    'gitlab-work': yearsByTab['gitlab-work'][0],
-    'gitlab-personal': yearsByTab['gitlab-personal'][0],
+    personal: yearsByTab.personal[0],
+    work: yearsByTab.work[0],
+    studies: yearsByTab.studies[0],
   });
 
   const activeYear = selectedYearByTab[activeTab];
@@ -109,10 +108,10 @@ export const Commitment = () => {
     }));
   };
   const emptyStateByTab = {
-    github: commitmentContent.empty.github,
-    'gitlab-personal': commitmentContent.empty.gitlabPersonal,
+    personal: commitmentContent.empty.github,
+    studies: commitmentContent.empty.gitlabPersonal,
   } as const;
-  const emptyState = emptyStateByTab[activeTab as 'github' | 'gitlab-personal'];
+  const emptyState = emptyStateByTab[activeTab as 'personal' | 'studies'];
   const yearsSliderSettings = React.useMemo(
     () => ({
       arrows: true,
@@ -247,6 +246,17 @@ export const Commitment = () => {
 
             <div className="commitment__years">
               <p className="commitment__years-label">Choose year</p>
+              <div className="commitment__years-mobile">
+                {yearsByTab[activeTab].map((year) => (
+                  <button
+                    key={`mobile-${activeTab}-${year}`}
+                    onClick={() => setYearForActiveTab(year)}
+                    className={`commitment__year ${year === activeYear ? 'commitment__year--active' : ''}`}
+                  >
+                    {year}
+                  </button>
+                ))}
+              </div>
               <Slider
                 key={activeTab}
                 {...yearsSliderSettings}

@@ -49,6 +49,14 @@ export const Experience = ({ data }: ExperiencePropsType) => {
 
   const [activeTab, setActiveTab] = React.useState<Tab>('all');
   const [activeId, setActiveId] = React.useState(experienceContent.items[0].id);
+  const [isDescriptionExpanded, setIsDescriptionExpanded] =
+    React.useState(false);
+  const [descriptionHeights, setDescriptionHeights] = React.useState({
+    preview: 0,
+    full: 0,
+  });
+  const fullDescriptionRef = React.useRef<HTMLDivElement | null>(null);
+  const previewDescriptionRef = React.useRef<HTMLDivElement | null>(null);
 
   const filtered = experienceContent.items.filter((item) =>
     activeTab === 'all' ? true : item.type === activeTab
@@ -56,6 +64,39 @@ export const Experience = ({ data }: ExperiencePropsType) => {
   const activeItem =
     experienceContent.items.find((item) => item.id === activeId) ||
     experienceContent.items[0];
+  const DESCRIPTION_PREVIEW_CHAR_LIMIT = 160;
+  const totalDescriptionChars = activeItem.description.join(' ').length;
+  const shouldShowDescriptionToggle =
+    totalDescriptionChars > DESCRIPTION_PREVIEW_CHAR_LIMIT;
+
+  const getPreviewDescription = React.useCallback((items: string[]) => {
+    let charsCount = 0;
+    const previewItems: string[] = [];
+
+    for (const item of items) {
+      if (charsCount >= DESCRIPTION_PREVIEW_CHAR_LIMIT) {
+        break;
+      }
+
+      const remaining = DESCRIPTION_PREVIEW_CHAR_LIMIT - charsCount;
+      if (item.length <= remaining) {
+        previewItems.push(item);
+        charsCount += item.length;
+        continue;
+      }
+
+      previewItems.push(
+        `${item.slice(0, Math.max(remaining - 1, 0)).trimEnd()}...`
+      );
+      charsCount = DESCRIPTION_PREVIEW_CHAR_LIMIT;
+    }
+
+    return previewItems;
+  }, []);
+  const previewDescription = React.useMemo(
+    () => getPreviewDescription(activeItem.description),
+    [activeItem.description, getPreviewDescription]
+  );
   const activeMedia = experienceMediaById[activeItem.id];
   const tabIconByType: Partial<Record<Tab, React.ReactNode>> = {
     work: <Icons.Briefcase size={13} />,
@@ -65,6 +106,16 @@ export const Experience = ({ data }: ExperiencePropsType) => {
     work: <Icons.Briefcase size={12} />,
     education: <Icons.GraduationCap size={12} />,
   };
+  const handleItemSelect = (itemId: string) => {
+    setActiveId(itemId);
+    setIsDescriptionExpanded(false);
+  };
+
+  React.useLayoutEffect(() => {
+    const full = fullDescriptionRef.current?.scrollHeight ?? 0;
+    const preview = previewDescriptionRef.current?.scrollHeight ?? 0;
+    setDescriptionHeights({ full, preview });
+  }, [activeId, activeItem.description, previewDescription]);
 
   return (
     <section id="experience" className="experience">
@@ -111,7 +162,7 @@ export const Experience = ({ data }: ExperiencePropsType) => {
             {filtered.map((item) => (
               <button
                 key={item.id}
-                onClick={() => setActiveId(item.id)}
+                onClick={() => handleItemSelect(item.id)}
                 className={`experience__list-item ${activeId === item.id ? 'experience__list-item--active' : ''}`}
               >
                 <div className="experience__list-head">
@@ -178,16 +229,67 @@ export const Experience = ({ data }: ExperiencePropsType) => {
               </div>
 
               <div className="experience__card-description">
-                <ul>
-                  {activeItem.description.map((descItem, index) => (
-                    <li key={index}>
-                      <p>
-                        <span>·</span>
-                        {descItem}
-                      </p>
-                    </li>
-                  ))}
-                </ul>
+                <motion.div
+                  className="experience__description-viewport"
+                  initial={false}
+                  animate={{
+                    height: isDescriptionExpanded
+                      ? descriptionHeights.full
+                      : descriptionHeights.preview,
+                  }}
+                  transition={{ duration: 0.3, ease: [0.22, 1, 0.36, 1] }}
+                >
+                  <motion.div
+                    className="experience__description-block"
+                    ref={previewDescriptionRef}
+                    aria-hidden={isDescriptionExpanded}
+                    initial={false}
+                    animate={{ opacity: +!isDescriptionExpanded }}
+                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                  >
+                    <ul>
+                      {previewDescription.map((descItem, index) => (
+                        <li key={`preview-${index}`}>
+                          <p>
+                            <span>·</span>
+                            {descItem}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                  <motion.div
+                    className="experience__description-block"
+                    ref={fullDescriptionRef}
+                    aria-hidden={!isDescriptionExpanded}
+                    initial={false}
+                    animate={{ opacity: isDescriptionExpanded ? 1 : 0 }}
+                    transition={{ duration: 0.18, ease: 'easeOut' }}
+                  >
+                    <ul>
+                      {activeItem.description.map((descItem, index) => (
+                        <li key={`full-${index}`}>
+                          <p>
+                            <span>·</span>
+                            {descItem}
+                          </p>
+                        </li>
+                      ))}
+                    </ul>
+                  </motion.div>
+                </motion.div>
+
+                {shouldShowDescriptionToggle && (
+                  <motion.button
+                    layout
+                    transition={{ duration: 0.24, ease: 'easeOut' }}
+                    type="button"
+                    onClick={() => setIsDescriptionExpanded((prev) => !prev)}
+                    className="experience__description-toggle"
+                  >
+                    {isDescriptionExpanded ? 'Show less' : 'Show more'}
+                  </motion.button>
+                )}
               </div>
 
               {activeMedia && (

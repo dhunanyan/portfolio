@@ -59,13 +59,13 @@ export const aboutContent = {
   actions: {
     github: 'GitHub',
     linkedin: 'LinkedIn',
-    cv: 'Curriculum Vitae',
+    cv: 'CV',
   },
   avatarSrc: '/projects/avatar.jpg',
   avatarAlt: 'Davit Hunanyan avatar',
   skillGroups: [
     {
-      title: 'Recently used Languages/Technologies/Tools',
+      title: 'Languages/Technologies/Tools',
       skills: [
         'React',
         'React Native',
@@ -657,13 +657,9 @@ const legacyWorkProjects = [
 
 export const commitmentContent = {
   tabs: [
-    { id: 'github', label: 'GitHub', subsection: 'GitHub' },
-    { id: 'gitlab-work', label: 'GitLab (Work)', subsection: 'GitLab' },
-    {
-      id: 'gitlab-personal',
-      label: 'GitLab (Personal)',
-      subsection: 'GitLab',
-    },
+    { id: 'personal', label: 'Personal', subsection: 'GitHub' },
+    { id: 'work', label: 'Work', subsection: 'GitLab' },
+    { id: 'studies', label: 'Studies', subsection: 'GitLab' },
   ] as const,
   empty: {
     github: {

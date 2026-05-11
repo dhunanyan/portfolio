@@ -314,6 +314,36 @@
     }
   }
 
+  &__description-viewport {
+    overflow: hidden;
+    position: relative;
+  }
+
+  &__description-block {
+    left: 0;
+    opacity: 1;
+    pointer-events: none;
+    position: absolute;
+    top: 0;
+    width: 100%;
+    z-index: 1;
+  }
+
+  &__description-toggle {
+    color: $tint-color;
+    display: inline-flex;
+    font-family: $font-mono;
+    font-size: 0.74rem;
+    margin-top: 0.45rem;
+    padding: 0.2rem 0;
+    transition: color 160ms ease;
+
+    &:hover {
+      color: $secondary-color;
+      text-decoration: underline;
+    }
+  }
+
   &__card-tags {
     display: flex;
     flex-wrap: wrap;
@@ -326,7 +356,7 @@
     grid-template-columns: 1fr;
     margin: 0.25rem 0 1.25rem;
 
-    @media (min-width: $bp-md) {
+    @media (min-width: $bp-sm) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }

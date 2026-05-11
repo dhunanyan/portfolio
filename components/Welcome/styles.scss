@@ -297,16 +297,21 @@
     background: transparent;
     bottom: 2.5rem;
     color: $alt-color;
-    display: flex;
+    display: none;
     flex-direction: column;
     gap: 0.5rem;
     left: 50%;
     position: absolute;
     transform: translateX(-50%);
     transition: color 200ms ease;
+    z-index: 999999999;
 
     &:hover {
       color: $tint-color;
+    }
+
+    @media (min-width: $bp-md) {
+      display: flex;
     }
   }
 

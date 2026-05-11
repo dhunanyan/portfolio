@@ -141,9 +141,21 @@
 
   &__skills-head {
     align-items: center;
+    background: transparent;
+    border: 0;
+    color: inherit;
+    cursor: pointer;
     display: flex;
     justify-content: space-between;
     margin-bottom: 0.65rem;
+    padding: 0;
+    width: 100%;
+  }
+
+  &__skills-head-right {
+    align-items: center;
+    display: inline-flex;
+    gap: 0.45rem;
   }
 
   &__skills-title {
@@ -164,10 +176,31 @@
     padding: 0.3rem 0.45rem;
   }
 
+  &__skills-arrow {
+    align-items: center;
+    color: $alt-color;
+    display: inline-flex;
+    justify-content: center;
+    transition: all 700ms $animation;
+  }
+
+  &__skills-card--open &__skills-arrow {
+    transform: rotate(180deg);
+  }
+
   &__skills-list {
     display: flex;
     flex-wrap: wrap;
     gap: 0.45rem;
+    max-height: 0;
+    opacity: 0;
+    overflow: hidden;
+    transition: all 700ms $animation;
+  }
+
+  &__skills-card--open &__skills-list {
+    max-height: 520px;
+    opacity: 1;
   }
 
   &__skill-item {
@@ -179,12 +212,29 @@
     font-size: 0.74rem;
     line-height: 1;
     padding: 0.42rem 0.58rem;
-    transition: all 180ms ease;
+    transition: all 250ms $animation;
 
     &:hover {
       border-color: rgba(100, 255, 218, 0.55);
       color: $secondary-color;
       transform: translateY(-1px);
+    }
+  }
+
+  @media (min-width: $bp-md) {
+    &__skills-head {
+      cursor: default;
+    }
+
+    &__skills-arrow {
+      display: none;
+    }
+
+    &__skills-list {
+      max-height: none;
+      opacity: 1;
+      overflow: visible;
+      transition: none;
     }
   }
 
