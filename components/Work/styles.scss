@@ -3,8 +3,16 @@
 .work {
   background: #0a0f1e;
   overflow: hidden;
-  padding: 7rem 0;
+  padding: 4.5rem 0;
   position: relative;
+
+  @media (min-width: $bp-md) {
+    padding: 6rem 0;
+  }
+
+  @media (min-width: $bp-lg) {
+    padding: 7rem 0;
+  }
 
   &__top-line {
     background: linear-gradient(
@@ -21,14 +29,22 @@
   &__container {
     margin: 0 auto;
     max-width: 72rem;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+
+    @media (min-width: $bp-sm) {
+      padding: 0 1.25rem;
+    }
+
+    @media (min-width: $bp-md) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__header {
     align-items: center;
     display: flex;
     gap: 1rem;
-    margin-bottom: 1.5rem;
+    margin-bottom: 1.1rem;
   }
 
   &__index {
@@ -39,7 +55,7 @@
 
   &__heading {
     color: $secondary-color;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
     font-weight: 600;
   }
 
@@ -59,6 +75,7 @@
 
   &__tabs {
     display: flex;
+    flex-wrap: wrap;
     gap: 0.65rem;
     margin-bottom: 1.2rem;
   }
@@ -72,11 +89,11 @@
     cursor: pointer;
     display: inline-flex;
     font-family: $font-sans;
-    font-size: 0.72rem;
+    font-size: 0.7rem;
     font-weight: 600;
     gap: 0.38rem;
     letter-spacing: 0.03em;
-    padding: 0.45rem 0.85rem;
+    padding: 0.44rem 0.72rem;
     text-transform: uppercase;
     transition: all 180ms ease;
 
@@ -90,6 +107,10 @@
       border-color: rgba(100, 255, 218, 0.6);
       color: $tint-color;
     }
+    @media (min-width: $bp-sm) {
+      font-size: 0.72rem;
+      padding: 0.45rem 0.85rem;
+    }
   }
 
   &__tab-icon {
@@ -102,7 +123,7 @@
     display: grid;
     gap: 10px;
 
-    @media (min-width: 1024px) {
+    @media (min-width: $bp-lg) {
       grid-template-columns: 300px 1fr;
     }
   }
@@ -116,8 +137,20 @@
     margin: 38px 0 0;
 
     .slick-list {
-      height: 320px;
+      height: 284px;
       overflow: hidden;
+    }
+
+    @media (min-width: $bp-sm) {
+      .slick-list {
+        height: 300px;
+      }
+    }
+
+    @media (min-width: $bp-md) {
+      .slick-list {
+        height: 320px;
+      }
     }
 
     .slick-slide > div {
@@ -192,7 +225,7 @@
     border: 1px solid #1e3a5f;
     border-radius: 10px;
     display: block;
-    padding: 10px 12px;
+    padding: 11px 12px;
     position: relative;
     text-align: left;
     transition: all 220ms ease;
@@ -235,12 +268,15 @@
 
   &__item-title {
     color: rgba(226, 236, 255, 0.9);
-    font-size: 0.82rem;
+    font-size: 0.8rem;
     font-weight: 600;
     margin: 0 0 0.12rem;
     overflow: hidden;
     text-overflow: ellipsis;
     white-space: nowrap;
+    @media (min-width: $bp-sm) {
+      font-size: 0.82rem;
+    }
   }
 
   &__item--active &__item-title {
@@ -294,12 +330,20 @@
   }
 
   &__media {
-    height: 400px;
+    height: 240px;
     overflow: hidden;
     position: relative;
 
-    @media (max-width: 767px) {
-      height: 300px;
+    @media (min-width: $bp-sm) {
+      height: 280px;
+    }
+
+    @media (min-width: $bp-md) {
+      height: 320px;
+    }
+
+    @media (min-width: $bp-lg) {
+      height: 400px;
     }
   }
 
@@ -369,20 +413,31 @@
   }
 
   &__card-content {
-    padding: 1.75rem;
+    padding: 1.1rem;
+
+    @media (min-width: $bp-md) {
+      padding: 1.35rem;
+    }
+
+    @media (min-width: $bp-lg) {
+      padding: 1.75rem;
+    }
 
     h3 {
       color: $secondary-color;
-      font-size: 1.25rem;
+      font-size: clamp(1.02rem, 4vw, 1.25rem);
       font-weight: 600;
       margin: 0 0 0.75rem;
     }
 
     p {
       color: $alt-color;
-      font-size: 0.9rem;
+      font-size: 0.84rem;
       line-height: 1.75;
       margin: 0 0 1.5rem;
+      @media (min-width: $bp-md) {
+        font-size: 0.9rem;
+      }
     }
   }
 

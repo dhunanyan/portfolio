@@ -2,8 +2,16 @@
 
 .commitment {
   background: #0a0f1e;
-  padding: 7rem 0;
+  padding: 4.5rem 0;
   position: relative;
+
+  @media (min-width: $bp-md) {
+    padding: 6rem 0;
+  }
+
+  @media (min-width: $bp-lg) {
+    padding: 7rem 0;
+  }
 
   &__top-line {
     background: linear-gradient(
@@ -22,7 +30,15 @@
   &__container {
     margin: 0 auto;
     max-width: 72rem;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+
+    @media (min-width: $bp-sm) {
+      padding: 0 1.25rem;
+    }
+
+    @media (min-width: $bp-md) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__header {
@@ -41,7 +57,7 @@
   &__heading {
     color: $secondary-color;
     font-family: $font-sans;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
     font-weight: 600;
   }
 
@@ -104,8 +120,12 @@
     background: rgba(17, 34, 64, 0.45);
     border: 1px solid rgba(100, 255, 218, 0.16);
     border-radius: 14px;
-    min-height: 17rem;
-    padding: 1rem;
+    min-height: 16rem;
+    padding: 0.82rem;
+
+    @media (min-width: $bp-md) {
+      padding: 1rem;
+    }
   }
 
   &__panel-header {
@@ -176,7 +196,7 @@
     gap: 16px;
     grid-template-columns: 1fr;
 
-    @media (min-width: 1024px) {
+    @media (min-width: $bp-lg) {
       grid-template-columns: minmax(0, 1fr) 180px;
       align-items: start;
     }
@@ -217,8 +237,20 @@
       margin: 50px 0 0;
 
       .slick-list {
-        height: 188px;
+        height: 152px;
         overflow: hidden;
+      }
+
+      @media (min-width: $bp-sm) {
+        .slick-list {
+          height: 170px;
+        }
+      }
+
+      @media (min-width: $bp-md) {
+        .slick-list {
+          height: 188px;
+        }
       }
 
       .slick-slide {
@@ -310,8 +342,8 @@
     color: $alt-color;
     cursor: pointer;
     font-family: $font-mono;
-    font-size: 12px;
-    padding: 9px 12px;
+    font-size: 11px;
+    padding: 8px 10px;
     text-align: left;
     transition: all 180ms ease;
     width: 100%;
@@ -319,6 +351,10 @@
     &:hover {
       border-color: rgba(100, 255, 218, 0.4);
       color: $secondary-color;
+    }
+    @media (min-width: $bp-sm) {
+      font-size: 12px;
+      padding: 9px 12px;
     }
   }
 

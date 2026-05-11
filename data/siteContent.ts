@@ -17,7 +17,6 @@ export const headerContent = {
     { label: 'Experience', href: '#experience' },
     { label: 'Work', href: '#work' },
     { label: 'Commitment', href: '#commitment' },
-    { label: 'Contact', href: '#contact' },
   ],
   connectLabel: 'Connect',
   logoText: 'Dhunanyan',
@@ -199,7 +198,7 @@ export const aboutContent = {
       ],
     },
   ],
-};
+} as const;
 
 export const experienceContent = {
   tabs: ['all', 'work', 'education'] as const,
@@ -345,267 +344,316 @@ export const experienceContent = {
   ],
 };
 
+const workTabs = [
+  { id: 'featured', label: 'Featured' },
+  { id: 'open-source', label: 'Open Source' },
+  { id: 'made-to-order', label: 'Made to Order' },
+  { id: 'private', label: 'Private' },
+] as const;
+
+type WorkTabId = (typeof workTabs)[number]['id'];
+
+const getWorkProjectsById = () =>
+  Object.fromEntries(
+    legacyWorkProjects.map(({ categories: _categories, ...project }) => [
+      project.id,
+      project,
+    ])
+  );
+
+const workTabProjectIds = {
+  featured: [
+    'scss-converter',
+    'aristo-badges',
+    'aristo-repo',
+    'aristobyte-ui',
+    'aristobyte-ui-cli',
+    'aristobyte-com',
+    'moonchunk',
+  ],
+  'open-source': [
+    'scss-converter',
+    'aristo-badges',
+    'aristo-bot',
+    'aristo-repo',
+    'aristo-theme',
+    'aristobyte-ui',
+    'aristobyte-ui-cli',
+    'aristobyte-com',
+    'moonchunk',
+    'moonchunk-highlight-vscode-extension',
+  ],
+  'made-to-order': [
+    'ghunanyan',
+    'novelex',
+    'mervilleautos',
+    'new-step-studio',
+    'futurefix',
+    'ordrio',
+  ],
+  private: ['spotify', 'weather', 'meetjs'],
+} as const satisfies Record<WorkTabId, readonly string[]>;
+
 export const workContent = {
   intro:
     "A selection of things I've built. Each project represents a unique challenge solved with modern tooling and a focus on user experience.",
   githubCtaLabel: 'View More on GitHub',
-  tabs: [
-    { id: 'featured', label: 'Featured' },
-    { id: 'open-source', label: 'Open Source' },
-    { id: 'made-to-order', label: 'Made to Order' },
-    { id: 'private', label: 'Private' },
-  ] as const,
-  projects: [
-    {
-      id: 'spotify',
-      categories: ['private'] as const,
-      title: 'Spotify Clone',
-      subtitle: 'Mobile App',
-      description:
-        'A full-featured Spotify clone for iOS/Android built with React Native and Expo. Integrates the Spotify Web API for real data including playback, search, playlists, and authentication.',
-      tags: ['React Native', 'TypeScript', 'Expo', 'Spotify API', 'Zustand'],
-      image: '/projects/spotify-clone.png',
-      github: 'https://github.com/dhunanyan/spotify-clone',
-      accent: '#1DB954',
-    },
-    {
-      id: 'weather',
-      categories: ['private'] as const,
-      title: 'iOS Weather Show',
-      subtitle: 'Mobile App',
-      description:
-        'A beautifully designed iOS weather application that fetches real-time weather data. Features animated weather conditions, 7-day forecasts, and location-based updates.',
-      tags: ['React Native', 'TypeScript', 'OpenWeather API', 'Expo'],
-      image: '/projects/ios-weather-clone.png',
-      github: 'https://github.com/dhunanyan/ios-weather-clone',
-      live: '#',
-      accent: '#00b4d8',
-    },
-    {
-      id: 'scss-converter',
-      categories: ['featured', 'open-source'] as const,
-      title: 'SCSS to CSS Converter',
-      subtitle: 'Converter',
-      description:
-        'A fast and practical tool to transform SCSS into browser-ready CSS with parser-driven processing and instant visual feedback for developers.',
-      tags: ['Next.js', 'TypeScript', 'Sass', 'NPM'],
-      image: '/projects/scss-to-css-converter.png',
-      github: 'https://github.com/dhunanyan/scss-to-css-converter',
-      live: 'https://scss2css.dhunanyan.com',
-      npm: 'https://www.npmjs.com/package/@dhunanyan/scss-to-css-converter',
-      accent: '#06b2f1',
-    },
-    {
-      id: 'ghunanyan',
-      categories: ['made-to-order'] as const,
-      title: 'Ghunanyan',
-      subtitle: 'Portfolio Website',
-      description:
-        'A personal portfolio experience focused on clean UI composition, fast page transitions, and a polished presentation of engineering work.',
-      tags: ['Next.js', 'TypeScript', 'SCSS', 'Portfolio'],
-      image: '/projects/ghunanyan.png',
-      live: 'https://ghunanyan.com',
-      accent: '#38bdf8',
-    },
-    {
-      id: 'aristo-badges',
-      categories: ['open-source', 'featured'] as const,
-      title: 'AristoBadges',
-      subtitle: 'Web App',
-      description:
-        'A minimal, cache-friendly SVG badge service for GitHub repositories, organizations, and NPM packages, designed for README dashboards and predictable URLs.',
-      tags: ['Next.js', 'TypeScript', 'SVG', 'API'],
-      image: '/projects/aristo-badges.png',
-      github: 'https://github.com/aristobyte/aristo-badges',
-      live: 'https://badges.aristobyte.com',
-      accent: '#0ea5e9',
-    },
-    {
-      id: 'aristo-bot',
-      categories: ['open-source'] as const,
-      title: 'AristoBot',
-      subtitle: 'GitHub App Service',
-      description:
-        'A GitHub App service for secure, scope-based workflow dispatch across repositories with centralized policy control and release automation support.',
-      tags: ['Node.js', 'TypeScript', 'Express', 'GitHub API'],
-      image: '/projects/aristo-bot.png',
-      github: 'https://github.com/aristobyte/aristo-bot',
-      accent: '#fb7185',
-    },
-    {
-      id: 'aristo-repo',
-      categories: ['open-source', 'featured'] as const,
-      title: 'AristoRepo',
-      subtitle: 'CLI Toolkit',
-      description:
-        'A config-first CLI toolkit for bootstrapping and maintaining GitHub org/repo standards including rulesets, teams, security, and environments.',
-      tags: ['CLI', 'TypeScript', 'GitHub', 'Automation'],
-      image: '/projects/aristo-repo.png',
-      github: 'https://github.com/aristobyte/aristo-repo',
-      npm: 'https://www.npmjs.com/package/@aristobyte/repo',
-      accent: '#f59e0b',
-    },
-    {
-      id: 'aristo-theme',
-      categories: ['open-source'] as const,
-      title: 'AristoByte Theme VSCode Extension',
-      subtitle: 'Design System Theme',
-      description:
-        'A production-ready VS Code theme system with multiple dark/light variants, accessibility-focused contrasts, and built-in onboarding dashboard.',
-      tags: ['VS Code', 'Theme', 'Accessibility', 'UI'],
-      image: '/projects/aristo-theme-vscode-extension.png',
-      github: 'https://github.com/aristobyte/aristo-theme-vscode-extension',
-      ovsx: 'https://open-vsx.org/extension/aristobyte/aristo-theme-vscode-color-theme',
-      vscm: 'https://marketplace.visualstudio.com/items?itemName=aristobyte.aristo-theme-vscode-color-theme',
-      accent: '#22c55e',
-    },
-    {
-      id: 'aristobyte-ui',
-      categories: ['open-source', 'featured'] as const,
-      title: 'AristoByteUI',
-      subtitle: 'React Component Library',
-      description:
-        'A performance-first, fully typed React monorepo shipping reusable UI components, presets, and tooling packages for scalable design systems.',
-      tags: ['React', 'TypeScript', 'Monorepo', 'NPM'],
-      image: '/projects/aristobyte-ui.png',
-      github: 'https://github.com/aristobyte-ui',
-      live: 'https://aristobyte.com/apps/aristobyte-ui',
-      docs: 'https://ui.aristobyte.com',
-      npm: 'https://www.npmjs.com/org/aristobyte-ui',
-      ghPackages:
-        'https://github.com/orgs/aristobyte-ui/packages?repo_name=aristobyte-ui',
-      accent: '#38bdf8',
-    },
-    {
-      id: 'aristobyte-ui-cli',
-      categories: ['open-source', 'featured'] as const,
-      title: 'AristoByteUI CLI',
-      subtitle: 'CLI Toolkit',
-      description:
-        'A standalone CLI package from the AristoByteUI monorepo for initializing projects and managing UI components through a guided terminal workflow.',
-      tags: ['CLI', 'TypeScript', 'Node.js', 'NPM'],
-      image: '/projects/aristobyte-ui-cli.png',
-      github:
-        'https://github.com/aristobyte-ui/aristobyte-ui/tree/master/packages/cli',
-      npm: 'https://www.npmjs.com/package/@aristobyte-ui/cli',
-      live: '#',
-      accent: '#22d3ee',
-    },
-    {
-      id: 'aristobyte-com',
-      categories: ['open-source', 'featured'] as const,
-      title: 'AristoByte.com',
-      subtitle: 'Company Website',
-      description:
-        'Official AristoByte website built with Next.js, TypeScript, and SCSS, focused on service presentation, brand consistency, and polished motion-driven UX.',
-      tags: ['Next.js', 'TypeScript', 'SCSS', 'Framer Motion'],
-      image: '/projects/aristobyte-com.png',
-      github: 'https://github.com/aristobyte',
-      live: 'https://aristobyte.com',
-      accent: '#0ea5e9',
-    },
-    {
-      id: 'moonchunk',
-      categories: ['open-source', 'featured'] as const,
-      title: 'MoonChunk',
-      subtitle: 'Programming Language',
-      description:
-        'An ANTLR4TS-based DSL and runtime that compiles .mncnk sources into static HTML with support for imports, control flow, recursion, and scoped variables.',
-      tags: ['TypeScript', 'ANTLR4TS', 'Compiler', 'Runtime'],
-      image: '/projects/moonchunk.png',
-      github: 'https://github.com/dhunanyan/moonchunk',
-      accent: '#a78bfa',
-    },
-    {
-      id: 'moonchunk-highlight-vscode-extension',
-      categories: ['open-source'] as const,
-      title: 'MoonChunk Highlight VS Code Extension',
-      subtitle: 'VS Code Extension',
-      description:
-        'Language support extension for MoonChunk featuring TextMate grammar highlighting, snippets, onboarding dashboard, and editor tooling for .mncnk files.',
-      tags: ['VS Code', 'Extension', 'TextMate Grammar', 'TypeScript'],
-      image: '/projects/moonchunk-highlight-vscode-extension.png',
-      github:
-        'https://github.com/dhunanyan/moonchunk-highlight-vscode-extension',
-      ovsx: 'https://open-vsx.org/extension/dhunanyan/moonchunk-highlight',
-      vscm: 'https://marketplace.visualstudio.com/items?itemName=dhunanyan.moonchunk-highlight',
-      accent: '#f472b6',
-    },
-    {
-      id: 'meetjs',
-      categories: ['private'] as const,
-      title: 'MeetJS: MSW Beyond Tests Demo',
-      subtitle: 'Conference Demo',
-      description:
-        'A production-style Next.js demo showing runtime switching between MSW intercept and real API paths to unblock frontend work when backend services are unstable.',
-      tags: ['Next.js', 'TypeScript', 'MSW', 'Node.js'],
-      image: '/projects/meetjs.png',
-      github: 'https://github.com/dhunanyan/meetjs',
-      live: '#',
-      accent: '#fb923c',
-    },
-    {
-      id: 'novelex',
-      categories: ['made-to-order'] as const,
-      title: 'Novelex Consulting Website',
-      subtitle: 'Client Project',
-      description:
-        'A custom website built to order for Novelex Consulting with a strong visual identity, responsive layouts, and polished interaction design.',
-      tags: ['Next.js', 'TypeScript', 'SCSS', 'Client Work'],
-      image: '/projects/novelex.png',
-      live: 'https://novelex-consulting.com',
-      accent: '#f97316',
-    },
-    {
-      id: 'mervilleautos',
-      categories: ['made-to-order'] as const,
-      title: 'Merville Autos',
-      subtitle: 'Client Website',
-      description:
-        'Official website for Merville Autos with a modern vehicle catalog experience, strong visual branding, and conversion-focused landing flows.',
-      tags: ['Next.js', 'TypeScript', 'Sanity', 'Client Work'],
-      image: '/projects/mervilleautos.png',
-      live: 'https://mervilleautos.fr',
-      accent: '#60a5fa',
-    },
-    {
-      id: 'new-step-studio',
-      categories: ['made-to-order'] as const,
-      title: 'New Step Studio',
-      subtitle: 'Client Website',
-      description:
-        'A custom client website with a clean conversion-focused layout, responsive sections, and production-ready deployment flow.',
-      tags: ['Next.js', 'TypeScript', 'Client Work', 'Landing Page'],
-      image: '/projects/new-step-studio.png',
-      live: 'https://dhunanyan-new-step-studio.netlify.app/',
-      accent: '#34d399',
-    },
-    {
-      id: 'futurefix',
-      categories: ['made-to-order'] as const,
-      title: 'FutureFix',
-      subtitle: 'Client Website',
-      description:
-        'A client-focused marketing site built for clear communication of services, strong mobile UX, and fast page performance.',
-      tags: ['Next.js', 'TypeScript', 'Client Work', 'Marketing Site'],
-      image: '/projects/futurefix.png',
-      live: 'https://dhunanyan-futurefix.netlify.app/',
-      accent: '#f59e0b',
-    },
-    {
-      id: 'ordrio',
-      categories: ['made-to-order'] as const,
-      title: 'Ordrio',
-      subtitle: 'Client Website',
-      description:
-        'A production-ready client website focused on clean structure, responsive behavior, and straightforward service presentation.',
-      tags: ['Next.js', 'TypeScript', 'Client Work', 'Landing Page'],
-      image: '/projects/ordrio.png',
-      live: 'https://ordrio.netlify.app/',
-      accent: '#22c55e',
-    },
-  ],
+  tabs: workTabs,
+  get projectsById() {
+    return getWorkProjectsById();
+  },
+  tabProjectIds: workTabProjectIds,
 };
+
+const legacyWorkProjects = [
+  {
+    id: 'spotify',
+    categories: ['private'] as const,
+    title: 'Spotify Clone',
+    subtitle: 'Mobile App',
+    description:
+      'A full-featured Spotify clone for iOS/Android built with React Native and Expo. Integrates the Spotify Web API for real data including playback, search, playlists, and authentication.',
+    tags: ['React Native', 'TypeScript', 'Expo', 'Spotify API', 'Zustand'],
+    image: '/projects/spotify-clone.png',
+    github: 'https://github.com/dhunanyan/spotify-clone',
+    accent: '#1DB954',
+  },
+  {
+    id: 'weather',
+    categories: ['private'] as const,
+    title: 'iOS Weather Show',
+    subtitle: 'Mobile App',
+    description:
+      'A beautifully designed iOS weather application that fetches real-time weather data. Features animated weather conditions, 7-day forecasts, and location-based updates.',
+    tags: ['React Native', 'TypeScript', 'OpenWeather API', 'Expo'],
+    image: '/projects/ios-weather-clone.png',
+    github: 'https://github.com/dhunanyan/ios-weather-clone',
+    live: '#',
+    accent: '#00b4d8',
+  },
+  {
+    id: 'scss-converter',
+    categories: ['featured', 'open-source'] as const,
+    title: 'SCSS to CSS Converter',
+    subtitle: 'Converter',
+    description:
+      'A fast and practical tool to transform SCSS into browser-ready CSS with parser-driven processing and instant visual feedback for developers.',
+    tags: ['Next.js', 'TypeScript', 'Sass', 'NPM'],
+    image: '/projects/scss-to-css-converter.png',
+    github: 'https://github.com/dhunanyan/scss-to-css-converter',
+    live: 'https://scss2css.dhunanyan.com',
+    npm: 'https://www.npmjs.com/package/@dhunanyan/scss-to-css-converter',
+    accent: '#06b2f1',
+  },
+  {
+    id: 'ghunanyan',
+    categories: ['made-to-order'] as const,
+    title: 'Ghunanyan',
+    subtitle: 'Portfolio Website',
+    description:
+      'A personal portfolio experience focused on clean UI composition, fast page transitions, and a polished presentation of engineering work.',
+    tags: ['Next.js', 'TypeScript', 'SCSS', 'Portfolio'],
+    image: '/projects/ghunanyan.png',
+    live: 'https://ghunanyan.com',
+    accent: '#38bdf8',
+  },
+  {
+    id: 'aristo-badges',
+    categories: ['open-source', 'featured'] as const,
+    title: 'AristoBadges',
+    subtitle: 'Web App',
+    description:
+      'A minimal, cache-friendly SVG badge service for GitHub repositories, organizations, and NPM packages, designed for README dashboards and predictable URLs.',
+    tags: ['Next.js', 'TypeScript', 'SVG', 'API'],
+    image: '/projects/aristo-badges.png',
+    github: 'https://github.com/aristobyte/aristo-badges',
+    live: 'https://badges.aristobyte.com',
+    accent: '#0ea5e9',
+  },
+  {
+    id: 'aristo-bot',
+    categories: ['open-source'] as const,
+    title: 'AristoBot',
+    subtitle: 'GitHub App Service',
+    description:
+      'A GitHub App service for secure, scope-based workflow dispatch across repositories with centralized policy control and release automation support.',
+    tags: ['Node.js', 'TypeScript', 'Express', 'GitHub API'],
+    image: '/projects/aristo-bot.png',
+    github: 'https://github.com/aristobyte/aristo-bot',
+    accent: '#fb7185',
+  },
+  {
+    id: 'aristo-repo',
+    categories: ['open-source', 'featured'] as const,
+    title: 'AristoRepo',
+    subtitle: 'CLI Toolkit',
+    description:
+      'A config-first CLI toolkit for bootstrapping and maintaining GitHub org/repo standards including rulesets, teams, security, and environments.',
+    tags: ['CLI', 'TypeScript', 'GitHub', 'Automation'],
+    image: '/projects/aristo-repo.png',
+    github: 'https://github.com/aristobyte/aristo-repo',
+    npm: 'https://www.npmjs.com/package/@aristobyte/repo',
+    accent: '#f59e0b',
+  },
+  {
+    id: 'aristo-theme',
+    categories: ['open-source'] as const,
+    title: 'AristoByte Theme VSCode Extension',
+    subtitle: 'Design System Theme',
+    description:
+      'A production-ready VS Code theme system with multiple dark/light variants, accessibility-focused contrasts, and built-in onboarding dashboard.',
+    tags: ['VS Code', 'Theme', 'Accessibility', 'UI'],
+    image: '/projects/aristo-theme-vscode-extension.png',
+    github: 'https://github.com/aristobyte/aristo-theme-vscode-extension',
+    ovsx: 'https://open-vsx.org/extension/aristobyte/aristo-theme-vscode-color-theme',
+    vscm: 'https://marketplace.visualstudio.com/items?itemName=aristobyte.aristo-theme-vscode-color-theme',
+    accent: '#22c55e',
+  },
+  {
+    id: 'aristobyte-ui',
+    categories: ['open-source', 'featured'] as const,
+    title: 'AristoByteUI',
+    subtitle: 'React Component Library',
+    description:
+      'A performance-first, fully typed React monorepo shipping reusable UI components, presets, and tooling packages for scalable design systems.',
+    tags: ['React', 'TypeScript', 'Monorepo', 'NPM'],
+    image: '/projects/aristobyte-ui.png',
+    github: 'https://github.com/aristobyte-ui',
+    live: 'https://aristobyte.com/apps/aristobyte-ui',
+    docs: 'https://ui.aristobyte.com',
+    npm: 'https://www.npmjs.com/org/aristobyte-ui',
+    ghPackages:
+      'https://github.com/orgs/aristobyte-ui/packages?repo_name=aristobyte-ui',
+    accent: '#38bdf8',
+  },
+  {
+    id: 'aristobyte-ui-cli',
+    categories: ['open-source', 'featured'] as const,
+    title: 'AristoByteUI CLI',
+    subtitle: 'CLI Toolkit',
+    description:
+      'A standalone CLI package from the AristoByteUI monorepo for initializing projects and managing UI components through a guided terminal workflow.',
+    tags: ['CLI', 'TypeScript', 'Node.js', 'NPM'],
+    image: '/projects/aristobyte-ui-cli.png',
+    github:
+      'https://github.com/aristobyte-ui/aristobyte-ui/tree/master/packages/cli',
+    npm: 'https://www.npmjs.com/package/@aristobyte-ui/cli',
+    live: '#',
+    accent: '#22d3ee',
+  },
+  {
+    id: 'aristobyte-com',
+    categories: ['open-source', 'featured'] as const,
+    title: 'AristoByte.com',
+    subtitle: 'Company Website',
+    description:
+      'Official AristoByte website built with Next.js, TypeScript, and SCSS, focused on service presentation, brand consistency, and polished motion-driven UX.',
+    tags: ['Next.js', 'TypeScript', 'SCSS', 'Framer Motion'],
+    image: '/projects/aristobyte-com.png',
+    github: 'https://github.com/aristobyte',
+    live: 'https://aristobyte.com',
+    accent: '#0ea5e9',
+  },
+  {
+    id: 'moonchunk',
+    categories: ['open-source', 'featured'] as const,
+    title: 'MoonChunk',
+    subtitle: 'Programming Language',
+    description:
+      'An ANTLR4TS-based DSL and runtime that compiles .mncnk sources into static HTML with support for imports, control flow, recursion, and scoped variables.',
+    tags: ['TypeScript', 'ANTLR4TS', 'Compiler', 'Runtime'],
+    image: '/projects/moonchunk.png',
+    github: 'https://github.com/dhunanyan/moonchunk',
+    accent: '#a78bfa',
+  },
+  {
+    id: 'moonchunk-highlight-vscode-extension',
+    categories: ['open-source'] as const,
+    title: 'MoonChunk Highlight VS Code Extension',
+    subtitle: 'VS Code Extension',
+    description:
+      'Language support extension for MoonChunk featuring TextMate grammar highlighting, snippets, onboarding dashboard, and editor tooling for .mncnk files.',
+    tags: ['VS Code', 'Extension', 'TextMate Grammar', 'TypeScript'],
+    image: '/projects/moonchunk-highlight-vscode-extension.png',
+    github: 'https://github.com/dhunanyan/moonchunk-highlight-vscode-extension',
+    ovsx: 'https://open-vsx.org/extension/dhunanyan/moonchunk-highlight',
+    vscm: 'https://marketplace.visualstudio.com/items?itemName=dhunanyan.moonchunk-highlight',
+    accent: '#f472b6',
+  },
+  {
+    id: 'meetjs',
+    categories: ['private'] as const,
+    title: 'MeetJS: MSW Beyond Tests Demo',
+    subtitle: 'Conference Demo',
+    description:
+      'A production-style Next.js demo showing runtime switching between MSW intercept and real API paths to unblock frontend work when backend services are unstable.',
+    tags: ['Next.js', 'TypeScript', 'MSW', 'Node.js'],
+    image: '/projects/meetjs.png',
+    github: 'https://github.com/dhunanyan/meetjs',
+    live: '#',
+    accent: '#fb923c',
+  },
+  {
+    id: 'novelex',
+    categories: ['made-to-order'] as const,
+    title: 'Novelex Consulting Website',
+    subtitle: 'Client Project',
+    description:
+      'A custom website built to order for Novelex Consulting with a strong visual identity, responsive layouts, and polished interaction design.',
+    tags: ['Next.js', 'TypeScript', 'SCSS', 'Client Work'],
+    image: '/projects/novelex.png',
+    live: 'https://novelex-consulting.com',
+    accent: '#f97316',
+  },
+  {
+    id: 'mervilleautos',
+    categories: ['made-to-order'] as const,
+    title: 'Merville Autos',
+    subtitle: 'Client Website',
+    description:
+      'Official website for Merville Autos with a modern vehicle catalog experience, strong visual branding, and conversion-focused landing flows.',
+    tags: ['Next.js', 'TypeScript', 'Sanity', 'Client Work'],
+    image: '/projects/mervilleautos.png',
+    live: 'https://mervilleautos.fr',
+    accent: '#60a5fa',
+  },
+  {
+    id: 'new-step-studio',
+    categories: ['made-to-order'] as const,
+    title: 'New Step Studio',
+    subtitle: 'Client Website',
+    description:
+      'A custom client website with a clean conversion-focused layout, responsive sections, and production-ready deployment flow.',
+    tags: ['Next.js', 'TypeScript', 'Client Work', 'Landing Page'],
+    image: '/projects/new-step-studio.png',
+    live: 'https://dhunanyan-new-step-studio.netlify.app/',
+    accent: '#34d399',
+  },
+  {
+    id: 'futurefix',
+    categories: ['made-to-order'] as const,
+    title: 'FutureFix',
+    subtitle: 'Client Website',
+    description:
+      'A client-focused marketing site built for clear communication of services, strong mobile UX, and fast page performance.',
+    tags: ['Next.js', 'TypeScript', 'Client Work', 'Marketing Site'],
+    image: '/projects/futurefix.png',
+    live: 'https://dhunanyan-futurefix.netlify.app/',
+    accent: '#f59e0b',
+  },
+  {
+    id: 'ordrio',
+    categories: ['made-to-order'] as const,
+    title: 'Ordrio',
+    subtitle: 'Client Website',
+    description:
+      'A production-ready client website focused on clean structure, responsive behavior, and straightforward service presentation.',
+    tags: ['Next.js', 'TypeScript', 'Client Work', 'Landing Page'],
+    image: '/projects/ordrio.png',
+    live: 'https://ordrio.netlify.app/',
+    accent: '#22c55e',
+  },
+];
 
 export const commitmentContent = {
   tabs: [

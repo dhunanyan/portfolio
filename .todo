@@ -1,4 +1,5 @@
-- mobile
+- fix mobile stylings issues with the arrows in button sliders
+- create an object of works where we have key=id not array of objects
 - add events section where I took part
 
 BLOG:

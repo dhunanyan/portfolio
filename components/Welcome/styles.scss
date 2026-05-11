@@ -122,12 +122,21 @@
   &__content {
     margin: 0 auto;
     max-width: 72rem;
-    padding: 6rem 1.5rem 4rem;
+    padding: 5.5rem 1rem 4rem;
     position: relative;
     width: 100%;
     z-index: 10;
 
-    @media screen and (min-width: 1024px) {
+    @media (min-width: $bp-sm) {
+      padding-left: 1.25rem;
+      padding-right: 1.25rem;
+    }
+
+    @media (min-width: $bp-md) {
+      padding: 6.25rem 1.75rem 4.25rem;
+    }
+
+    @media screen and (min-width: $bp-lg) {
       padding-left: 4rem;
       padding-right: 4rem;
     }
@@ -150,21 +159,17 @@
   &__name {
     color: $secondary-color;
     font-family: $font-sans;
-    font-size: 3rem;
+    font-size: clamp(2.1rem, 11vw, 3.75rem);
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.05;
     margin: 0 0 1rem;
 
-    @media screen and (min-width: 640px) {
-      font-size: 3.75rem;
-    }
-
-    @media screen and (min-width: 768px) {
+    @media (min-width: $bp-md) {
       font-size: 4.5rem;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media (min-width: $bp-lg) {
       font-size: 6rem;
     }
   }
@@ -179,21 +184,17 @@
   &__role {
     color: #4a5568;
     font-family: $font-sans;
-    font-size: 2.25rem;
+    font-size: clamp(1.35rem, 7.8vw, 3rem);
     font-weight: 700;
     letter-spacing: -0.02em;
     line-height: 1.05;
     margin: 0;
 
-    @media screen and (min-width: 640px) {
-      font-size: 3rem;
-    }
-
-    @media screen and (min-width: 768px) {
+    @media (min-width: $bp-md) {
       font-size: 3.75rem;
     }
 
-    @media screen and (min-width: 1024px) {
+    @media (min-width: $bp-lg) {
       font-size: 4.5rem;
     }
   }
@@ -213,12 +214,12 @@
   &__description {
     color: $alt-color;
     font-family: $font-sans;
-    font-size: 16px;
+    font-size: 15px;
     line-height: 1.7;
     margin: 0 0 2.5rem;
     max-width: 40rem;
 
-    @media screen and (min-width: 768px) {
+    @media (min-width: $bp-md) {
       font-size: 18px;
     }
 
@@ -232,6 +233,7 @@
     display: flex;
     flex-wrap: wrap;
     gap: 1rem;
+    width: 100%;
   }
 
   &__button {
@@ -243,9 +245,12 @@
     gap: 0.5rem;
     justify-content: center;
     overflow: hidden;
-    padding: 0.875rem 1.75rem;
+    padding: 0.82rem 1.25rem;
     position: relative;
     transition: all 300ms ease;
+    @media (min-width: $bp-sm) {
+      padding: 0.875rem 1.75rem;
+    }
   }
 
   &__button-label,

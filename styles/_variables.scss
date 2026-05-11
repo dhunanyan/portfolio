@@ -18,3 +18,11 @@ $font-sans: var(--font-sans), 'Inter', 'Segoe UI', -apple-system, system-ui,
 
 $animation: cubic-bezier(0.55, -0.19, 0.59, 1.45);
 $animation-2: cubic-bezier(0.55, -0.19, 0.59, 0.95);
+
+// Mobile-first breakpoints
+$bp-xs: 360px;
+$bp-sm: 480px;
+$bp-md: 768px;
+$bp-lg: 1024px;
+$bp-xl: 1280px;
+$bp-2xl: 1536px;

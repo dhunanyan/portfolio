@@ -23,9 +23,13 @@ $square-size: 16px;
   color: #94a3b8;
   display: flex;
   margin: 0.75rem 0 0;
-  padding: 12px 14px;
+  padding: 10px 10px;
   position: relative;
   width: 100%;
+
+  @media (min-width: $bp-sm) {
+    padding: 12px 14px;
+  }
 
   &__days {
     display: flex;
@@ -33,17 +37,24 @@ $square-size: 16px;
     gap: 4px;
     height: calc(7 * ($square-size + $gap-size) - $gap-size);
     justify-content: space-between;
-    padding: 16px 8px 20px;
+    padding: 14px 6px 18px;
+
+    @media (min-width: $bp-sm) {
+      padding: 16px 8px 20px;
+    }
 
     .heatmap__day-label {
       align-items: center;
       color: #53d2b4;
       display: flex;
-      font-size: 12px;
+      font-size: 11px;
       font-family: $font-mono;
       height: $square-size;
       justify-content: flex-end;
       text-align: right;
+      @media (min-width: $bp-sm) {
+        font-size: 12px;
+      }
     }
   }
 
@@ -170,8 +181,7 @@ $square-size: 16px;
     }
   }
 
-  @media (max-width: 767px) {
-    padding: 10px 10px;
+  @media (max-width: #{$bp-md - 1px}) {
 
     &__days {
       padding: 14px 6px 18px;

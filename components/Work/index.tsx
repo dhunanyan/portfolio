@@ -15,21 +15,23 @@ type WorkActionLink = {
 };
 type SliderArrowProps = {
   className?: string;
+  style?: React.CSSProperties;
   onClick?: React.MouseEventHandler<HTMLButtonElement>;
 };
 
 const workTabIcons: Record<WorkTab, React.ReactNode> = {
-  featured: <Icons.Star size={13} />,
+  featured: <Icons.Activity size={13} />,
   'open-source': <Icons.Github size={13} />,
   'made-to-order': <Icons.Briefcase size={13} />,
   private: <Icons.Box size={13} />,
 };
-const WorkSliderArrow = ({ className, onClick }: SliderArrowProps) => {
+const WorkSliderArrow = ({ className, style, onClick }: SliderArrowProps) => {
   const isPrev = className?.includes('slick-prev');
   return (
     <button
       type="button"
       className={`work__slider-arrow ${isPrev ? 'work__slider-arrow--prev' : 'work__slider-arrow--next'} ${className || ''}`}
+      style={style}
       onClick={onClick}
       aria-label={isPrev ? 'Previous projects' : 'Next projects'}
     >
@@ -39,13 +41,12 @@ const WorkSliderArrow = ({ className, onClick }: SliderArrowProps) => {
 };
 
 export const Work = () => {
-  const getTabProjects = React.useCallback(
-    (tab: WorkTab) =>
-      workContent.projects.filter((project) =>
-        (project.categories as readonly WorkTab[]).includes(tab)
-      ),
-    []
-  );
+  const getTabProjects = React.useCallback((tab: WorkTab) => {
+    const ids = workContent.tabProjectIds[tab] ?? [];
+    return ids
+      .map((id) => workContent.projectsById[id])
+      .filter(Boolean);
+  }, []);
 
   const [activeTab, setActiveTab] = React.useState<WorkTab>(
     workContent.tabs[0].id

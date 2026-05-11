@@ -2,8 +2,16 @@
 
 .experience {
   background: #0d1b2a;
-  padding: 7rem 0;
+  padding: 4.5rem 0;
   position: relative;
+
+  @media (min-width: $bp-md) {
+    padding: 6rem 0;
+  }
+
+  @media (min-width: $bp-lg) {
+    padding: 7rem 0;
+  }
 
   &__top-line {
     background: linear-gradient(
@@ -20,14 +28,30 @@
   &__container {
     margin: 0 auto;
     max-width: 72rem;
-    padding: 0 1.5rem;
+    padding: 0 1rem;
+
+    @media (min-width: $bp-sm) {
+      padding: 0 1.25rem;
+    }
+
+    @media (min-width: $bp-md) {
+      padding: 0 1.5rem;
+    }
   }
 
   &__header {
     align-items: center;
     display: flex;
     gap: 1rem;
-    margin-bottom: 4rem;
+    margin-bottom: 2.25rem;
+
+    @media (min-width: $bp-md) {
+      margin-bottom: 3rem;
+    }
+
+    @media (min-width: $bp-lg) {
+      margin-bottom: 4rem;
+    }
   }
 
   &__index {
@@ -39,7 +63,7 @@
   &__heading {
     color: $secondary-color;
     font-family: $font-sans;
-    font-size: 2rem;
+    font-size: clamp(1.5rem, 6vw, 2rem);
     font-weight: 600;
   }
 
@@ -59,6 +83,8 @@
     margin-bottom: 2.5rem;
     padding: 0.25rem;
     width: fit-content;
+    overflow-x: auto;
+    max-width: 100%;
   }
 
   &__tab {
@@ -92,7 +118,7 @@
     display: grid;
     gap: 2rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       grid-template-columns: 240px 1fr;
     }
   }
@@ -175,8 +201,16 @@
     border: 1px solid #1e3a5f;
     border-radius: 12px;
     overflow: hidden;
-    padding: 2rem;
+    padding: 1.1rem;
     position: relative;
+
+    @media (min-width: $bp-md) {
+      padding: 1.5rem;
+    }
+
+    @media (min-width: $bp-lg) {
+      padding: 2rem;
+    }
   }
 
   &__card-glow {
@@ -207,7 +241,7 @@
 
   &__card-title {
     color: $secondary-color;
-    font-size: 1.25rem;
+    font-size: clamp(1.05rem, 4vw, 1.25rem);
     font-weight: 600;
     margin: 0;
   }
@@ -258,9 +292,13 @@
 
   &__card-description {
     color: $alt-color;
-    font-size: 0.95rem;
+    font-size: 0.88rem;
     line-height: 1.75;
     margin: 1rem 0 1.5rem;
+
+    @media (min-width: $bp-md) {
+      font-size: 0.95rem;
+    }
 
     span {
       align-items: center;
@@ -288,7 +326,7 @@
     grid-template-columns: 1fr;
     margin: 0.25rem 0 1.25rem;
 
-    @media (min-width: 768px) {
+    @media (min-width: $bp-md) {
       grid-template-columns: repeat(2, minmax(0, 1fr));
     }
   }
