@@ -14,7 +14,7 @@ Welcome to the source code for my personal portfolio website! Crafted with the l
 
 | Desktop                                                                                                         | Mobile                                                                                                        |
 | --------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------------------------- |
-| ![Desktop Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-desktop.png) | ![Mobile Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-mobile.png) |
+| ![Desktop Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-desktop.gif) | ![Mobile Screenshot](https://raw.githubusercontent.com/dhunanyan/portfolio/master/docs/screenshot-mobile.gif) |
 
 ## 🎨 Overview
 
@@ -115,6 +115,7 @@ CONTACT_TO_EMAIL="you@yourdomain.com"
 ```
 
 Notes:
+
 - `CONTACT_FROM_EMAIL` must be an address from a verified domain in Resend.
 - `RESEND_API_KEY` must remain server-side only and never be exposed in client code.
 
