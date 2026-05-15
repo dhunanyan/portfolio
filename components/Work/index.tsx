@@ -41,7 +41,7 @@ const WorkSliderArrow = ({ className, style, onClick }: SliderArrowProps) => {
 };
 
 const getSettingsForWindowWidth = (innerWidth: number) => {
-  if (innerWidth < 360) {
+  if (innerWidth < 480) {
     return {
       vertical: false,
       verticalSwiping: false,
@@ -49,7 +49,7 @@ const getSettingsForWindowWidth = (innerWidth: number) => {
       slidesToScroll: 1,
       adaptiveHeight: true,
     };
-  } else if (innerWidth < 560) {
+  } else if (innerWidth < 600) {
     return {
       vertical: false,
       verticalSwiping: false,
@@ -57,20 +57,12 @@ const getSettingsForWindowWidth = (innerWidth: number) => {
       slidesToScroll: 1,
       adaptiveHeight: true,
     };
-  } else if (innerWidth < 600) {
+  } else if (innerWidth < 768) {
     return {
       vertical: false,
       verticalSwiping: false,
       slidesToShow: 3,
       slidesToScroll: 2,
-      adaptiveHeight: true,
-    };
-  } else if (innerWidth < 768) {
-    return {
-      vertical: false,
-      verticalSwiping: false,
-      slidesToShow: 4,
-      slidesToScroll: 3,
       adaptiveHeight: true,
     };
   } else {
@@ -118,6 +110,9 @@ export const Work = () => {
   const active =
     tabProjects.find((project) => project.id === activeProject) ??
     tabProjects[0];
+
+  const getProject = (id: string) =>
+    tabProjects.find((project) => project.id === id) ?? tabProjects[0];
 
   const handleTabChange = (tab: WorkTab) => {
     const nextProjects = getTabProjects(tab);
@@ -216,21 +211,31 @@ export const Work = () => {
                       {activeProject === project.id && (
                         <div className="work__item-active-bg" />
                       )}
-                      <div className="work__item-head">
-                        <div>
-                          <p className="work__item-title">{project.title}</p>
-                          <p className="work__item-subtitle">
-                            {project.subtitle}
-                          </p>
-                        </div>
-                        <span className="work__item-arrow">
-                          <Icons.ArrowRight size={14} />
-                        </span>
+                      <div className="work__item-image">
+                        <Image
+                          src={getProject(project.id).image}
+                          alt={getProject(project.id).title}
+                          fill
+                          sizes="(min-width: 69px) 69px, (min-width: 69px) 69px"
+                        />
                       </div>
-                      <div className="work__item-tags">
-                        {project.tags.slice(0, 3).map((tag) => (
-                          <span key={tag}>{tag}</span>
-                        ))}
+                      <div className="work__item-content">
+                        <div className="work__item-head">
+                          <div>
+                            <p className="work__item-title">{project.title}</p>
+                            <p className="work__item-subtitle">
+                              {project.subtitle}
+                            </p>
+                          </div>
+                          <span className="work__item-arrow">
+                            <Icons.ArrowRight size={14} />
+                          </span>
+                        </div>
+                        <div className="work__item-tags">
+                          {project.tags.slice(0, 3).map((tag) => (
+                            <span key={tag}>{tag}</span>
+                          ))}
+                        </div>
                       </div>
                     </button>
                   </div>
