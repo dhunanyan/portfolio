@@ -347,7 +347,7 @@ export const experienceContent = {
 const workTabs = [
   { id: 'featured', label: 'Featured' },
   { id: 'open-source', label: 'Open Source' },
-  { id: 'made-to-order', label: 'Made to Order' },
+  { id: 'made-to-order', label: 'Order' },
   { id: 'private', label: 'Private' },
 ] as const;
 
@@ -363,35 +363,42 @@ const getWorkProjectsById = () =>
 
 const workTabProjectIds = {
   featured: [
+    'aristobyte-com',
+    'aristobyte-ui',
+    'moonchunk',
     'scss-converter',
     'aristo-badges',
-    'aristo-repo',
-    'aristobyte-ui',
     'aristobyte-ui-cli',
-    'aristobyte-com',
-    'moonchunk',
+    'aristo-repo',
   ],
   'open-source': [
-    'scss-converter',
-    'aristo-badges',
-    'aristo-bot',
-    'aristo-repo',
-    'aristo-theme',
+    'aristobyte-com',
     'aristobyte-ui',
     'aristobyte-ui-cli',
-    'aristobyte-com',
+    'aristo-badges',
+    'aristo-repo',
+    'aristo-theme',
+    'aristo-bot',
+    'moonchunk',
+    'moonchunk-highlight-vscode-extension',
+    'scss-converter',
+  ],
+  'made-to-order': [
+    'mervilleautos',
+    'ordrio',
+    'new-step-studio',
+    'novelex',
+    'ghunanyan',
+    'futurefix',
+  ],
+  private: [
+    'spotify',
+    'weather',
+    'meetjs',
+    'scss-converter',
     'moonchunk',
     'moonchunk-highlight-vscode-extension',
   ],
-  'made-to-order': [
-    'ghunanyan',
-    'novelex',
-    'mervilleautos',
-    'new-step-studio',
-    'futurefix',
-    'ordrio',
-  ],
-  private: ['spotify', 'weather', 'meetjs'],
 } as const satisfies Record<WorkTabId, readonly string[]>;
 
 export const workContent = {

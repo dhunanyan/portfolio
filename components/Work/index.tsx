@@ -20,7 +20,7 @@ type SliderArrowProps = {
 };
 
 const workTabIcons: Record<WorkTab, React.ReactNode> = {
-  featured: <Icons.Activity size={13} />,
+  featured: <Icons.Star size={13} />,
   'open-source': <Icons.Github size={13} />,
   'made-to-order': <Icons.Briefcase size={13} />,
   private: <Icons.Box size={13} />,
@@ -40,12 +40,70 @@ const WorkSliderArrow = ({ className, style, onClick }: SliderArrowProps) => {
   );
 };
 
+const getSettingsForWindowWidth = (innerWidth: number) => {
+  if (innerWidth < 360) {
+    return {
+      vertical: false,
+      verticalSwiping: false,
+      slidesToShow: 1,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+    };
+  } else if (innerWidth < 560) {
+    return {
+      vertical: false,
+      verticalSwiping: false,
+      slidesToShow: 2,
+      slidesToScroll: 1,
+      adaptiveHeight: true,
+    };
+  } else if (innerWidth < 600) {
+    return {
+      vertical: false,
+      verticalSwiping: false,
+      slidesToShow: 3,
+      slidesToScroll: 2,
+      adaptiveHeight: true,
+    };
+  } else if (innerWidth < 768) {
+    return {
+      vertical: false,
+      verticalSwiping: false,
+      slidesToShow: 4,
+      slidesToScroll: 3,
+      adaptiveHeight: true,
+    };
+  } else {
+    return {
+      vertical: true,
+      verticalSwiping: true,
+      slidesToShow: 4,
+      slidesToScroll: 3,
+      adaptiveHeight: false,
+    };
+  }
+};
+
 export const Work = () => {
+  const [breakpointSettings, setBreakpointSettings] = React.useState({});
+
+  React.useEffect(() => {
+    const updateWidth = () => {
+      setBreakpointSettings(getSettingsForWindowWidth(window.innerWidth));
+    };
+    window.addEventListener('resize', updateWidth);
+    return () => window.removeEventListener('resize', updateWidth);
+  }, []);
+
+  React.useEffect(() => {
+    (() => {
+      setBreakpointSettings(getSettingsForWindowWidth(window.innerWidth));
+    })();
+  }, []);
+
   const getTabProjects = React.useCallback((tab: WorkTab) => {
     const ids = workContent.tabProjectIds[tab] ?? [];
-    return ids
-      .map((id) => workContent.projectsById[id])
-      .filter(Boolean);
+    return ids.map((id) => workContent.projectsById[id]).filter(Boolean);
   }, []);
 
   const [activeTab, setActiveTab] = React.useState<WorkTab>(
@@ -83,50 +141,6 @@ export const Work = () => {
   ].filter(
     (item): item is { href: string; icon: React.ReactElement } =>
       item.href !== undefined
-  );
-
-  const projectSliderSettings = React.useMemo(
-    () => ({
-      arrows: true,
-      infinite: false,
-      vertical: true,
-      verticalSwiping: true,
-      speed: 300,
-      slidesToShow: 4,
-      slidesToScroll: 3,
-      adaptiveHeight: false,
-      nextArrow: <WorkSliderArrow />,
-      prevArrow: <WorkSliderArrow />,
-      responsive: [
-        {
-          breakpoint: 1280,
-          settings: {
-            slidesToScroll: 3,
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 1024,
-          settings: {
-            slidesToScroll: 3,
-            slidesToShow: 4,
-          },
-        },
-        {
-          breakpoint: 768,
-          settings: {
-            slidesToScroll: 2,
-            slidesToShow: 3,
-          },
-        },
-        {
-          breakpoint: 540,
-          slidesToScroll: 1,
-          settings: { slidesToShow: 2 },
-        },
-      ],
-    }),
-    []
   );
 
   return (
@@ -183,9 +197,14 @@ export const Work = () => {
               className="work__list"
             >
               <Slider
+                {...breakpointSettings}
                 key={activeTab}
-                {...projectSliderSettings}
                 className="work__projects-slider"
+                nextArrow={<WorkSliderArrow />}
+                prevArrow={<WorkSliderArrow />}
+                speed={300}
+                arrows
+                infinite={false}
               >
                 {tabProjects.map((project) => (
                   <div key={project.id} className="work__slide">
