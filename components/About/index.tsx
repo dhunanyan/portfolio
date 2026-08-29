@@ -98,6 +98,7 @@ export const About = ({ data }: AboutPropsType) => {
               <div className="about__photo-border" />
               <div className="about__photo-frame">
                 <Image
+                  loading="eager"
                   src={aboutContent.avatarSrc}
                   alt={aboutContent.avatarAlt}
                   fill
